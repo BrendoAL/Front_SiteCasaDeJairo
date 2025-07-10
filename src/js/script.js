@@ -1,0 +1,3 @@
+function mostrarMensagem() {
+  alert("Teste");
+}
