@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+  <!-- Descrição do Site -->
+  <meta name="description" content="ONG Casa de Jairo para crianças de 6/9 e de 10/15 anos.">
+
   <title>ONG Amigos De Jairo</title>
 
   <!-- Link CSS -->
@@ -20,15 +23,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 
 </head>
+
 <body>
 
   <header>
     <h1>Bem-vindo à ONG</h1>
     <nav>
-      <a href="#">Início</a>
-      <a href="#">Sobre</a>
-      <a href="#">Projetos</a>
-      <a href="#">Contato</a>
+      <a class="topo-link" href="#">Início</a>
+      <a class="topo-link" href="#">Sobre</a>
+      <a class="topo-link" href="#">Projetos</a>
+      <a class="topo-link" href="#contato">Contato</a>
     </nav>
   </header>
 
@@ -37,11 +41,34 @@
       <h2>Junte-se a nós para transformar vidas!</h2>
       <button onclick="mostrarMensagem()">Saiba Mais</button>
     </section>
+
+    <section id="contato" class="container">
+      <div class="container-titulo">
+        <h3>Contato</h3>
+        <p>Nossa ONG realiza os atendimentos das <strong>11:30hs as 18:00hs</strong>. Realizando 3 refeições (almoço, fruta e lanche) e participam das diversas atividades diariamente, de <strong>segunda a sexta-feira</strong>.</p>
+        <p>Você pode fazer doações através do Whatsapp <a href="tel:+55 47 99742-1520">47 99742-1520</a> ou tirar duvidas através do Whatsapp <a href="tel:+55 47 99181-0946">47 99181-0946</a>.</p>
+        <p>Estamos localizados na Rua Alberto Manzke, 172 - Blumenau, Santa Catarina </p>
+      </div>
+
+      <div class="container-rota">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14232.722529572238!2d-49.15334726076947!3d-26.89776186863328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94df1c524360a5a3%3A0x3216e89dfd6646de!2sR.%20Alberto%20Manzke%2C%20172%20-%20Passo%20Manso%2C%20Blumenau%20-%20SC%2C%2089032-560!5e0!3m2!1spt-BR!2sbr!4v1752378529009!5m2!1spt-BR!2sbr"
+          width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 ONG Casa De Jairo. Todos os direitos reservados.</p>
+    <div class="container">
+      <p class="icon-footer">Whatsapp doações: <a href="tel:+55 47 99742-1520">47 99742-1520</a></p>
+      <p class="icon-footer">Whatsapp duvidas: <a href="tel:+55 47 99181-0946">47 99181-0946</a></p>
+      <p class="icon-footer">Endereço: Rua Alberto Manzke, 172 - Blumenau, Santa Catarina
+      </p>
+      <p>&copy; 2025 ONG Casa De Jairo. Todos os direitos reservados.</p>
+    </div>
   </footer>
 
 </body>
+
 </html>
