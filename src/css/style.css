@@ -65,7 +65,6 @@ body {
   padding: 5px;
 }
 
-
 .button-azul::after {
   content: '';
   position: absolute;
@@ -99,7 +98,7 @@ body {
 /*Cabeça do projeto*/
 
 header {
-  background-color: #0077b6;
+  background-color: #22A5DB;
   color: white;
   padding: 20px;
   text-align: center;
@@ -120,7 +119,7 @@ header nav a {
 }
 
 .banner button {
-  background-color: #0077b6;
+  background-color: #22A5DB;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -129,10 +128,14 @@ header nav a {
   font-size: 1rem;
 }
 
+.azul{
+  background-color: #22A5DB;
+}
+
 /* Rodapé do projeto*/
 
 footer {
-  background-color: #0077b6;
+  background-color: #22A5DB;
   color: white;
   text-align: center;
   padding: 15px;
