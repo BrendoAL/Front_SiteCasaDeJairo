@@ -10,9 +10,95 @@ body {
   background-color: #f8f9fa;
   color: #333;
 }
+.button-amarelo{
+  display: inline-block;
+  background-color: #E49713;
+  border-radius: 4px;
+  color: white;
+  box-shadow: none;
+  font-size: 15px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  padding: 5px;
+}
+.button-amarelo::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+.button-amarelo::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #b7740f;
+  transition: all 0.3s;
+  z-index: -1;
+}
+
+.button-amarelo:hover {
+  opacity: 0.8;
+}
+.button-amarelo:hover::before {
+  width: 100%;
+}
+
+.button-azul{
+  display: inline-block;
+  background-color: #0477BF;
+  border-radius: 4px;
+  color: white;
+  box-shadow: none;
+  font-size: 15px;
+  transition: all .3s;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  padding: 5px;
+}
+
+.button-azul::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+.button-azul::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #035a8f;
+  transition: all 0.3s;
+  z-index: -1;
+}
+
+.button-azul:hover {
+  opacity: 0.8;
+}
+
+.button-azul:hover::before {
+  width: 100%;
+}
+
+/*Cabeça do projeto*/
 
 header {
-  background-color: #0077b6;
+  background-color: #22A5DB;
   color: white;
   padding: 20px;
   text-align: center;
@@ -24,6 +110,8 @@ header nav a {
   text-decoration: none;
 }
 
+/*Corpo do projeto*/
+
 .banner {
   text-align: center;
   padding: 50px;
@@ -31,7 +119,7 @@ header nav a {
 }
 
 .banner button {
-  background-color: #0077b6;
+  background-color: #22A5DB;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -40,8 +128,14 @@ header nav a {
   font-size: 1rem;
 }
 
+.azul{
+  background-color: #22A5DB;
+}
+
+/* Rodapé do projeto*/
+
 footer {
-  background-color: #0077b6;
+  background-color: #22A5DB;
   color: white;
   text-align: center;
   padding: 15px;
