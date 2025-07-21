@@ -94,21 +94,47 @@ body {
 .button-azul:hover::before {
   width: 100%;
 }
+.secao {
+    padding: 40px 0; 
+}
+
+.azul {
+    background-color: #22A5DB;
+}
 
 /*Cabeça do projeto*/
 
-header {
+/*header {
   background-color: #22A5DB;
   color: white;
   padding: 20px;
   text-align: center;
-}
-
+}*/
 header nav a {
   color: white;
   margin: 0 10px;
   text-decoration: none;
 }
+.topo-logo {
+   width: 100px; 
+   height: auto;
+   margin-right: 20px;
+}
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #22A5DB;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.topo-titulo {
+  display: flex;
+  align-items: center;
+}
+
+
+
 
 /*Corpo do projeto*/
 
@@ -141,3 +167,76 @@ footer {
   padding: 15px;
   margin-top: 50px;
 }
+.footer-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 40px 20px;
+}
+
+.container-footer {
+  flex: 1 1 200px;
+  color: white;
+}
+
+.container-footer h4 {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.lista-footer {
+  list-style: none;
+  padding: 0;
+}
+
+.lista-footer li {
+  margin-bottom: 8px;
+}
+
+.lista-footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.lista-footer a:hover {
+  text-decoration: underline;
+}
+
+.redes-sociais {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.redes-sociais a {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: background-color 0.3s;
+}
+
+.redes-sociais a:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.linha-footer {
+  border: 0.5px solid #1c4e77;
+  margin: 0 20px;
+}
+
+.p-direitos {
+  text-align: center;
+  color: #d9d9d9;
+  font-size: 0.9rem;
+  padding: 10px 0;
+}
+
+/* Ícones de contato */
+.container-footer i {
+  margin-right: 8px;
+}
+
