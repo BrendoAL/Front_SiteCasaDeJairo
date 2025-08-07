@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voluntário - ONG Casa de Jairo</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body>
+
+<header class="topo">
+  <div class="container">
+    <div class="topo-titulo">
+      <a href="index.html"><img class="topo-logo" src="/src/imagens/LogoCasaDeJairo.jpg" alt="Logo Casa de Jairo" /></a>
+    </div>
+    <nav>
+      <a href="index.html" class="topo-link">Quem Somos</a>
+      <a href="doacao.html" class="topo-link">Como Ajudar</a>
+      <a href="eventos.html" class="topo-link">Notícias e Eventos</a>
+      <a href="#contato" class="topo-link">Contato</a>
+      <a href="doacao.html" class="button-amarelo button-doacao">Doe Agora</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Seja um Voluntário</h1>
+  <p>Faça parte da transformação na vida de crianças e adolescentes da ONG Casa de Jairo. Sua ajuda faz toda a diferença!</p>
+
+  <section id="como-ajudar">
+    <h2>Como você pode ajudar?</h2>
+    <ul>
+      <li>Ajudando nas atividades diárias da ONG</li>
+      <li>Participando de eventos e campanhas</li>
+      <li>Oferecendo aulas, oficinas e mentorias</li>
+      <li>Divulgando nosso trabalho na sua rede de contatos</li>
+    </ul>
+  </section>
+
+  <section id="formulario-voluntario">
+    <h2>Formulário de Inscrição</h2>
+    <form id="formVoluntario">
+      <label for="nome">Nome Completo:</label><br />
+      <input type="text" id="nome" name="nome" required /><br /><br />
+
+      <label for="email">Email:</label><br />
+      <input type="email" id="email" name="email" required /><br /><br />
+
+      <label for="telefone">Telefone:</label><br />
+      <input type="tel" id="telefone" name="telefone" /><br /><br />
+
+      <label for="disponibilidade">Disponibilidade:</label><br />
+      <select id="disponibilidade" name="disponibilidade" required>
+        <option value="">Selecione</option>
+        <option value="manha">Manhã</option>
+        <option value="tarde">Tarde</option>
+        <option value="noite">Noite</option>
+        <option value="final-de-semana">Final de semana</option>
+      </select><br /><br />
+
+      <label for="mensagem">Por que quer ser voluntário?</label><br />
+      <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte um pouco sobre você..." required></textarea><br /><br />
+
+      <button type="submit" class="button-amarelo">Enviar</button>
+    </form>
+
+    <!-- Botão para receber novidades, inicialmente escondido -->
+    <div id="novidadesDiv" style="margin-top: 30px; display: none;">
+      <button id="btnNovidades" class="button-amarelo">Quero receber novidades</button>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 ONG Casa de Jairo. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('formVoluntario');
+  const novidadesDiv = document.getElementById('novidadesDiv');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault(); // evita envio padrão para o backend por enquanto
+
+    // Aqui você pode capturar dados e enviar via fetch/ajax futuramente
+    // Por enquanto só mostramos o botão de novidades
+    novidadesDiv.style.display = 'block';
+
+    // Opcional: ocultar o formulário após envio
+    form.style.display = 'none';
+  });
+
+  document.getElementById('btnNovidades').addEventListener('click', () => {
+    alert('Em breve teremos um formulário para você se cadastrar!');
+  });
+</script>
+
+</body>
+</html>
