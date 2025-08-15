@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@angular/platform-browser-dynamic": "^20.1.7"
+  }
+}
