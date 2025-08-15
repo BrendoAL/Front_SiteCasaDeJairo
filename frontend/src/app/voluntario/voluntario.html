@@ -1,0 +1,68 @@
+<header class="topo">
+  <div class="container">
+    <div class="topo-titulo">
+      <a routerLink="/"><img class="topo-logo" src="/assets/imagens/LogoCasaDeJairo.jpg" alt="Logo Casa de Jairo" /></a>
+    </div>
+    <nav>
+      <a routerLink="/" class="topo-link">Quem Somos</a>
+      <a routerLink="/doacao" class="topo-link">Como Ajudar</a>
+      <a routerLink="/eventos" class="topo-link">Notícias e Eventos</a>
+      <a routerLink="/contato" class="topo-link">Contato</a>
+      <a routerLink="/doacao" class="button-amarelo button-doacao">Doe Agora</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Seja um Voluntário</h1>
+  <p>Faça parte da transformação na vida de crianças e adolescentes da ONG Casa de Jairo. Sua ajuda faz toda a diferença!</p>
+
+  <section id="como-ajudar">
+    <h2>Como você pode ajudar?</h2>
+    <ul>
+      <li>Ajudando nas atividades diárias da ONG</li>
+      <li>Participando de eventos e campanhas</li>
+      <li>Oferecendo aulas, oficinas e mentorias</li>
+      <li>Divulgando nosso trabalho na sua rede de contatos</li>
+    </ul>
+  </section>
+
+  <section id="formulario-voluntario">
+    <h2>Formulário de Inscrição</h2>
+    <form [formGroup]="voluntarioForm" (ngSubmit)="onSubmit()">
+      <label for="nome">Nome Completo:</label>
+      <input id="nome" formControlName="nome" type="text" required />
+
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email" required />
+
+      <label for="telefone">Telefone:</label>
+      <input id="telefone" formControlName="telefone" type="tel" />
+
+      <label for="disponibilidade">Disponibilidade:</label>
+      <select id="disponibilidade" formControlName="disponibilidade" required>
+        <option value="">Selecione</option>
+        <option value="manha">Manhã</option>
+        <option value="tarde">Tarde</option>
+        <option value="noite">Noite</option>
+        <option value="final-de-semana">Final de semana</option>
+      </select>
+
+      <label for="mensagem">Por que quer ser voluntário?</label>
+      <textarea id="mensagem" formControlName="mensagem" rows="4" placeholder="Conte um pouco sobre você..." required></textarea>
+
+      <button type="submit" class="button-amarelo">Enviar</button>
+    </form>
+
+    <div *ngIf="formEnviado" style="margin-top: 30px;">
+      <button (click)="receberNovidades()" class="button-amarelo">Quero receber novidades</button>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2025 ONG Casa de Jairo. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
