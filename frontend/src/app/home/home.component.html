@@ -2,35 +2,33 @@
   <div class="container">
     <div class="topo-titulo">
       <a routerLink="/">
-        <img class="topo-logo" src="" alt="logo" title="logo">
+        <img class="topo-logo" src="assets/imagens/LogoCasaDeJairo.jpg" alt="logo" title="logo">
       </a>
     </div>
 
     <nav>
-      <a class="topo-link" href="#">Quem Somos</a>
-      <a class="topo-link" href="#">Como Ajudar</a>
-      <a class="topo-link" href="#">Notícias e Eventos</a>
-      <a class="topo-link" href="#contato">Contato</a>
-      <button class="button-amarelo">
-        <a class="topo-link button-doação" routerLink="/doacao">Doe Agora</a>
-      </button>
+      <a class="topo-link" routerLink="/eventos">Notícias e Eventos</a>
+      <a class="topo-link" routerLink="/transparencia">Transparência</a>
+      <a class="topo-link" routerLink="/voluntario">Voluntário</a>
+      <a class="topo-link" routerLink="/empresaparceira">Empresa Parceira</a>
+      <a class="topo-link" routerLink="/novasede">Nova Sede</a>
+      <a class="button-amarelo topo-link button-doacao" routerLink="/doacao">
+        Doe Agora
+      </a>
     </nav>
   </div>
 </header>
+
 
 <main>
   <!--Section Visão Geral-->
   <section class="box-visao-geral">
     <div class="box-visao-geral-titulo container">
       <h1>Transformando Vidas em Blumenau através do Amor e Apoio</h1>
-      <br>
-      <p>Acolhemos crianças do bairro em situação de vulnerabilidade social com carinho, educação, e oportunidades para
-        um futuro melhor.</p>
+      <p>Acolhemos crianças em situação de vulnerabilidade social com carinho, educação e oportunidades.</p>
 
-      <button class="button-azul">Saiba mais sobre nós</button>
-      <button class="button-amarelo">
-        <a class="topo-link button-doação" routerLink="/doacao">Doe Agora</a>
-      </button>
+      <button class="button-azul" routerLink="/quem-somos">Saiba mais sobre nós</button>
+      <button class="button-amarelo" routerLink="/doacao">Doe Agora</button>
     </div>
   </section>
 
@@ -43,58 +41,39 @@
     </div>
     <div class="secao-box-historia">
       <h3>Histórico</h3>
-      <p>A ONG Casa de Jairo iniciou suas atividades em 21/02/2022, surgindo através do desejo do Presidente - Fundador
-        Sr. Alexson Antônio Martins...</p>
+      <p>A ONG Casa de Jairo iniciou suas atividades em 21/02/2022, a entidade surgiu através do desejo do Presidente -
+        Fundador Sr. Alexson Antônio Martins através de histórias vividas na sua infância e da sua família com o intuito
+        de retribuir o cuidado que ele e seus irmãos tiveram em institutos/OSCs, onde foram acolhidos, amados, recebendo
+        alimentação e amor por voluntários</p>
     </div>
     <figure class="figure-missão">
       <img src="assets/imagens/Missao.jpg" alt="Nossa Missão" title="Nossa Missão">
     </figure>
-    <button class="button-azul">CONHEÇA NOSSA HISTÓRIA COMPLETA</button>
+    <button class="button-azul" routerLink="/quem-somos">CONHEÇA NOSSA HISTÓRIA COMPLETA</button>
   </section>
 
   <!--Section Como Ajudar-->
   <section class="secao azul">
     <div class="container">
       <div class="box card-um">
-        <figure class="card-figure">
-          <img src="" alt="Doe Agora Icon" title="Doe Agora Icon">
-        </figure>
         <h3>Doe Agora</h3>
-        <p>Sua contribuição financeira é fundamental para mantermos nossas atividades...</p>
-        <ul class="lista-ajudar">
-          <li>Pix: 45.878.768/0001-09</li>
-          <li>Doação online</li>
-          <li>Doação recorrente</li>
-        </ul>
-        <button class="button-azul">DOAR</button>
+        <p>Sua contibuição financeira é fundamental para mantermos nossas atividades. Aceitamos doações via PIX,
+          pagamentos online ou doações recorrentes.</p>
+        <button class="button-azul" routerLink="/doacao">DOAR</button>
       </div>
 
       <div class="box card-dois">
-        <figure class="card-figure">
-          <img src="" alt="Voluntário Icon" title="Voluntário Icon">
-        </figure>
         <h3>Voluntário</h3>
-        <p>Compartilhe seu tempo e talentos! Precisamos de voluntários...</p>
-        <ul class="lista-ajudar">
-          <li>Atividades educacionais</li>
-          <li>Recreação e esportes</li>
-          <li>Apoio administrativo</li>
-        </ul>
-        <button class="button-azul">CADASTRE-SE</button>
+        <p>Compartilhe seu tempo e talentos! Precisamos de voluntários para diversas atividades educaiconais,
+          recreativas e administrativas.</p>
+        <button class="button-azul" routerLink="/voluntario">CADASTRE-SE</button>
       </div>
 
       <div class="box card-tres">
-        <figure class="card-figure">
-          <img src="" alt="Empresas Parceiras Icon" title="Empresas Parceiras Icon">
-        </figure>
         <h3>Empresas Parceiras</h3>
-        <p>Sua empresa pode fazer a diferença! Torne-se um parceiro institucional...</p>
-        <ul class="lista-ajudar">
-          <li>Patrocínio de projetos</li>
-          <li>Doações de produtos</li>
-          <li>Voluntário corporativo</li>
-        </ul>
-        <button class="button-amarelo">Seja um Parceiro</button>
+        <p>Sua empresa pode fazer a diferença! Torne-se um parceiro institucional e ajude-nos a transformar vidas em
+          nossa comunidade.</p>
+        <button class="button-amarelo" routerLink="/parceiros">Seja um Parceiro</button>
       </div>
     </div>
   </section>
@@ -104,36 +83,24 @@
     <h2>Notícias e Eventos</h2>
     <div class="container">
       <div class="box card-quatro">
-        <figure class="card-figure">
-          <img src="" alt="Oficina de Artes Icon" title="Oficina de Artes Icon">
-        </figure>
-        <small>15/02/2025</small>
         <h3>Oficina de Artes Promove Criatividade</h3>
-        <p>Nossa oficina de artes ajudou as crianças a expressarem seus sentimentos...</p>
-        <button class="button-amarelo">Leia mais</button>
+        <p>Nossa oficina de artes ajudou as crianças a expressarem seus sentimentos através da pintura e desenho.</p>
+        <button class="button-amarelo" routerLink="/noticias/1">Leia mais</button>
       </div>
 
       <div class="box card-cinco">
-        <figure>
-          <img src="" alt="Campanha arrecadação icon" title="Campanha arrecadação icon">
-        </figure>
-        <small>02/05/2025</small>
         <h3>Campanha de Arrecadação de Alimentos</h3>
-        <p>Nossa campanha conseguiu arrecadar mais de 500kg de alimentos...</p>
-        <button class="button-amarelo">Leia mais</button>
+        <p>Nossa campanha conseguiu arrecadar mais de 500kg de alimentos que serão distribuídos às familias.</p>
+        <button class="button-amarelo" routerLink="/noticias/2">Leia mais</button>
       </div>
 
       <div class="box card-seis">
-        <figure>
-          <img src="" alt="Curso informatica icon" title="Curso informatica icon">
-        </figure>
-        <small>20/04/2025</small>
         <h3>Novo Curso de Informática Básica</h3>
-        <p>Iniciamos um novo curso de informática básica para preparar nossos jovens...</p>
-        <button class="button-amarelo">Leia mais</button>
+        <p>Iniciamos um novo curso de informática básica para preparar nossos jovens para o mercado de trabalho.</p>
+        <button class="button-amarelo" routerLink="/noticias/3">Leia mais</button>
       </div>
     </div>
-    <button class="button-amarelo">VER TODAS AS NOTÍCIAS</button>
+    <button class="button-amarelo" routerLink="/noticias">VER TODAS AS NOTÍCIAS</button>
   </section>
 </main>
 
@@ -148,18 +115,20 @@
     <div class="container-footer">
       <h4>Links Rápidos</h4>
       <ul class="lista-footer">
-        <li><a href="#">Quem somos</a></li>
-        <li><a href="#">Como Ajudar</a></li>
-        <li><a href="#">Notícias e Eventos</a></li>
-        <li><a href="#">Contato</a></li>
+        <li><a routerLink="/eventos">Notícias e Eventos</a></li>
+        <li><a routerLink="/transparencia">Transparência</a></li>
+        <li><a routerLink="/voluntario">Voluntário</a></li>
+        <li><a routerLink="/empresaparceira">Empresa Parceira</a></li>
+        <li><a routerLink="/novasede">Nova Sede</a></li>
+        <li><a routerLink="/doacao">Doe Agora</a></li>
       </ul>
     </div>
 
     <div class="container-footer">
       <h4>Contato</h4>
       <p class="p-email">casadejairo.adm@hotmail.com</p>
-      <p class="p-tel"><a href="tel:+55 47 99742-1520">(47) 99742-1520</a></p>
-      <p class="p-whats"><a href="tel:+55 47 99181-0946">(47) 99181-0946</a></p>
+      <p class="p-tel"><a href="tel:+5547997421520">(47) 99742-1520</a></p>
+      <p class="p-whats"><a href="tel:+5547991810946">(47) 99181-0946</a></p>
       <p class="p-adress">Rua Alberto Manzke, 172 - Blumenau, Santa Catarina</p>
     </div>
 
@@ -176,7 +145,7 @@
           <img src="" alt="Youtube Icon" title="Youtube Icon">
         </figure>
       </div>
-      <button class="button-amarelo">DOE AGORA</button>
+      <button class="button-amarelo" routerLink="/doacao">DOE AGORA</button>
     </div>
   </section>
   <hr>
