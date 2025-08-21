@@ -21,25 +21,11 @@
 }
 
 @keyframes slide {
-    0% {
-        transform: translateX(1);
-    }
-
-    25% {
-        transform: translateX(-100%);
-    }
-
-    50% {
-        transform: translateX(-200%);
-    }
-
-    75% {
-        transform: translateX(-300%);
-    }
-
-    100% {
-        transform: translateX(1);
-    }
+    0% { transform: translateX(1); }
+    25% { transform: translateX(-100%); }
+    50% { transform: translateX(-200%); }
+    75% { transform: translateX(-300%); }
+    100% { transform: translateX(1); }
 }
 
 /* ===== NOTÍCIAS (GRID) ===== */
