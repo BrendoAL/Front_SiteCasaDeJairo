@@ -1,1 +1,204 @@
-<p>eventos works!</p>
+<!-- HEADER -->
+<header class="topo">
+    <div class="container">
+        <div class="topo-titulo">
+            <a routerLink="/">
+                <img class="topo-logo" src="assets/imagens/LogoCasaDeJairo.jpg" alt="logo" title="Logo Casa de Jairo">
+            </a>
+        </div>
+        <nav>
+            <a class="topo-link" routerLink="/#quem-somos">Quem Somos</a>
+            <a class="topo-link" routerLink="/doacao">Como Ajudar</a>
+            <a class="topo-link ativo" routerLink="/eventos">Notícias e Eventos</a>
+            <a class="topo-link" routerLink="/#contato">Contato</a>
+            <button class="button-amarelo">
+                <a class="topo-link button-doação" routerLink="/doacao#doar">Doe Agora</a>
+            </button>
+        </nav>
+    </div>
+</header>
+
+<!-- CONTEÚDO -->
+<main>
+    <section class="box-visao-geral">
+        <div class="box-visao-geral-titulo container">
+            <h1>Notícias e Eventos</h1>
+            <p>Confira os últimos acontecimentos e ações realizadas pela Casa de Jairo.</p>
+        </div>
+    </section>
+
+    <!-- SLIDER IMAGENS -->
+    <section class="slider-eventos">
+        <div class="slider-track">
+            <img src="assets/imagens/oficina-artes.jpg" alt="Oficina de Artes">
+            <img src="assets/imagens/campanha-alimentos.jpg" alt="Campanha de Alimentos">
+            <img src="assets/imagens/curso-informatica.jpg" alt="Curso de Informática">
+            <img src="assets/imagens/festival-cultural.jpg" alt="Festival Cultural">
+        </div>
+    </section>
+
+    <!-- NOTÍCIAS (GRID) -->
+    <section class="secao">
+        <div class="container">
+            <h2 class="titulo-centro"><i class="fa-regular fa-newspaper"></i> Últimas Notícias</h2>
+            <div class="eventos-container">
+                <!-- 1 -->
+                <article class="evento-card">
+                    <figure class="thumb">
+                        <img src="assets/imagens/oficina-artes.jpg" alt="Oficina de Artes" loading="lazy">
+                    </figure>
+                    <div class="conteudo">
+                        <small>15/02/2025</small>
+                        <h3>Oficina de Artes Promove Criatividade</h3>
+                        <p>Nossa oficina de artes ajudou as crianças a expressarem seus sentimentos através da pintura e
+                            desenho.</p>
+                        <button class="button-amarelo">Leia mais</button>
+                    </div>
+                </article>
+
+                <!-- 2 -->
+                <article class="evento-card">
+                    <figure class="thumb">
+                        <img src="assets/imagens/campanha-alimentos.jpg" alt="Campanha de Arrecadação" loading="lazy">
+                    </figure>
+                    <div class="conteudo">
+                        <small>02/05/2025</small>
+                        <h3>Campanha de Arrecadação de Alimentos</h3>
+                        <p>Conseguimos arrecadar mais de 500kg de alimentos que serão distribuídos às famílias
+                            atendidas.</p>
+                        <button class="button-amarelo">Leia mais</button>
+                    </div>
+                </article>
+
+                <!-- 3 -->
+                <article class="evento-card">
+                    <figure class="thumb">
+                        <img src="assets/imagens/curso-informatica.jpg" alt="Curso de Informática" loading="lazy">
+                    </figure>
+                    <div class="conteudo">
+                        <small>20/04/2025</small>
+                        <h3>Novo Curso de Informática Básica</h3>
+                        <p>Iniciamos um curso de informática básica para preparar nossos jovens para o mercado de
+                            trabalho.</p>
+                        <button class="button-amarelo">Leia mais</button>
+                    </div>
+                </article>
+
+                <!-- 4 -->
+                <article class="evento-card hidden">
+                    <figure class="thumb">
+                        <img src="assets/imagens/piquenique.jpg" alt="Piquenique Comunitário" loading="lazy">
+                    </figure>
+                    <div class="conteudo">
+                        <small>10/06/2025</small>
+                        <h3>Piquenique Comunitário</h3>
+                        <p>Um momento de confraternização entre famílias atendidas e voluntários.</p>
+                        <button class="button-amarelo">Leia mais</button>
+                    </div>
+                </article>
+
+                <!-- 5 -->
+                <article class="evento-card hidden">
+                    <figure class="thumb">
+                        <img src="assets/imagens/campanha-inverno.jpg" alt="Campanha do Agasalho" loading="lazy">
+                    </figure>
+                    <div class="conteudo">
+                        <small>05/07/2025</small>
+                        <h3>Campanha do Agasalho</h3>
+                        <p>Arrecadamos roupas e cobertores para aquecer famílias durante o inverno.</p>
+                        <button class="button-amarelo">Leia mais</button>
+                    </div>
+                </article>
+
+                <!-- 6 -->
+                <article class="evento-card hidden">
+                    <figure class="thumb">
+                        <img src="assets/imagens/festival-cultural.jpg" alt="Festival Cultural" loading="lazy">
+                    </figure>
+                    <div class="conteudo">
+                        <small>01/09/2025</small>
+                        <h3>Festival Cultural</h3>
+                        <p>Apresentações de música e dança para celebrar a diversidade cultural.</p>
+                        <button class="button-amarelo">Leia mais</button>
+                    </div>
+                </article>
+            </div>
+
+            <div class="btn-centro">
+                <button class="button-azul" id="btn-ver-mais">VER TODAS AS NOTÍCIAS</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALENDÁRIO + ANIVERSARIANTES -->
+    <section class="secao calendario-eventos">
+        <div class="container eventos-grid">
+            <!-- Calendário -->
+            <div class="card calendario">
+                <h3><i class="fa-solid fa-calendar-days"></i> Calendário de Eventos</h3>
+                <div class="dias-semana">
+                    <span>SEG</span><span>TER</span><span>QUA</span>
+                    <span>QUI</span><span>SEX</span><span>SÁB</span><span>DOM</span>
+                </div>
+                <div id="dias-mes" class="dias-mes"></div>
+                <div class="legenda">
+                    🔵 Educacional &nbsp; 🟢 Campanha &nbsp; 🟡 Reunião &nbsp; 🔴 Festa &nbsp; 🎂 Aniversário
+                </div>
+            </div>
+
+            <!-- Aniversariantes -->
+            <div class="card aniversariantes">
+                <h3><i class="fa-solid fa-cake-candles"></i> Aniversariantes do Mês</h3>
+                <div class="carousel">
+                    <button class="nav prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="track" id="carousel-track">
+                        <!-- JS injeta os itens aqui -->
+                    </div>
+                    <button class="nav next" aria-label="Próximo"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+                <ul id="lista-aniversariantes" class="lista-aniversarios"></ul>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <section class="secao azul footer-flex">
+        <div class="container-footer">
+            <h4>CASA DE JAIRO</h4>
+            <p>Somos uma ONG que acolhe crianças do bairro em situação de vulnerabilidade social.</p>
+            <p>CNPJ: 45.878.768/0001-09</p>
+        </div>
+
+        <div class="container-footer">
+            <h4>Links Rápidos</h4>
+            <ul class="lista-footer">
+                <li><a routerLink="/#quem-somos">Quem Somos</a></li>
+                <li><a routerLink="/doacao">Como Ajudar</a></li>
+                <li><a routerLink="/eventos">Notícias e Eventos</a></li>
+                <li><a routerLink="/#contato">Contato</a></li>
+            </ul>
+        </div>
+
+        <div class="container-footer">
+            <h4>Contato</h4>
+            <p><i class="fas fa-envelope"></i> casadejairo.adm@hotmail.com</p>
+            <p><i class="fas fa-phone"></i> (47) 99285-4209</p>
+            <p><i class="fab fa-whatsapp"></i> (47) 99285-4209</p>
+        </div>
+
+        <div class="container-footer">
+            <h4>Redes Sociais</h4>
+            <div class="redes-sociais">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <button class="button-amarelo">DOE AGORA</button>
+        </div>
+    </section>
+
+    <hr class="linha-footer">
+    <p class="p-direitos">&copy; 2025 Casa de Jairo. Todos os direitos reservados.</p>
+</footer>
