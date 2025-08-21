@@ -1,0 +1,78 @@
+/* =========================
+   CONTAINER
+========================= */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ================= HEADER ================= */
+header.topo {
+    background: #0e2b42;
+    /* azul principal */
+    padding: 15px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
+}
+
+header .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header .topo-logo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+header .topo-logo:hover {
+    transform: scale(1.1);
+}
+
+header .header-nav {
+    display: flex;
+    justify-content: center;
+    /* centraliza horizontalmente */
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+header .header-nav a {
+    color: #fff;
+    /* links brancos sobre azul */
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+header .header-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+/* Botão de Doação */
+header .header-nav .btn-amarelo {
+    background: #E49713;
+    /* amarelo da paleta */
+    color: #fff;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+header .header-nav .btn-amarelo:hover {
+    background: #cf870f;
+    /* ligeiramente mais escuro no hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
+}
