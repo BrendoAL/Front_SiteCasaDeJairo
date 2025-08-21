@@ -1,0 +1,107 @@
+/* =========================
+   FOOTER
+========================= */
+footer {
+    background: #0e2b42;
+    color: #f2f2f2;
+    padding: 50px 20px;
+}
+
+footer h4 {
+    color: #f5a623;
+    margin-bottom: 15px;
+}
+
+footer a {
+    color: #fff;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #f5a623;
+}
+
+footer hr {
+    margin: 30px 0;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+footer .redes-sociais img {
+    width: 32px;
+    margin-right: 10px;
+    transition: transform 0.3s;
+}
+
+footer .redes-sociais img:hover {
+    transform: scale(1.1);
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+@media(max-width:900px) {
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .banner h1 {
+        font-size: 2.2rem;
+    }
+
+    .banner p {
+        font-size: 1rem;
+    }
+
+    header .header-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    header .header-nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    header .header-nav a,
+    header .header-nav .btn-amarelo {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* =========================
+   SEÇÕES E CARDS
+========================= */
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.box {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
+}

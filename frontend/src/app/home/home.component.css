@@ -8,21 +8,25 @@ body {
   line-height: 1.6;
 }
 
-h1 { 
-  font-family: 'Montserrat', sans-serif; 
-  color: #ffffff; 
-  margin-bottom: 15px; 
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+  margin-bottom: 15px;
 }
 
-h2,h3,h4{
-  font-family: 'Montserrat', sans-serif; 
-  color: #000000; 
-  margin-bottom: 15px;  
+h2,
+h3,
+h4 {
+  font-family: 'Montserrat', sans-serif;
+  color: #000000;
+  margin-bottom: 15px;
 }
 
-p { color: #000000; }
+p {
+  color: #000000;
+}
 
-#pBranco{
+#pBranco {
   color: #fff;
 }
 
@@ -37,57 +41,10 @@ p { color: #000000; }
   padding: 20px;
 }
 
-/* =========================
-   HEADER
-========================= */
-header.topo {
-  background: #0e2b42; /* azul principal */
-  padding: 15px 0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
-}
-
-header .header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-header .topo-logo {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  transition: transform 0.3s;
-}
-
-header .topo-logo:hover { transform: scale(1.1); }
-
-header .header-nav {
-  display: flex;
-  justify-content: center; /* centraliza horizontalmente */
-  align-items: center;
-  gap: 25px;
-  flex-wrap: wrap;
-}
-
-header .header-nav a {
-  color: #fff; /* links brancos sobre azul */
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 10px 15px;
-  border-radius: 8px;
-  transition: all 0.3s;
-  text-decoration: none;
-}
-
-header .header-nav a:hover {
-  background-color: rgba(255,255,255,0.2);
-  color: #fff;
-}
-
 /* Botão de Doação */
 header .header-nav .btn-amarelo {
-  background: #E49713; /* amarelo da paleta */
+  background: #E49713;
+  /* amarelo da paleta */
   color: #fff;
   font-weight: 700;
   padding: 10px 20px;
@@ -97,7 +54,8 @@ header .header-nav .btn-amarelo {
 }
 
 header .header-nav .btn-amarelo:hover {
-  background: #cf870f; /* ligeiramente mais escuro no hover */
+  background: #cf870f;
+  /* ligeiramente mais escuro no hover */
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
 }
@@ -106,7 +64,7 @@ header .header-nav .btn-amarelo:hover {
    BANNER
 ========================= */
 .banner {
-  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://png.pngtree.com/background/20250103/original/pngtree-forest-trees-anime-visual-novel-game-nature-plant-and-in-a-picture-image_15870655.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('https://png.pngtree.com/background/20250103/original/pngtree-forest-trees-anime-visual-novel-game-nature-plant-and-in-a-picture-image_15870655.jpg') center/cover no-repeat;
   min-height: 80vh;
   display: flex;
   align-items: center;
@@ -117,18 +75,18 @@ header .header-nav .btn-amarelo:hover {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
 }
 
-.banner h1 { 
-  font-size: 3rem; 
-  margin-bottom: 20px; 
-  text-shadow: 2px 2px 12px rgba(0,0,0,0.6); 
+.banner h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6);
 }
 
-.banner p { 
-  font-size: 1.2rem; 
-  margin-bottom: 30px; 
-  max-width: 700px; 
-  margin-left: auto; 
-  margin-right: auto; 
+.banner p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* =========================
@@ -145,7 +103,7 @@ header .header-nav .btn-amarelo:hover {
 }
 
 .btn-azul {
-  background: linear-gradient(135deg,#007BFF,#005f9e);
+  background: linear-gradient(135deg, #007BFF, #005f9e);
   color: #fff;
 }
 
@@ -155,7 +113,7 @@ header .header-nav .btn-amarelo:hover {
 }
 
 .btn-amarelo {
-  background: linear-gradient(135deg,#E49713,#cf870f);
+  background: linear-gradient(135deg, #E49713, #cf870f);
   color: #fff;
 }
 
@@ -167,25 +125,25 @@ header .header-nav .btn-amarelo:hover {
 /* =========================
    SEÇÕES E CARDS
 ========================= */
-.grid-2 { 
-  display: grid; 
-  grid-template-columns: 1fr 1fr; 
-  gap: 50px; 
-  align-items: center; 
-  margin-bottom: 60px; 
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  margin-bottom: 60px;
 }
 
-.grid-3 { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); 
-  gap: 30px; 
-  margin-bottom: 60px; 
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
 }
 
-.grid-4 { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); 
-  gap: 30px; 
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
 }
 
 .box {
@@ -211,34 +169,29 @@ header .header-nav .btn-amarelo:hover {
   transition: transform 0.3s;
 }
 
-.figure-missao img:hover { transform: scale(1.05); }
-
-/* =========================
-   FOOTER
-========================= */
-footer {
-  background: #0e2b42;
-  color: #f2f2f2;
-  padding: 50px 20px;
+.figure-missao img:hover {
+  transform: scale(1.05);
 }
-
-footer h4 { color: #f5a623; margin-bottom: 15px; }
-footer a { color: #fff; transition: color 0.3s; }
-footer a:hover { color: #f5a623; }
-footer hr { margin: 30px 0; border-color: rgba(255,255,255,0.2); }
-
-footer .redes-sociais img { width: 32px; margin-right: 10px; transition: transform 0.3s; }
-footer .redes-sociais img:hover { transform: scale(1.1); }
 
 /* =========================
    RESPONSIVIDADE
 ========================= */
-@media(max-width:900px){
-  .grid-2,.grid-3,.grid-4 { grid-template-columns:1fr; }
-  
-  .banner h1 { font-size:2.2rem; }
-  .banner p { font-size:1rem; }
-  
+@media(max-width:900px) {
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .banner h1 {
+    font-size: 2.2rem;
+  }
+
+  .banner p {
+    font-size: 1rem;
+  }
+
   header .header-container {
     flex-direction: column;
     align-items: center;
@@ -250,7 +203,8 @@ footer .redes-sociais img:hover { transform: scale(1.1); }
     gap: 10px;
   }
 
-  header .header-nav a, header .header-nav .btn-amarelo {
+  header .header-nav a,
+  header .header-nav .btn-amarelo {
     width: 100%;
     text-align: center;
   }
