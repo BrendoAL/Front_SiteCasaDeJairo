@@ -310,3 +310,11 @@
         grid-auto-columns: 240px;
     }
 }
+
+.evento-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+  background: #f9f9f9;
+}

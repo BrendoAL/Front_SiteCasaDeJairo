@@ -8,8 +8,9 @@ import { Empresaparceira } from './empresaparceira/empresaparceira';
 import { Novasede } from './novasede/novasede';
 import { Transparencia } from './transparencia/transparencia';
 import { Voluntario } from './voluntario/voluntario';
-// Update the import to match the actual export from './admin/admin-dashboard'
+
 import { AdminDashboardComponent } from './admin/admin-dashboard';
+import { EventosAdminComponent } from './admin/eventos-admin.component';
 import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
@@ -20,8 +21,17 @@ const routes: Routes = [
   { path: 'novasede', component: Novasede },
   { path: 'transparencia', component: Transparencia },
   { path: 'voluntario', component: Voluntario },
-  { path: 'admin', component: AdminDashboardComponent, canActivate: [AdminGuard] }
+
+  {
+    path: 'admin',
+    component: AdminDashboardComponent,
+    canActivate: [AdminGuard],
+    children: [
+      { path: 'eventos', component: EventosAdminComponent }
+    ]
+  }
 ];
+
 
 export const appConfig: ApplicationConfig = {
   providers: [

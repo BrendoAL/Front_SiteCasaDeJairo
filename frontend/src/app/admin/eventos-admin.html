@@ -1,0 +1,18 @@
+<h2>Gerenciar Eventos</h2>
+
+<form (ngSubmit)="salvarEvento()">
+  <input [(ngModel)]="novoEvento.titulo" name="titulo" placeholder="Título" required>
+  <textarea [(ngModel)]="novoEvento.descricao" name="descricao" placeholder="Descrição" required></textarea>
+  <input [(ngModel)]="novoEvento.data" type="date" name="data" required>
+  <input [(ngModel)]="novoEvento.local" name="local" placeholder="Local" required>
+  <button type="submit">Cadastrar</button>
+</form>
+
+<hr>
+
+<ul>
+  <li *ngFor="let e of eventos">
+    <b>{{ e.titulo }}</b> - {{ e.data | date }} - {{ e.local }}
+    <button (click)="deletarEvento(e.id!)">Excluir</button>
+  </li>
+</ul>

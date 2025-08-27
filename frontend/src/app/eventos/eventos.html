@@ -24,6 +24,20 @@
         </div>
     </section>
 
+    <h2>Próximos Eventos</h2>
+
+    <div *ngIf="eventos.length > 0; else semEventos">
+        <div *ngFor="let e of eventos" class="evento-card">
+            <h3>{{ e.titulo }}</h3>
+            <p>{{ e.descricao }}</p>
+            <p><b>Data:</b> {{ e.data | date:'fullDate' }}</p>
+            <p><b>Local:</b> {{ e.local }}</p>
+        </div>
+    </div>
+
+    <ng-template #semEventos>
+        <p>Nenhum evento cadastrado no momento.</p>
+    </ng-template>
 
     <!-- NOTÍCIAS (GRID) -->
     <section class="secao">
