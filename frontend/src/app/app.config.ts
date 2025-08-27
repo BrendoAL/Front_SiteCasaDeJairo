@@ -12,6 +12,7 @@ import { Voluntario } from './voluntario/voluntario';
 import { AdminDashboardComponent } from './admin/admin-dashboard';
 import { EventosAdminComponent } from './admin/eventos-admin.component';
 import { AdminGuard } from './guards/admin.guard';
+import { LoginComponent } from './login/login';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'novasede', component: Novasede },
   { path: 'transparencia', component: Transparencia },
   { path: 'voluntario', component: Voluntario },
+  { path: 'login', component: LoginComponent },
 
   {
     path: 'admin',
