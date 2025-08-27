@@ -21,25 +21,11 @@
 }
 
 @keyframes slide {
-    0% {
-        transform: translateX(1);
-    }
-
-    25% {
-        transform: translateX(-100%);
-    }
-
-    50% {
-        transform: translateX(-200%);
-    }
-
-    75% {
-        transform: translateX(-300%);
-    }
-
-    100% {
-        transform: translateX(1);
-    }
+    0% { transform: translateX(1); }
+    25% { transform: translateX(-100%); }
+    50% { transform: translateX(-200%); }
+    75% { transform: translateX(-300%); }
+    100% { transform: translateX(1); }
 }
 
 /* ===== NOTÍCIAS (GRID) ===== */
@@ -323,4 +309,12 @@
     .aniversariantes .track {
         grid-auto-columns: 240px;
     }
+}
+
+.evento-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+  background: #f9f9f9;
 }

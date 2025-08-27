@@ -1,7 +1,6 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter, Routes } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
-
 import { HomeComponent } from './home/home.component';
 import { Eventos } from './eventos/eventos';
 import { Doacao } from './doacao/doacao';
@@ -10,6 +9,10 @@ import { Novasede } from './novasede/novasede';
 import { Transparencia } from './transparencia/transparencia';
 import { Voluntario } from './voluntario/voluntario';
 
+import { AdminDashboardComponent } from './admin/admin-dashboard';
+import { EventosAdminComponent } from './admin/eventos-admin.component';
+import { AdminGuard } from './guards/admin.guard';
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'eventos', component: Eventos },
@@ -17,8 +20,18 @@ const routes: Routes = [
   { path: 'empresaparceira', component: Empresaparceira },
   { path: 'novasede', component: Novasede },
   { path: 'transparencia', component: Transparencia },
-  { path: 'voluntario', component: Voluntario }
+  { path: 'voluntario', component: Voluntario },
+
+  {
+    path: 'admin',
+    component: AdminDashboardComponent,
+    canActivate: [AdminGuard],
+    children: [
+      { path: 'eventos', component: EventosAdminComponent }
+    ]
+  }
 ];
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
