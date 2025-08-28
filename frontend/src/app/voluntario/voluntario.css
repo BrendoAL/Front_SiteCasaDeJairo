@@ -1,0 +1,86 @@
+main.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #cecece;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+main h1 {
+    text-align: center;
+    color: #004a75;
+    margin-bottom: 15px;
+}
+
+main p {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+/* Como Ajudar */
+#como-ajudar {
+    margin-bottom: 40px;
+}
+
+#como-ajudar h2 {
+    font-size: 1.6rem;
+    color: #175caa;
+    margin-bottom: 15px;
+}
+
+#como-ajudar ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+#como-ajudar li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+/* Formulário */
+#formulario-voluntario {
+    margin-top: 20px;
+}
+
+#formulario-voluntario h2 {
+    font-size: 1.6rem;
+    color: #175caa;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: 600;
+    color: #333;
+}
+
+input,
+select,
+textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #22A5DB;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+}
