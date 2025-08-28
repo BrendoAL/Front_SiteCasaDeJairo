@@ -10,12 +10,34 @@
     <!-- SLIDER IMAGENS -->
     <section class="slider-eventos">
         <div class="slider-track">
-            <img src="" alt="Oficina de Artes">
-            <img src="assets/imagens/campanha-alimentos.jpg" alt="Campanha de Alimentos">
-            <img src="assets/imagens/curso-informatica.jpg" alt="Curso de Informática">
-            <img src="assets/imagens/festival-cultural.jpg" alt="Festival Cultural">
+            <img src="assets/imagens/arte.jpg" alt="Oficina de Artes">
+            <img src="assets/imagens/alimentos.jpg" alt="Campanha de Alimentos">
+            <img src="assets/imagens/informatica.jpg" alt="Curso de Informática">
+            <img src="assets/imagens/brinquedos.jpg" alt="Brinquedos">
+            <img src="assets/imagens/cozinha.jpg" alt="Cozinha">
+            <!-- repete as imagens para o loop contínuo -->
+            <img src="assets/imagens/arte.jpg" alt="Oficina de Artes">
+            <img src="assets/imagens/alimentos.jpg" alt="Campanha de Alimentos">
+            <img src="assets/imagens/informatica.jpg" alt="Curso de Informática">
+            <img src="assets/imagens/brinquedos.jpg" alt="Brinquedos">
+            <img src="assets/imagens/cozinha.jpg" alt="Cozinha">
         </div>
     </section>
+
+    <h2>Próximos Eventos</h2>
+
+    <div *ngIf="eventos.length > 0; else semEventos">
+        <div *ngFor="let e of eventos" class="evento-card">
+            <h3>{{ e.titulo }}</h3>
+            <p>{{ e.descricao }}</p>
+            <p><b>Data:</b> {{ e.data | date:'fullDate' }}</p>
+            <p><b>Local:</b> {{ e.local }}</p>
+        </div>
+    </div>
+
+    <ng-template #semEventos>
+        <p>Nenhum evento cadastrado no momento.</p>
+    </ng-template>
 
     <!-- NOTÍCIAS (GRID) -->
     <section class="secao">
