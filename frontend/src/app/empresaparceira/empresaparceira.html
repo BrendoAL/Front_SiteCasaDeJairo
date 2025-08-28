@@ -2,7 +2,8 @@
   <section class="box-visao-geral">
     <div class="box-visao-geral-titulo container">
       <h1>Empresas que Transformam Comunidades</h1>
-      <p>Junte-se à Casa de Jairo como parceiro institucional e apoie dezenas de crianças em situação de vulnerabilidade social.</p>
+      <p>Junte-se à Casa de Jairo como parceiro institucional e apoie dezenas de crianças em situação de vulnerabilidade
+        social.</p>
       <button class="button-azul">Quero Ser Parceiro</button>
       <button class="button-amarelo">Saiba Mais</button>
     </div>
@@ -29,13 +30,19 @@
   <section class="secao azul" id="formulario">
     <div class="container">
       <h2>Cadastre sua Empresa</h2>
-      <form>
-        <input type="text" placeholder="Nome da Empresa" required />
-        <input type="email" placeholder="E-mail de Contato" required />
-        <input type="tel" placeholder="Telefone" />
-        <textarea placeholder="Como deseja ajudar?" required></textarea>
-        <button class="button-amarelo">Quero Ser Parceiro</button>
+      <form [formGroup]="empresaForm" (ngSubmit)="onSubmit()">
+        <input formControlName="nome" type="text" placeholder="Nome da Empresa" required />
+        <input formControlName="email" type="email" placeholder="E-mail de Contato" required />
+        <input formControlName="telefone" type="tel" placeholder="Telefone" />
+        <textarea formControlName="mensagem" placeholder="Como deseja ajudar?" required></textarea>
+        <button class="button-amarelo" type="submit">Quero Ser Parceiro</button>
       </form>
+
+      <div *ngIf="formEnviado" style="margin-top: 20px; text-align:center;">
+        <span *ngIf="sucesso" style="color: #0f0;">Formulário enviado com sucesso!</span>
+        <span *ngIf="!sucesso" style="color: #f00;">Erro ao enviar, tente novamente.</span>
+      </div>
     </div>
   </section>
+
 </main>
