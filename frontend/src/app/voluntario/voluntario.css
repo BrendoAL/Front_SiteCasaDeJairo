@@ -1,61 +1,86 @@
 main.container {
     max-width: 900px;
     margin: 40px auto;
-    padding: 20px;
-    background: #cecece;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    background: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 main h1 {
     text-align: center;
-    color: #004a75;
+    color: #175caa;
     margin-bottom: 15px;
+    font-size: 2rem;
 }
 
 main p {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     font-size: 1.1rem;
-    color: #444;
+    color: #555;
 }
 
 /* Como Ajudar */
 #como-ajudar {
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 #como-ajudar h2 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     color: #175caa;
-    margin-bottom: 15px;
+    text-align: center;
+    margin-bottom: 25px;
 }
 
-#como-ajudar ul {
-    list-style: disc;
-    padding-left: 20px;
+.ajuda-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
 }
 
-#como-ajudar li {
+.card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    color: #004a75;
     margin-bottom: 10px;
-    font-size: 1rem;
+}
+
+.card p {
+    color: #555;
 }
 
 /* Formulário */
-#formulario-voluntario {
-    margin-top: 20px;
-}
-
 #formulario-voluntario h2 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     color: #175caa;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    text-align: center;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 label {
@@ -68,19 +93,42 @@ select,
 textarea {
     padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 10px;
     font-family: inherit;
     font-size: 1rem;
-    transition: border 0.3s;
+    transition: border 0.3s, box-shadow 0.3s;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
     border-color: #22A5DB;
+    box-shadow: 0 0 5px rgba(34, 165, 219, 0.5);
     outline: none;
 }
 
 textarea {
-    resize: vertical;
+    resize: vertical;
+}
+
+.button-enviar {
+    background: #22A5DB;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.button-enviar:hover {
+    background: #175caa;
+    transform: translateY(-2px);
+}
+
+.receber-novidades {
+    text-align: center;
+    margin-top: 30px;
 }

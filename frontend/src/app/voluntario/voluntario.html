@@ -2,46 +2,66 @@
   <h1>Seja um Voluntário</h1>
   <p>Faça parte da transformação na vida de crianças e adolescentes da ONG Casa de Jairo. Sua ajuda faz toda a diferença!</p>
 
+  <!-- Como Ajudar -->
   <section id="como-ajudar">
     <h2>Como você pode ajudar?</h2>
-    <ul>
-      <li>Ajudando nas atividades diárias da ONG</li>
-      <li>Participando de eventos e campanhas</li>
-      <li>Oferecendo aulas, oficinas e mentorias</li>
-      <li>Divulgando nosso trabalho na sua rede de contatos</li>
-    </ul>
+    <div class="ajuda-cards">
+
+      <div class="card">
+        <h3>Eventos e Campanhas</h3>
+        <p>Participando de eventos e campanhas.</p>
+      </div>
+      <div class="card">
+        <h3>Aulas e Oficinas</h3>
+        <p>Oferecendo aulas, oficinas e mentorias.</p>
+      </div>
+      <div class="card">
+        <h3>Divulgação</h3>
+        <p>Divulgando nosso trabalho na sua rede de contatos.</p>
+      </div>
+    </div>
   </section>
 
+  <!-- Formulário -->
   <section id="formulario-voluntario">
     <h2>Formulário de Inscrição</h2>
     <form [formGroup]="voluntarioForm" (ngSubmit)="onSubmit()">
-      <label for="nome">Nome Completo:</label>
-      <input id="nome" formControlName="nome" type="text" required />
+      <div class="form-group">
+        <label for="nome">Nome Completo:</label>
+        <input id="nome" formControlName="nome" type="text" placeholder="Seu nome completo" required />
+      </div>
 
-      <label for="email">Email:</label>
-      <input id="email" formControlName="email" type="email" required />
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email" type="email" placeholder="seu@email.com" required />
+      </div>
 
-      <label for="telefone">Telefone:</label>
-      <input id="telefone" formControlName="telefone" type="tel" />
+      <div class="form-group">
+        <label for="telefone">Telefone:</label>
+        <input id="telefone" formControlName="telefone" type="tel" placeholder="(00) 00000-0000" />
+      </div>
 
-      <label for="disponibilidade">Disponibilidade:</label>
-      <select id="disponibilidade" formControlName="disponibilidade" required>
-        <option value="">Selecione</option>
-        <option value="manha">Manhã</option>
-        <option value="tarde">Tarde</option>
-        <option value="noite">Noite</option>
-        <option value="final-de-semana">Final de semana</option>
-      </select>
+      <div class="form-group">
+        <label for="disponibilidade">Disponibilidade:</label>
+        <select id="disponibilidade" formControlName="disponibilidade" required>
+          <option value="">Selecione</option>
+          <option value="manha">Manhã</option>
+          <option value="tarde">Tarde</option>
+          <option value="noite">Noite</option>
+          <option value="final-de-semana">Final de semana</option>
+        </select>
+      </div>
 
-      <label for="mensagem">Por que quer ser voluntário?</label>
-      <textarea id="mensagem" formControlName="mensagem" rows="4" placeholder="Conte um pouco sobre você..." required></textarea>
+      <div class="form-group">
+        <label for="mensagem">Por que quer ser voluntário?</label>
+        <textarea id="mensagem" formControlName="mensagem" rows="4" placeholder="Conte um pouco sobre você..." required></textarea>
+      </div>
 
-      <button type="submit" class="button-amarelo">Enviar</button>
+      <button type="submit" class="button-enviar">Enviar</button>
     </form>
 
-    <div *ngIf="formEnviado" style="margin-top: 30px;">
-      <button (click)="receberNovidades()" class="button-amarelo">Quero receber novidades</button>
+    <div *ngIf="formEnviado" class="receber-novidades">
+      <button (click)="receberNovidades()" class="button-enviar">Quero receber novidades</button>
     </div>
   </section>
 </main>
-
