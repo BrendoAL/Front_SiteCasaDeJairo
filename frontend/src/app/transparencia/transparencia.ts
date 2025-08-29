@@ -1,22 +1,32 @@
-import { Component } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule, DatePipe } from '@angular/common';  
+import { TransparenciaService, Transparencia as TransparenciaFromService } from './transparencia.service';
 
-interface Post {
+export interface Transparencia {
+  id?: number;
   titulo: string;
-  conteudo: string;
-  data: Date;
+  descricao: string;
+  data?: string;
+  postImagemId?: number;
 }
 
 @Component({
   selector: 'app-transparencia',
+  standalone: true,             
+  imports: [CommonModule, DatePipe], // 
   templateUrl: './transparencia.html',
-  styleUrls: ['./transparencia.css'],
-  standalone: true,
-  imports: [CommonModule, DatePipe]
+  styleUrls: ['./transparencia.css']
 })
-export class Transparencia {
-  posts: Post[] = [
-    { titulo: 'Exemplo 1', conteudo: 'Conteúdo do post 1', data: new Date() },
-    { titulo: 'Exemplo 2', conteudo: 'Conteúdo do post 2', data: new Date() }
-  ];
+export class TransparenciaComponent implements OnInit {
+  posts: Transparencia[] = [];
+
+  constructor(private transparenciaService: TransparenciaService) {}
+
+  ngOnInit(): void {
+    this.transparenciaService.listar().subscribe({
+      next: (dados) => (this.posts = dados),
+      error: (err) => console.error('Erro ao carregar transparência:', err)
+    });
+  }
 }
+
