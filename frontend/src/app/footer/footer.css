@@ -5,46 +5,207 @@ footer {
     background: #0e2b42;
     color: #f2f2f2;
     padding: 50px 20px;
+    font-family: sans-serif;
+    font-size: 15px;
+}
+
+footer .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+footer .footer-section {
+    text-align: left;
 }
 
 footer h4 {
-    color: #f5a623;
+    color: #ffac28;
     margin-bottom: 15px;
+    font-family: sans-serif;
+    font-size: 23px;
+    border-bottom: 2px solid #ffac28;
+    padding-bottom: 8px;
+    display: inline-block;
 }
 
 footer a {
     color: #fff;
     transition: color 0.3s;
+    text-decoration: none;
 }
 
 footer a:hover {
     color: #f5a623;
 }
 
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer ul li {
+    margin-bottom: 8px;
+    padding-left: 0;
+}
+
+footer ul li a {
+    display: block;
+    padding: 5px 0;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+footer ul li a:hover {
+    padding-left: 10px;
+    color: #ffac28;
+}
+
+footer .contact-info {
+    line-height: 1.6;
+}
+
+footer .contact-info p {
+    margin: 8px 0;
+}
+
 footer hr {
     margin: 30px 0;
-    border-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+footer .redes-sociais {
+    display: flex;
+    justify-content: left;
+    gap: 15px;
+    margin: 20px 0;
 }
 
 footer .redes-sociais img {
-    width: 32px;
-    margin-right: 10px;
-    transition: transform 0.3s;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 0.3s;
+    filter: brightness(0.9);
 }
 
 footer .redes-sociais img:hover {
     transform: scale(1.1);
+    filter: brightness(1.1);
+}
+
+footer .copyright {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* =========================
+   SEÇÕES E CARDS
+========================= */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.box {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* =========================
    RESPONSIVIDADE
 ========================= */
-@media(max-width:900px) {
 
+/* Desktop Grande - 1400px+ */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1400px;
+        padding: 30px;
+    }
+    
+    .grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+    }
+    
+    footer {
+        padding: 60px 20px;
+    }
+}
+
+/* Desktop Médio - 1200px a 1399px */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Tablet Landscape - 900px a 1199px */
+@media (min-width: 900px) and (max-width: 1199px) {
+    .container {
+        padding: 25px;
+    }
+    
+    .grid-4 {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+    
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .box {
+        padding: 20px;
+    }
+}
+
+/* Tablet Portrait e Mobile Landscape - 600px a 899px */
+@media (max-width: 899px) {
     .grid-2,
     .grid-3,
     .grid-4 {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .banner h1 {
@@ -64,44 +225,268 @@ footer .redes-sociais img:hover {
     header .header-nav {
         flex-direction: column;
         gap: 10px;
+        width: 100%;
     }
 
     header .header-nav a,
     header .header-nav .btn-amarelo {
         width: 100%;
         text-align: center;
+        padding: 12px;
+    }
+    
+    footer {
+        padding: 40px 20px;
+    }
+    
+    footer .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    footer .footer-section {
+        text-align: center;
+    }
+    
+    footer h4 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    footer .contact-info {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 20px;
+        border-radius: 10px;
+        margin: 10px 0;
+    }
+}
+
+/* Mobile Portrait - 480px a 599px */
+@media (max-width: 599px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .grid-4 {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .box {
+        padding: 20px 15px;
+        border-radius: 15px;
+    }
+    
+    .banner h1 {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+    
+    .banner p {
+        font-size: 0.9rem;
+    }
+    
+    footer {
+        padding: 30px 15px;
+        font-size: 14px;
+    }
+    
+    footer .footer-content {
+        gap: 25px;
+    }
+    
+    footer h4 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    footer .contact-info {
+        padding: 15px;
+        font-size: 13px;
+    }
+    
+    footer .redes-sociais {
+        gap: 12px;
+        margin: 15px 0;
+    }
+    
+    footer .redes-sociais img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    header .header-nav a,
+    header .header-nav .btn-amarelo {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    footer ul li a {
+        font-size: 14px;
+        padding: 8px 0;
+    }
+}
+
+/* Mobile Pequeno - até 479px */
+@media (max-width: 479px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .box {
+        padding: 15px 12px;
+        border-radius: 12px;
+    }
+    
+    .banner h1 {
+        font-size: 1.5rem;
+    }
+    
+    .banner p {
+        font-size: 0.85rem;
+    }
+    
+    footer {
+        padding: 25px 12px;
+        font-size: 13px;
+    }
+    
+    footer .footer-content {
+        gap: 20px;
+    }
+    
+    footer h4 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+    
+    footer .contact-info {
+        padding: 12px;
+        font-size: 12px;
+        border-radius: 8px;
+    }
+    
+    footer .redes-sociais {
+        gap: 10px;
+        margin: 12px 0;
+    }
+    
+    footer .redes-sociais img {
+        width: 32px;
+        height: 32px;
+    }
+    
+    footer ul li a {
+        font-size: 13px;
+        padding: 6px 0;
+    }
+    
+    footer .copyright {
+        font-size: 11px;
+        margin-top: 20px;
+        padding-top: 15px;
     }
 }
 
 /* =========================
-   CONTAINER
+   AJUSTES ESPECÍFICOS
 ========================= */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+
+/* Melhorias gerais para touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .box:hover {
+        transform: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    footer .redes-sociais img:hover {
+        transform: none;
+    }
+    
+    /* Aumenta área de toque para links e botões */
+    header .header-nav a,
+    header .header-nav .btn-amarelo,
+    footer a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Ajustes para orientação paisagem em mobile */
+@media (max-width: 899px) and (orientation: landscape) {
+    header .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    header .header-nav {
+        flex-direction: row;
+        gap: 15px;
+    }
+    
+    header .header-nav a,
+    header .header-nav .btn-amarelo {
+        width: auto;
+        padding: 8px 16px;
+    }
+}
+
+/* Ajustes para telas muito largas */
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1600px;
+        padding: 40px;
+    }
+    
+    .grid-4 {
+        gap: 50px;
+    }
+    
+    .box {
+        padding: 30px;
+    }
 }
 
 /* =========================
-   SEÇÕES E CARDS
+   UTILITÁRIOS RESPONSIVOS
 ========================= */
 
-.grid-4 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 30px;
+/* Classes auxiliares para esconder/mostrar elementos */
+.hide-mobile {
+    display: block;
 }
 
-.box {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
-  transition: transform 0.3s, box-shadow 0.3s;
+.show-mobile {
+    display: none;
 }
 
-.box:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none;
+    }
+    
+    .show-mobile {
+        display: block;
+    }
+}
+
+/* Texto responsivo */
+.text-responsive {
+    font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+}
+
+.title-responsive {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* Espaçamento responsivo */
+.spacing-responsive {
+    padding: clamp(20px, 5vw, 50px);
+}
+
+.gap-responsive {
+    gap: clamp(15px, 3vw, 30px);
 }

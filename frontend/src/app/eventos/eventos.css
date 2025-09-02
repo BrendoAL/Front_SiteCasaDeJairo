@@ -1,320 +1,850 @@
-/* SLIDER PEQUENO */
+/* =========================
+   TÍTULOS ELEGANTES
+========================= */
+.titulo-principal {
+  text-align: center;
+  margin: 40px 0 20px;
+  color: #2c3e50;
+  font-size: 2.5rem;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.p-centro{
+  text-align: center;
+  margin: 0 0 50px;
+  color: #000000;
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+
+.titulo-principal::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #ffac28, #E49713);
+  border-radius: 2px;
+}
+
+.subtitulo {
+  text-align: center;
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.titulo-secao {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 40px 0 20px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.titulo-secao::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #ffac28, #E49713);
+  border-radius: 2px;
+}
+
+/* =========================
+   SLIDER PEQUENO
+========================= */
 .slider-eventos {
-    width: 90%;
-    max-width: 800px;
-    margin: 20px auto;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 
+    0 12px 30px rgba(0,0,0,0.15),
+    0 4px 12px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.slider-eventos::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #5286e7, #ffac28);
+  z-index: 2;
 }
 
 .slider-eventos .slider-track {
-    display: flex;
-    width: calc(100% * 4);
-    animation: slide 200s infinite linear;
+  display: flex;
+  width: calc(100% * 4);
+  animation: slide 20s infinite linear;
 }
 
 .slider-eventos img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+  width: 25%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.slider-eventos img:hover {
+  transform: scale(1.05);
 }
 
 @keyframes slide {
-    0% { transform: translateX(1); }
-    25% { transform: translateX(-100%); }
-    50% { transform: translateX(-200%); }
-    75% { transform: translateX(-300%); }
-    100% { transform: translateX(1); }
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-25%); }
+  50% { transform: translateX(-50%); }
+  75% { transform: translateX(-75%); }
+  100% { transform: translateX(0); }
 }
 
-/* ===== NOTÍCIAS (GRID) ===== */
+/* =========================
+   NOTÍCIAS GRID
+========================= */
+.secao {
+  padding: 80px 20px;
+}
+
 .eventos-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
 }
 
 .evento-card {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    background: #fff;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
-    transition: transform .2s ease, box-shadow .2s ease;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 25px rgba(0,0,0,0.12),
+    0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0,123,255,0.08);
+  position: relative;
+}
+
+.evento-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ffac28, #E49713);
+  z-index: 1;
 }
 
 .evento-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.12);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.18),
+    0 8px 20px rgba(0,0,0,0.12);
+}
+
+.evento-card .thumb {
+  margin: 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .evento-card .thumb img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.evento-card:hover .thumb img {
+  transform: scale(1.1);
 }
 
 .evento-card .conteudo {
-    padding: 16px 18px 20px;
+  padding: 25px;
+}
+
+.evento-card .conteudo small {
+  color: #007BFF;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .evento-card h3 {
-    margin: 6px 0 8px;
-    color: #222;
+  margin: 12px 0 15px;
+  color: #2c3e50;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 .evento-card p {
-    color: #555;
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.6;
 }
 
-.hidden {
-    display: none;
+/* =========================
+   BOTÕES MELHORADOS
+========================= */
+.button-amarelo, .button-azul {
+  padding: 12px 28px;
+  border-radius: 25px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+}
+
+.button-amarelo {
+  background: linear-gradient(135deg, #ffac28, #E49713);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(255,172,40,0.3);
+}
+
+.button-amarelo:hover {
+  background: linear-gradient(135deg, #ffac28, #E6A000);
+  box-shadow: 0 6px 16px rgba(255,172,40,0.45);
+  transform: translateY(-2px);
+}
+
+.button-azul {
+  background: linear-gradient(135deg, #5286e7, #4774c7);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(82,134,231,0.3);
+}
+
+.button-azul:hover {
+  background: linear-gradient(135deg, #5286e7, #4774c7);
+  box-shadow: 0 6px 16px rgba(82,134,231,0.45);
+  transform: translateY(-2px);
 }
 
 .titulo-centro {
-    text-align: center;
-    margin: 0 0 16px;
-    color: #0477BF;
+  text-align: center;
+  margin: 0 0 50px;
+  color: #2c3e50;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.titulo-centro i {
+  color: #007BFF;
+  margin-right: 15px;
 }
 
 .btn-centro {
-    display: grid;
-    place-items: center;
-    margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }
 
-/* ===== CALENDÁRIO ===== */
+/* =========================
+   CALENDÁRIO E EVENTOS
+========================= */
 .calendario-eventos {
-    padding: 60px 20px;
-    background: #f4f9ff;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f4f9ff, #e8f3ff);
 }
 
 .eventos-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .card {
-    background: #fff;
-    border-radius: 16px;
-    padding: 25px;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
-    flex: 1;
-    min-width: 320px;
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 
+    0 12px 30px rgba(0,0,0,0.12),
+    0 4px 15px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,123,255,0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #5286e7, #ffac28);
 }
 
 .card h3 {
-    color: #0477BF;
-    margin-bottom: 20px;
-    text-align: center;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.card h3 i {
+  color: #007BFF;
+  margin-right: 10px;
 }
 
 /* Cabeçalho dias da semana */
 .dias-semana {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #333;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  gap: 4px;
+}
+
+.dias-semana span {
+  padding: 8px 4px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 8px;
+  font-size: 0.85rem;
 }
 
 /* Grid dos dias */
 .dias-mes {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 20px;
 }
 
 .dia {
-    background: #f5f5f5;
-    border-radius: 12px;
-    min-height: 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 6px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s;
+  background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+  border-radius: 12px;
+  min-height: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .dia:hover {
-    transform: scale(1.05);
-    cursor: pointer;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .dia.vazio {
-    background: transparent;
-    box-shadow: none;
-    cursor: default;
+  background: transparent;
+  box-shadow: none;
+  cursor: default;
+}
+
+.dia.vazio:hover {
+  transform: none;
 }
 
 /* Número do dia */
 .dia .numero {
-    font-weight: bold;
-    font-size: 1rem;
-    margin-bottom: 4px;
-    color: #222;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  color: #2c3e50;
 }
 
 /* Texto do evento no calendário */
 .dia .evento {
-    font-size: 0.75rem;
-    text-align: center;
-    margin-top: auto;
-    color: #fff;
+  font-size: 0.7rem;
+  text-align: center;
+  margin-top: auto;
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 4px;
+  line-height: 1.2;
 }
 
-/* Cores do calendário */
+/* Cores dos eventos no calendário */
 .dia.azul {
-    background: #22A5DB;
-    color: #fff;
+  background: linear-gradient(145deg, #5286e7, #4774c7);
+  color: #fff;
 }
 
 .dia.verde {
-    background: #4CAF50;
-    color: #fff;
+  background: linear-gradient(145deg, #28a745, #218838);
+  color: #fff;
 }
 
 .dia.amarelo {
-    background: #FFC107;
-    color: #333;
+  background: linear-gradient(145deg, #ffac28, #E49713);
+  color: #fff;
 }
 
 .dia.vermelho {
-    background: #E53935;
-    color: #fff;
+  background: linear-gradient(145deg, #dc3545, #c82333);
+  color: #fff;
 }
 
 .dia.aniversario {
-    background: #FF8A65;
-    color: #fff;
+  background: linear-gradient(145deg, #ff6b6b, #ee5a52);
+  color: #fff;
 }
 
 .legenda {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 0.9em;
-    color: #555;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #666;
+  padding: 15px;
+  background: rgba(0,123,255,0.05);
+  border-radius: 10px;
+  line-height: 1.5;
 }
 
-/* ===== ANIVERSARIANTES (CARROSSEL) ===== */
+/* =========================
+   ANIVERSARIANTES CARROSSEL
+========================= */
 .aniversariantes .carousel {
-    position: relative;
-    margin: 0 auto 16px;
-    overflow: hidden;
+  position: relative;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  border-radius: 15px;
 }
 
 .aniversariantes .track {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(180px, 1fr);
-    gap: 16px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding: 8px 8px 12px;
-    scrollbar-width: thin;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(200px, 1fr);
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 15px;
+  scrollbar-width: thin;
+  scrollbar-color: #5286e7 #f1f3f4;
 }
 
 .aniversariantes .track::-webkit-scrollbar {
-    height: 8px;
+  height: 8px;
+}
+
+.aniversariantes .track::-webkit-scrollbar-track {
+  background: #f1f3f4;
+  border-radius: 10px;
 }
 
 .aniversariantes .track::-webkit-scrollbar-thumb {
-    background: #c8dff4;
-    border-radius: 8px;
+  background: linear-gradient(90deg, #5286e7, #4774c7);
+  border-radius: 10px;
 }
 
 .aniversariantes .item {
-    scroll-snap-align: start;
-    background: #fff6d6;
-    border-radius: 14px;
-    padding: 12px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+  scroll-snap-align: start;
+  background: linear-gradient(145deg, #fff6d6, #ffeaa7);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(255,172,40,0.2);
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255,172,40,0.3);
+}
+
+.aniversariantes .item:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(255,172,40,0.3);
 }
 
 .aniversariantes .item img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 10px;
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 .aniversariantes .item h4 {
-    margin: 10px 0 4px;
-    color: #222;
+  margin: 15px 0 8px;
+  color: #2c3e50;
+  font-weight: 600;
 }
 
 .aniversariantes .item small {
-    color: #555;
+  color: #E49713;
+  font-weight: 500;
 }
 
 .aniversariantes .nav {
-    position: absolute;
-    top: 40%;
-    transform: translateY(-50%);
-    background: #0477BF;
-    color: #fff;
-    border: none;
-    border-radius: 999px;
-    width: 40px;
-    height: 40px;
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-    opacity: .9;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, #5286e7, #4774c7);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(82,134,231,0.3);
+  transition: all 0.3s ease;
+  z-index: 3;
 }
 
 .aniversariantes .nav:hover {
-    opacity: 1;
+  background: linear-gradient(135deg, #4774c7, #5286e7);
+  box-shadow: 0 6px 16px rgba(82,134,231,0.45);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .aniversariantes .prev {
-    left: 8px;
+  left: 15px;
 }
 
 .aniversariantes .next {
-    right: 8px;
+  right: 15px;
 }
 
 .lista-aniversarios {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .lista-aniversarios li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: #fff6d6;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(145deg, #fff6d6, #ffeaa7);
+  padding: 12px 15px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(255,172,40,0.3);
+  transition: all 0.3s ease;
+}
+
+.lista-aniversarios li:hover {
+  background: linear-gradient(145deg, #ffeaa7, #fdcb6e);
+  transform: translateX(5px);
 }
 
 .lista-aniversarios .icone {
-    color: #E53935;
+  color: #E53935;
+  font-size: 1.2rem;
 }
 
-/* Responsivo */
-@media (min-width: 992px) {
-    .aniversariantes .track {
-        grid-auto-columns: 240px;
-    }
+/* =========================
+   PRÓXIMOS EVENTOS
+========================= */
+.evento-card.proximo-evento {
+  background: linear-gradient(145deg, #e8f3ff, #d1ecf1);
+  border-left: 5px solid #5286e7;
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(82,134,231,0.15);
 }
 
-.evento-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 12px;
-  margin-bottom: 16px;
-  background: #f9f9f9;
+.evento-card.proximo-evento h3 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.evento-card.proximo-evento p {
+  color: #555;
+  margin: 8px 0;
+}
+
+.evento-card.proximo-evento p b {
+  color: #007BFF;
+}
+
+/* =========================
+   RESPONSIVIDADE MOBILE
+========================= */
+@media(max-width: 768px) {
+  /* Títulos Mobile */
+  .titulo-principal {
+    font-size: 2rem;
+    margin: 30px 0 15px;
+  }
+  
+  .subtitulo {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    padding: 0 10px;
+  }
+  
+  .titulo-secao {
+    font-size: 1.5rem;
+    margin: 30px 0 15px;
+  }
+  
+  /* Slider Mobile */
+  .slider-eventos {
+    width: 95%;
+    margin: 30px auto;
+    border-radius: 12px;
+  }
+  
+  .slider-eventos img {
+    height: 180px;
+  }
+  
+  /* Título centralized */
+  .titulo-centro {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .titulo-centro i {
+    display: block;
+    margin: 0 0 10px 0;
+    font-size: 2.5rem;
+  }
+  
+  /* Grid Mobile */
+  .eventos-container {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    margin-bottom: 40px;
+  }
+  
+  .evento-card .thumb img {
+    height: 180px;
+  }
+  
+  .evento-card .conteudo {
+    padding: 20px;
+  }
+  
+  .evento-card h3 {
+    font-size: 1.2rem;
+  }
+  
+  /* Botões Mobile */
+  .button-amarelo, .button-azul {
+    padding: 12px 24px;
+    font-size: 0.8rem;
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .btn-centro {
+    margin-top: 30px;
+  }
+  
+  /* Calendário Mobile */
+  .eventos-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .card {
+    padding: 25px 20px;
+    min-width: auto;
+  }
+  
+  .dias-semana {
+    gap: 2px;
+  }
+  
+  .dias-semana span {
+    padding: 6px 2px;
+    font-size: 0.75rem;
+  }
+  
+  .dias-mes {
+    gap: 4px;
+  }
+  
+  .dia {
+    min-height: 60px;
+    padding: 6px 2px;
+  }
+  
+  .dia .numero {
+    font-size: 0.9rem;
+  }
+  
+  .dia .evento {
+    font-size: 0.6rem;
+  }
+  
+  .legenda {
+    font-size: 0.8rem;
+    padding: 12px;
+    line-height: 1.8;
+  }
+  
+  /* Aniversariantes Mobile */
+  .aniversariantes .track {
+    grid-auto-columns: minmax(160px, 1fr);
+    gap: 15px;
+    padding: 10px;
+  }
+  
+  .aniversariantes .item {
+    padding: 15px;
+  }
+  
+  .aniversariantes .item img {
+    height: 120px;
+  }
+  
+  .aniversariantes .nav {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .aniversariantes .prev {
+    left: 10px;
+  }
+  
+  .aniversariantes .next {
+    right: 10px;
+  }
+  
+  /* Próximos Eventos Mobile */
+  .evento-card.proximo-evento {
+    padding: 20px 15px;
+    margin-bottom: 15px;
+  }
+}
+
+/* Mobile muito pequeno */
+@media(max-width: 480px) {
+  .titulo-principal {
+    font-size: 1.6rem;
+    margin: 20px 0 10px;
+  }
+  
+  .subtitulo {
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+  }
+  
+  .titulo-secao {
+    font-size: 1.3rem;
+    margin: 25px 0 10px;
+  }
+  
+  .slider-eventos {
+    width: 98%;
+    margin: 20px auto;
+  }
+  
+  .slider-eventos img {
+    height: 150px;
+  }
+  
+  .titulo-centro {
+    font-size: 1.6rem;
+  }
+  
+  .titulo-centro i {
+    font-size: 2rem;
+  }
+  
+  .eventos-container {
+    gap: 20px;
+  }
+  
+  .evento-card .conteudo {
+    padding: 15px;
+  }
+  
+  .button-amarelo, .button-azul {
+    padding: 10px 20px;
+    font-size: 0.75rem;
+  }
+  
+  .card {
+    padding: 20px 15px;
+  }
+  
+  .dias-mes {
+    gap: 3px;
+  }
+  
+  .dia {
+    min-height: 50px;
+    padding: 4px 1px;
+  }
+  
+  .dia .numero {
+    font-size: 0.8rem;
+  }
+  
+  .dia .evento {
+    font-size: 0.55rem;
+    padding: 1px 2px;
+  }
+  
+  .aniversariantes .track {
+    grid-auto-columns: minmax(140px, 1fr);
+    gap: 10px;
+  }
+  
+  .aniversariantes .item {
+    padding: 12px;
+  }
+  
+  .aniversariantes .item img {
+    height: 100px;
+  }
+  
+  .aniversariantes .nav {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* =========================
+   MELHORIAS GERAIS
+========================= */
+.hidden {
+  display: none;
+}
+
+/* Garante que imagens sejam responsivas */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Previne overflow horizontal */
+* {
+  box-sizing: border-box;
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Container padrão */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
