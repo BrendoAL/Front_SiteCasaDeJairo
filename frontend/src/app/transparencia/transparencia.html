@@ -1,13 +1,7 @@
-<main class="container">
-  <h1>Transparência Financeira</h1>
-  <p>Aqui você pode acompanhar os gastos e ganhos da ONG Casa de Jairo, com total transparência.</p>
-
-  <section id="posts-container">
-    <p *ngIf="!posts || posts.length === 0">Carregando posts...</p>
-    <div *ngFor="let post of posts" class="post">
-      <h3>{{ post.titulo }}</h3>
-      <p>{{ post.conteudo }}</p>
-      <small>{{ post.data | date }}</small>
-    </div>
-  </section>
-</main>
+<h2>Transparência</h2>
+<div *ngFor="let post of posts">
+  <h3>{{ post.titulo }}</h3>
+  <p>{{ post.descricao }}</p>
+  <small>{{ post.data | date }}</small>
+  <hr>
+</div>

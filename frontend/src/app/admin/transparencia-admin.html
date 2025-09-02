@@ -1,0 +1,23 @@
+<h2>Transparência Admin</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Descrição</th>
+      <th>Data</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let registro of registros">
+      <td>{{ registro.titulo }}</td>
+      <td>{{ registro.descricao }}</td>
+      <td>{{ registro.data }}</td>
+      <td>
+        <button (click)="atualizarRegistro(registro)">Editar</button>
+        <button (click)="deletarRegistro(registro.id!)">Deletar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
