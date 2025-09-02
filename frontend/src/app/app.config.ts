@@ -1,6 +1,8 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter, Routes } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
+import { authInterceptor } from './interceptors/auth.interceptor';
 
 import { HomeComponent } from './home/home.component';
 import { Eventos } from './eventos/eventos';
@@ -32,14 +34,17 @@ const routes: Routes = [
     canActivate: [AdminGuard],
     children: [
       { path: 'eventos', component: EventosAdminComponent },
-      { path: 'transparencia', component: TransparenciaAdminComponent } 
+      { path: 'transparencia', component: TransparenciaAdminComponent }
     ]
   }
 ];
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideRouter(routes),
-    provideHttpClient()
-  ]
-};
+    providers: [
+      provideRouter(routes),
+      provideHttpClient(withInterceptors([authInterceptor])),
+      { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+      JwtHelperService
+    ]
+  }
+;

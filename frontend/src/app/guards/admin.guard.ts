@@ -9,21 +9,38 @@ export class AdminGuard implements CanActivate {
   constructor(private router: Router, private jwtHelper: JwtHelperService) {}
 
   canActivate(): boolean {
-    const token = localStorage.getItem('token'); // onde você armazena o JWT
-    if (!token || this.jwtHelper.isTokenExpired(token)) {
+    const token = localStorage.getItem('token');
+    console.log(' AdminGuard - Token:', token ? 'Presente' : 'Ausente');
+    
+    if (!token) {
+      console.log('❌ AdminGuard - Sem token');
+      this.router.navigate(['/login']);
+      return false;
+    }
+
+    if (this.jwtHelper.isTokenExpired(token)) {
+      console.log('❌ AdminGuard - Token expirado');
+      localStorage.removeItem('token');
       this.router.navigate(['/login']);
       return false;
     }
 
     const decodedToken = this.jwtHelper.decodeToken(token);
-    // Verifica se o token contém o ROLE_ADMIN
-    if (decodedToken.roles && decodedToken.roles.includes('ROLE_ADMIN')) {
+    console.log(' AdminGuard - Token decodificado:', decodedToken);
+    
+    // Verificar se tem role ADMIN
+    const roles = decodedToken.roles || [];
+    const hasAdmin = roles.includes('ROLE_ADMIN');
+    
+    console.log(' AdminGuard - Roles:', roles);
+    console.log(' AdminGuard - É admin?', hasAdmin);
+
+    if (hasAdmin) {
       return true;
     }
 
-    // Se não for admin, redireciona para a página inicial
+    console.log('❌ AdminGuard - Acesso negado');
     this.router.navigate(['/']);
     return false;
   }
 }
-

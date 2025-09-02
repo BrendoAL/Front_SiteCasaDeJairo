@@ -1,14 +1,10 @@
-<h2>Login Admin</h2>
-<form (ngSubmit)="login()">
-  <div>
-    <label>Usuário:</label>
-    <input [(ngModel)]="username" name="username" required />
-  </div>
-  <div>
-    <label>Senha:</label>
-    <input [(ngModel)]="password" name="password" type="password" required />
-  </div>
-  <button type="submit">Entrar</button>
-</form>
+<div class="login-form">
+  <h2>Login</h2>
+  <form (ngSubmit)="login()">
+    <input [(ngModel)]="username" name="username" placeholder="Usuário" required>
+    <input [(ngModel)]="password" name="password" type="password" placeholder="Senha" required>
+    <button type="submit">Entrar</button>
+  </form>
+  <p *ngIf="erro" class="error">{{ erro }}</p>
+</div>
 
-<p *ngIf="erro" style="color:red">{{ erro }}</p>
