@@ -1,18 +1,9 @@
-/* =========================
-   CONTAINER
-========================= */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
 /* ================= HEADER ================= */
 header.topo {
     background: #0e2b42;
-    /* azul principal */
     padding: 15px 0;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    font-family: sans-serif;
 }
 
 header .header-container {
@@ -20,11 +11,14 @@ header .header-container {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    max-width: 1200px; /* Centraliza o conteúdo */
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 header .topo-logo {
-    width: 90px;
-    height: 90px;
+    width: 85px;
+    height: 85px;
     border-radius: 50%;
     transition: transform 0.3s;
 }
@@ -36,7 +30,6 @@ header .topo-logo:hover {
 header .header-nav {
     display: flex;
     justify-content: center;
-    /* centraliza horizontalmente */
     align-items: center;
     gap: 25px;
     flex-wrap: wrap;
@@ -44,11 +37,10 @@ header .header-nav {
 
 header .header-nav a {
     color: #fff;
-    /* links brancos sobre azul */
     font-weight: 600;
     font-size: 1rem;
     padding: 10px 15px;
-    border-radius: 8px;
+    border-radius: 10px;
     transition: all 0.3s;
     text-decoration: none;
 }
@@ -60,19 +52,60 @@ header .header-nav a:hover {
 
 /* Botão de Doação */
 header .header-nav .btn-amarelo {
-    background: #E49713;
-    /* amarelo da paleta */
+    background: #ffac28;
     color: #fff;
     font-weight: 700;
     padding: 10px 20px;
-    border-radius: 12px;
+    border-radius: 10px;
     text-transform: uppercase;
     transition: all 0.3s;
 }
 
 header .header-nav .btn-amarelo:hover {
-    background: #cf870f;
-    /* ligeiramente mais escuro no hover */
+    background: #d38e18;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
+    box-shadow: 0 4px 12px rgba(255, 172, 40, 0.3); /* Sombra no hover */
+}
+
+/* =========================
+   RESPONSIVIDADE HEADER
+========================= */
+@media(max-width: 900px) {
+    header .header-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    header .header-nav {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    header .header-nav a,
+    header .header-nav .btn-amarelo {
+        width: 100%;
+        max-width: 300px; /* Limita largura máxima */
+        text-align: center;
+    }
+}
+
+/* Mobile pequeno */
+@media(max-width: 480px) {
+    header .header-container {
+        padding: 0 15px;
+    }
+    
+    header .topo-logo {
+        width: 70px;
+        height: 70px;
+    }
+    
+    header .header-nav a,
+    header .header-nav .btn-amarelo {
+        max-width: 280px;
+        font-size: 0.95rem;
+        padding: 12px 18px;
+    }
 }

@@ -2,8 +2,9 @@
 <main>
     <section class="box-visao-geral">
         <div class="box-visao-geral-titulo container">
-            <h1>Notícias e Eventos</h1>
-            <p>Confira os últimos acontecimentos e ações realizadas pela Casa de Jairo.</p>
+            <br>
+            <h1 class="titulo-centro">Notícias e Eventos</h1>
+            <p class="p-centro" >Confira os últimos acontecimentos e ações realizadas pela Casa de Jairo.</p>
         </div>
     </section>
 
@@ -24,7 +25,7 @@
         </div>
     </section>
 
-    <h2>Próximos Eventos</h2>
+    <h2 class="titulo-centro" >Próximos Eventos</h2>
 
     <div *ngIf="eventos.length > 0; else semEventos">
         <div *ngFor="let e of eventos" class="evento-card">
@@ -36,7 +37,7 @@
     </div>
 
     <ng-template #semEventos>
-        <p>Nenhum evento cadastrado no momento.</p>
+        <p class="p-centro">Nenhum evento cadastrado no momento.</p>
     </ng-template>
 
     <!-- NOTÍCIAS (GRID) -->

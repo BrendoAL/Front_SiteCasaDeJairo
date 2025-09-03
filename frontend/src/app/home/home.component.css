@@ -2,35 +2,62 @@
    TIPOGRAFIA E CORES
 ========================= */
 body {
-  font-family: 'Roboto', sans-serif;
   background: #f7f9fb;
   color: #2c3e50;
   line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 15px;
 }
 
 h1 {
-  font-family: 'Montserrat', sans-serif;
   color: #ffffff;
-  margin-bottom: 15px;
 }
 
-h2,
-h3,
-h4 {
-  font-family: 'Montserrat', sans-serif;
+h2, h3, h4 {
   color: #000000;
-  margin-bottom: 15px;
 }
 
 p {
-  color: #000000;
+  font-family: sans-serif;
+  color: #333;
 }
 
 #pBranco {
   color: #fff;
 }
 
+/* =========================
+   HEADER
+========================= */
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
 
+.header-nav .logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #007BFF;
+}
+
+.header-nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.header-nav a:hover {
+  color: #007BFF;
+}
 
 /* =========================
    CONTAINER
@@ -41,38 +68,21 @@ p {
   padding: 20px;
 }
 
-/* Botão de Doação */
-header .header-nav .btn-amarelo {
-  background: #E49713;
-  /* amarelo da paleta */
-  color: #fff;
-  font-weight: 700;
-  padding: 10px 20px;
-  border-radius: 12px;
-  text-transform: uppercase;
-  transition: all 0.3s;
-}
-
-header .header-nav .btn-amarelo:hover {
-  background: #cf870f;
-  /* ligeiramente mais escuro no hover */
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
-}
-
 /* =========================
    BANNER
 ========================= */
 .banner {
-  background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('https://png.pngtree.com/background/20250103/original/pngtree-forest-trees-anime-visual-novel-game-nature-plant-and-in-a-picture-image_15870655.jpg') center/cover no-repeat;
-  min-height: 80vh;
+  background: 
+    linear-gradient(rgba(46, 46, 46, 0.45), rgba(0, 0, 0, 0.45)),
+    url('/assets/imagens/bannermoca.jpg') no-repeat center center;
+  background-size: cover;
+  min-height: 85vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  border-radius: 0 0 40px 40px;
+  border-radius: 0 0 10px 10px;
   color: #fff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
 }
 
 .banner h1 {
@@ -93,38 +103,58 @@ header .header-nav .btn-amarelo:hover {
    BOTÕES
 ========================= */
 .btn {
-  padding: 14px 32px;
+  padding: 14px 36px;
   border-radius: 10px;
-  font-weight: 600;
+  font-weight: 700;
   border: none;
   cursor: pointer;
   text-transform: uppercase;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+#ButtonCenter{
+  margin-right: 15px;
 }
 
 .btn-azul {
-  background: linear-gradient(135deg, #007BFF, #005f9e);
+  background: linear-gradient(135deg, #5286e7, #4774c7);
   color: #fff;
+  box-shadow: 0 4px 12px rgba(0,123,255,0.3);
 }
 
 .btn-azul:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
+  background: linear-gradient(135deg, #5286e7, #4774c7);
+  box-shadow: 0 6px 16px rgba(0,123,255,0.45);
+  transform: translateY(-3px);
 }
 
 .btn-amarelo {
-  background: linear-gradient(135deg, #E49713, #cf870f);
+  background: linear-gradient(135deg, #ffac28, #E49713);
   color: #fff;
+  box-shadow: 0 4px 12px rgba(255,193,7,0.3);
 }
 
 .btn-amarelo:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
+  background: linear-gradient(135deg, #ffac28, #E6A000);
+  box-shadow: 0 6px 16px rgba(255,193,7,0.45);
+  transform: translateY(-3px);
 }
 
 /* =========================
    SEÇÕES E CARDS
 ========================= */
+.secao {
+  padding: 80px 20px;
+}
+
+.secao-azul {
+  background: linear-gradient(135deg, #e8f3ff, #e6f0ff);
+}
+
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -140,24 +170,46 @@ header .header-nav .btn-amarelo:hover {
   margin-bottom: 60px;
 }
 
-.grid-4 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 30px;
+/* CARDS MELHORADOS - Menos brancos e mais contraste */
+.box {
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 
+    0 8px 25px rgba(0,0,0,0.12),
+    0 2px 6px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0,123,255,0.1);
+  position: relative;
 }
 
-.box {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
-  transition: transform 0.3s, box-shadow 0.3s;
+.box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #5286e7, #ffac28);
+  border-radius: 15px 15px 0 0;
 }
 
 .box:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0);
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 
+    0 15px 35px rgba(0,0,0,0.18),
+    0 5px 15px rgba(0,0,0,0.12);
+  background: linear-gradient(145deg, #ffffff, #f1f3f5);
+}
+
+/* Cards específicos para diferentes seções */
+.card-noticia {
+  background: linear-gradient(145deg, #fefefe, #f5f7fa);
+}
+
+.card-noticia:hover {
+  background: linear-gradient(145deg, #ffffff, #f0f2f5);
 }
 
 /* =========================
@@ -165,7 +217,7 @@ header .header-nav .btn-amarelo:hover {
 ========================= */
 .figure-missao img {
   width: 100%;
-  border-radius: 20px;
+  border-radius: 10px;
   transition: transform 0.3s;
 }
 
@@ -174,38 +226,283 @@ header .header-nav .btn-amarelo:hover {
 }
 
 /* =========================
-   RESPONSIVIDADE
+   ANIMAÇÕES
 ========================= */
-@media(max-width:900px) {
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s forwards;
+}
 
-  .grid-2,
-  .grid-3,
-  .grid-4 {
-    grid-template-columns: 1fr;
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
+/* =========================
+   RESPONSIVIDADE APENAS MOBILE
+========================= */
+@media(max-width: 768px) {
+  body {
+    font-size: 16px; /* Previne zoom automático no iOS */
+  }
+  
+  .container {
+    padding: 15px;
+  }
+  
+  /* Header Mobile */
+  .header-nav {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 0;
+  }
+  
+  .header-nav .logo {
+    font-size: 1.3rem;
+  }
+  
+  .header-nav a {
+    margin: 5px 8px;
+    font-size: 0.9rem;
+  }
+  
+  /* Banner Mobile */
+  .banner {
+    min-height: 60vh;
+    padding: 30px 15px;
+    background-attachment: scroll;
+  }
+  
   .banner h1 {
     font-size: 2.2rem;
+    line-height: 1.1;
   }
-
+  
   .banner p {
     font-size: 1rem;
+    padding: 0 10px;
   }
-
-  header .header-container {
+  
+  /* Grids Mobile */
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .grid-3 {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  /* Botões Mobile - MELHORIAS PARA O BOTÃO DESTACADO */
+  .btn {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 280px;
+    margin: 8px auto;
+  }
+  
+  /* Botão destacado na seção missão */
+  .missao-texto .btn {
+    width: 100%;
+    max-width: 320px;
+    padding: 15px 20px;
+    font-size: 0.85rem;
+    margin-top: 20px;
+  }
+  
+  #ButtonCenter {
+    margin-right: 0;
+    margin-bottom: 15px;
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Banner buttons responsivo */
+  .btn-group {
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
-  }
-
-  header .header-nav {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  header .header-nav a,
-  header .header-nav .btn-amarelo {
     width: 100%;
+  }
+  
+  .btn-group .btn {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  /* Cards Mobile - Melhor contraste */
+  .box {
+    padding: 25px 20px;
+    background: linear-gradient(145deg, #ffffff, #f1f4f7);
+    box-shadow: 
+      0 6px 20px rgba(0,0,0,0.15),
+      0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .box:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 
+      0 10px 25px rgba(0,0,0,0.2),
+      0 4px 12px rgba(0,0,0,0.15);
+  }
+  
+  /* Seções Mobile */
+  .secao {
+    padding: 50px 15px;
+  }
+  
+  /* Tipografia Mobile - ajustes mínimos */
+  h2 {
+    font-size: 1.8rem;
     text-align: center;
+  }
+  
+  h3 {
+    font-size: 1.4rem;
+  }
+  
+  h4 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Mobile muito pequeno - ajustes finais */
+@media(max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+  
+  .banner {
+    min-height: 50vh;
+    padding: 20px 10px;
+    border-radius: 0;
+  }
+  
+  .banner h1 {
+    font-size: 1.8rem;
+  }
+  
+  .banner p {
+    font-size: 0.9rem;
+  }
+  
+  .btn {
+    padding: 12px 18px;
+    font-size: 0.8rem;
+    width: 100%;
+    max-width: 240px;
+  }
+  
+  /* Botão da missão em telas muito pequenas */
+  .missao-texto .btn {
+    padding: 14px 16px;
+    font-size: 0.75rem;
+    max-width: 280px;
+  }
+  
+  .box {
+    padding: 20px 15px;
+    background: linear-gradient(145deg, #ffffff, #eff2f6);
+    box-shadow: 
+      0 4px 15px rgba(0,0,0,0.12),
+      0 2px 6px rgba(0,0,0,0.08);
+  }
+  
+  .secao {
+    padding: 40px 10px;
+  }
+  
+  /* Ajustes específicos para o grupo de botões no banner */
+  .btn-group {
+    padding: 0 20px;
+  }
+  
+  .btn-group .btn {
+    max-width: 180px;
+    padding: 12px 16px;
+    font-size: 0.8rem;
+  }
+}
+
+/* =========================
+   MELHORIAS GERAIS
+========================= */
+
+/* Garante que imagens sejam responsivas */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Previne overflow horizontal */
+* {
+  box-sizing: border-box;
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* =========================
+   MELHORIAS ESPECÍFICAS
+========================= */
+
+/* Melhoria no contraste dos cards da seção azul */
+.secao-azul .box {
+  background: linear-gradient(145deg, #ffffff, #f4f7fb);
+  border: 1px solid rgba(82, 134, 231, 0.15);
+  box-shadow: 
+    0 8px 25px rgba(82, 134, 231, 0.12),
+    0 2px 8px rgba(0,0,0,0.08);
+}
+
+.secao-azul .box:hover {
+  background: linear-gradient(145deg, #ffffff, #eef4fa);
+  box-shadow: 
+    0 12px 30px rgba(82, 134, 231, 0.18),
+    0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* Melhoria adicional para o texto dos cards */
+.box h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.box p {
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Responsividade específica para tablet */
+@media(max-width: 1024px) and (min-width: 769px) {
+  .missao-texto .btn {
+    padding: 13px 28px;
+    font-size: 0.9rem;
+    max-width: 300px;
+  }
+  
+  .grid-2 {
+    gap: 40px;
+  }
+  
+  .box {
+    padding: 28px 25px;
   }
 }
