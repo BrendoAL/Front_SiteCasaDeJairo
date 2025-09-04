@@ -13,7 +13,7 @@ import { TransparenciaComponent } from './transparencia/transparencia';
 import { Voluntario } from './voluntario/voluntario';
 
 import { AdminDashboardComponent } from './admin/admin-dashboard';
-import { EventosAdminComponent } from './admin/eventos-admin.component';
+import { EventosAdminComponent } from './admin/eventos-admin';
 import { TransparenciaAdminComponent } from './admin/transparencia-admin';
 import { AdminGuard } from './guards/admin.guard';
 import { LoginComponent } from './login/login';
