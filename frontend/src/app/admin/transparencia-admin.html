@@ -1,11 +1,40 @@
 <h2>Transparência Admin</h2>
 
+<!-- Formulário de cadastro -->
+<form #formTransparencia="ngForm" (ngSubmit)="salvarRegistro()">
+  <div>
+    <label for="titulo">Título:</label>
+    <input type="text" id="titulo" name="titulo" [(ngModel)]="novoRegistro.titulo" required />
+  </div>
+
+  <div>
+    <label for="descricao">Descrição:</label>
+    <textarea id="descricao" name="descricao" [(ngModel)]="novoRegistro.descricao" required></textarea>
+  </div>
+
+  <div>
+    <label for="data">Data:</label>
+    <input type="date" id="data" name="data" [(ngModel)]="novoRegistro.data" required />
+  </div>
+
+  <div>
+    <label for="postImagemId">ID da Imagem (opcional):</label>
+    <input type="number" id="postImagemId" name="postImagemId" [(ngModel)]="novoRegistro.postImagemId" />
+  </div>
+
+  <button type="submit">Cadastrar</button>
+</form>
+
+<hr />
+
+<!-- Tabela de registros -->
 <table>
   <thead>
     <tr>
       <th>Título</th>
       <th>Descrição</th>
       <th>Data</th>
+      <th>Imagem ID</th>
       <th>Ações</th>
     </tr>
   </thead>
@@ -13,9 +42,9 @@
     <tr *ngFor="let registro of registros">
       <td>{{ registro.titulo }}</td>
       <td>{{ registro.descricao }}</td>
-      <td>{{ registro.data }}</td>
+      <td>{{ registro.data | date:'shortDate' }}</td>
+      <td>{{ registro.postImagemId || '-' }}</td>
       <td>
-        <button (click)="atualizarRegistro(registro)">Editar</button>
         <button (click)="deletarRegistro(registro.id!)">Deletar</button>
       </td>
     </tr>
