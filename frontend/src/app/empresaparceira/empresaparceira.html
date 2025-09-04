@@ -4,43 +4,53 @@
       <h1>Empresas que Transformam Comunidades</h1>
       <p>Junte-se à Casa de Jairo como parceiro institucional e apoie dezenas de crianças em situação de vulnerabilidade
         social.</p>
-      <button class="button-azul">Quero Ser Parceiro</button>
-      <button class="button-amarelo">Saiba Mais</button>
+      <div class="botoes-hero">
+        <a href="#formulario" class="button-azul">Quero Ser Parceiro</a>
+        <a href="#info" class="button-amarelo">Saiba Mais</a>
+      </div>
     </div>
   </section>
 
-  <section class="secao">
+  <section class="secao" id="info">
     <div class="container">
-      <h2>Como sua empresa pode ajudar?</h2>
+      <h2 class="titulo-secao">Como sua empresa pode ajudar?</h2>
       <ul class="lista-ajudar">
-        <li>🤝 Patrocínio de projetos sociais e educacionais</li>
-        <li>📦 Doações de produtos, alimentos ou materiais</li>
-        <li>👩‍💼 Voluntariado corporativo e ações internas</li>
+        <li>🤝 <strong>Patrocínio de projetos sociais e educacionais</strong><br>Apoie programas que transformam vidas
+          através da educação e desenvolvimento pessoal</li>
+        <li>📦 <strong>Doações de produtos, alimentos ou materiais</strong><br>Contribua com recursos essenciais para o
+          funcionamento das atividades diárias</li>
+        <li>👩‍💼 <strong>Voluntariado corporativo e ações internas</strong><br>Engaje sua equipe em atividades
+          voluntárias que fortalecem valores corporativos</li>
       </ul>
 
-      <h2>Benefícios para empresas parceiras:</h2>
+      <h2 class="titulo-secao">Benefícios para empresas parceiras</h2>
       <ul class="lista-ajudar">
-        <li>🏆 Certificação de Responsabilidade Social</li>
-        <li>📣 Divulgação nas redes sociais e eventos</li>
-        <li>💡 Conexão com a comunidade local</li>
+        <li>🏆 <strong>Certificação de Responsabilidade Social</strong><br>Receba reconhecimento oficial pelo seu
+          compromisso social</li>
+        <li>📣 <strong>Divulgação nas redes sociais e eventos</strong><br>Tenha sua marca associada a causas nobres e
+          ganhe visibilidade positiva</li>
+        <li>💡 <strong>Conexão com a comunidade local</strong><br>Fortaleça seus laços comunitários e construa
+          relacionamentos duradouros</li>
       </ul>
     </div>
   </section>
 
-  <section class="secao azul" id="formulario">
+  <section class="secao-formulario" id="formulario">
     <div class="container">
       <h2>Cadastre sua Empresa</h2>
-      <form [formGroup]="empresaForm" (ngSubmit)="onSubmit()">
-        <input formControlName="nome" type="text" placeholder="Nome da Empresa" required />
-        <input formControlName="email" type="email" placeholder="E-mail de Contato" required />
-        <input formControlName="telefone" type="tel" placeholder="Telefone" />
-        <textarea formControlName="mensagem" placeholder="Como deseja ajudar?" required></textarea>
-        <button class="button-amarelo" type="submit">Quero Ser Parceiro</button>
-      </form>
-
-      <div *ngIf="formEnviado" style="margin-top: 20px; text-align:center;">
-        <span *ngIf="sucesso" style="color: #0f0;">Formulário enviado com sucesso!</span>
-        <span *ngIf="!sucesso" style="color: #f00;">Erro ao enviar, tente novamente.</span>
+      <div class="form-container">
+        <form class="formulario" method="POST" action="/enviar-formulario">
+          <div class="form-row">
+            <input type="text" name="nome" placeholder="Nome da Empresa *" required>
+            <input type="email" name="email" placeholder="E-mail de Contato *" required>
+          </div>
+          <div class="form-row">
+            <input type="tel" name="telefone" placeholder="Telefone">
+          </div>
+          <textarea name="mensagem" placeholder="Como deseja ajudar? Conte-nos sobre suas ideias e disponibilidade *"
+            required></textarea>
+          <button class="button-amarelo" type="submit">QUERO SER PARCEIRO</button>
+        </form>
       </div>
     </div>
   </section>

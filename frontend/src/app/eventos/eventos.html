@@ -29,12 +29,12 @@
     <section class="secao">
         <div class="container">
             <h2 class="titulo-centro"><i class="fa-regular fa-newspaper"></i> Últimas Notícias</h2>
-            
+
             <!-- Mensagem quando não há eventos -->
             <div *ngIf="eventos.length === 0" class="no-eventos">
                 <p>Nenhum evento cadastrado no momento.</p>
             </div>
-            
+
             <!-- Grid de eventos -->
             <div *ngIf="eventos.length > 0" class="eventos-container">
                 <article *ngFor="let e of eventos" class="evento-card">
@@ -54,6 +54,7 @@
                 </article>
             </div>
 
+            <!-- Botão VER TODAS AS NOTÍCIAS -->
             <div class="btn-centro" *ngIf="eventos.length > 0">
                 <button class="button-azul" id="btn-ver-mais">VER TODAS AS NOTÍCIAS</button>
             </div>

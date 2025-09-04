@@ -1,26 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';  
-import { TransparenciaService, Transparencia as TransparenciaFromService } from './transparencia.service';
-
-export interface Transparencia {
-  id?: number;
-  titulo: string;
-  descricao: string;
-  data?: string;
-  postImagemId?: number;
-}
+import { CommonModule, DatePipe } from '@angular/common';
+import { TransparenciaService, Transparencia } from './transparencia.service';
 
 @Component({
   selector: 'app-transparencia',
-  standalone: true,             
-  imports: [CommonModule, DatePipe], // 
+  standalone: true,
+  imports: [CommonModule, DatePipe],
   templateUrl: './transparencia.html',
   styleUrls: ['./transparencia.css']
 })
 export class TransparenciaComponent implements OnInit {
   posts: Transparencia[] = [];
 
-  constructor(private transparenciaService: TransparenciaService) {}
+  constructor(private transparenciaService: TransparenciaService) { }
 
   ngOnInit(): void {
     this.transparenciaService.listar().subscribe({
@@ -28,5 +20,9 @@ export class TransparenciaComponent implements OnInit {
       error: (err) => console.error('Erro ao carregar transparência:', err)
     });
   }
-}
 
+  getImagem(postImagemId?: number): string {
+    if (!postImagemId) return '';
+    return this.transparenciaService.getImagem(postImagemId);
+  }
+}

@@ -136,6 +136,7 @@ p {
   background: linear-gradient(135deg, #ffac28, #E49713);
   color: #fff;
   box-shadow: 0 4px 12px rgba(255,193,7,0.3);
+
 }
 
 .btn-amarelo:hover {
@@ -174,7 +175,7 @@ p {
 .box {
   background: linear-gradient(145deg, #ffffff, #f8f9fa);
   padding: 30px;
-  border-radius: 15px;
+  border-radius: 7px;
   text-align: center;
   box-shadow: 
     0 8px 25px rgba(0,0,0,0.12),
@@ -183,6 +184,7 @@ p {
   border: 1px solid rgba(0,123,255,0.1);
   position: relative;
 }
+
 
 .box::before {
   content: '';

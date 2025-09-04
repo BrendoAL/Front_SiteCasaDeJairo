@@ -1,7 +1,36 @@
-<h2>Transparência</h2>
-<div *ngFor="let post of posts">
-  <h3>{{ post.titulo }}</h3>
-  <p>{{ post.descricao }}</p>
-  <small>{{ post.data | date }}</small>
-  <hr>
-</div>
+<main class="container">
+  <h1>Transparência</h1>
+  <p>
+    Acompanhe como utilizamos os recursos da ONG Casa de Jairo.
+    Nosso compromisso é com a <strong>clareza e a confiança</strong>!
+  </p>
+
+  <section id="transparencia-lista" *ngIf="posts.length > 0; else semPosts">
+    <h2>Relatórios e Publicações</h2>
+
+    <div class="transparencia-cards">
+      <div class="card" *ngFor="let post of posts">
+        <!-- Imagem -->
+        <img *ngIf="post.postImagemId" [src]="getImagem(post.postImagemId)" alt="Imagem do post" class="card-img" />
+
+
+        <div class="card-body">
+          <h3>{{ post.titulo }}</h3>
+          <small class="data">{{ post.dataPublicacao | date:'dd/MM/yyyy' }}</small>
+
+          <p>
+            {{ post.descricao.length > 200 ? (post.descricao | slice:0:200) + '...' : post.descricao }}
+          </p>
+
+          <button class="btn-detalhes">Ler mais</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ng-template #semPosts>
+    <p style="text-align:center; margin-top: 20px; color: #666;">
+      Nenhum registro de transparência disponível no momento.
+    </p>
+  </ng-template>
+</main>

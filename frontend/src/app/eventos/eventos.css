@@ -204,7 +204,7 @@
 ========================= */
 .button-amarelo, .button-azul {
   padding: 12px 28px;
-  border-radius: 25px;
+  border-radius: 10px;
   font-weight: 700;
   border: none;
   cursor: pointer;
@@ -262,7 +262,7 @@
 ========================= */
 .calendario-eventos {
   padding: 80px 20px;
-  background: linear-gradient(135deg, #f4f9ff, #e8f3ff);
+  background: linear-gradient(135deg, #e8f3ff, #e6f0ff);
 }
 
 .eventos-grid {
