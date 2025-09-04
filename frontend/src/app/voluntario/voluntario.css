@@ -2,7 +2,7 @@ main.container {
     max-width: 900px;
     margin: 40px auto;
     padding: 30px;
-    background: #f9f9f9;
+    background: #e8f2fc;
     border-radius: 15px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -32,6 +32,8 @@ main p {
     color: #175caa;
     text-align: center;
     margin-bottom: 25px;
+    
+    
 }
 
 .ajuda-cards {
@@ -112,7 +114,7 @@ textarea {
 }
 
 .button-enviar {
-    background: #22A5DB;
+    background: #5286e7;
     color: #fff;
     padding: 12px;
     border: none;
@@ -120,11 +122,11 @@ textarea {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+    transition: 0.3s, transform 0.2s;
 }
 
 .button-enviar:hover {
-    background: #175caa;
+    background: #4673c7;
     transform: translateY(-2px);
 }
 
@@ -132,3 +134,28 @@ textarea {
     text-align: center;
     margin-top: 30px;
 }
+
+.card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;   
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px; 
+  width: 100%;
+  background: linear-gradient(90deg, #5286e7, #ffac28); 
+  border-radius: 12px 12px 0 0; 
+}
+
+
+
