@@ -5,7 +5,11 @@
   <textarea [(ngModel)]="novoEvento.descricao" name="descricao" placeholder="Descrição" required></textarea>
   <input [(ngModel)]="novoEvento.data" type="date" name="data" required>
   <input [(ngModel)]="novoEvento.local" name="local" placeholder="Local" required>
-  <button type="submit">Cadastrar</button>
+
+  <button type="submit">
+    {{ editando ? 'Salvar alterações' : 'Cadastrar' }}
+  </button>
+  <button *ngIf="editando" type="button" (click)="cancelarEdicao()">Cancelar</button>
 </form>
 
 <hr>
@@ -13,6 +17,7 @@
 <ul>
   <li *ngFor="let e of eventos">
     <b>{{ e.titulo }}</b> - {{ e.data | date }} - {{ e.local }}
+    <button (click)="editarEvento(e)">Editar</button>
     <button (click)="deletarEvento(e.id!)">Excluir</button>
   </li>
 </ul>

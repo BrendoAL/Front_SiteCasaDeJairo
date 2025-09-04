@@ -20,6 +20,7 @@ interface Evento {
 export class EventosAdminComponent implements OnInit {
   eventos: Evento[] = [];
   novoEvento: Evento = { titulo: '', descricao: '', data: '', local: '' };
+  editando: boolean = false; // controla se estamos editando
 
   constructor(private http: HttpClient) {}
 
@@ -32,13 +33,34 @@ export class EventosAdminComponent implements OnInit {
   }
 
   salvarEvento() {
-    this.http.post<Evento>('/api/eventos', this.novoEvento).subscribe(() => {
-      this.novoEvento = { titulo: '', descricao: '', data: '', local: '' };
-      this.carregarEventos();
-    });
+    if (this.editando && this.novoEvento.id) {
+      // PUT para atualizar
+      this.http.put<Evento>(`/api/eventos/${this.novoEvento.id}`, this.novoEvento).subscribe(() => {
+        this.cancelarEdicao();
+        this.carregarEventos();
+      });
+    } else {
+      // POST para criar
+      this.http.post<Evento>('/api/eventos', this.novoEvento).subscribe(() => {
+        this.novoEvento = { titulo: '', descricao: '', data: '', local: '' };
+        this.carregarEventos();
+      });
+    }
+  }
+
+  editarEvento(evento: Evento) {
+    // copia os dados do evento para o formulário
+    this.novoEvento = { ...evento };
+    this.editando = true;
+  }
+
+  cancelarEdicao() {
+    this.novoEvento = { titulo: '', descricao: '', data: '', local: '' };
+    this.editando = false;
   }
 
   deletarEvento(id: number) {
     this.http.delete(`/api/eventos/${id}`).subscribe(() => this.carregarEventos());
   }
 }
+
