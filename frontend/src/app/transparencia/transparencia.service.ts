@@ -3,11 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Transparencia {
-  id?: number;
   titulo: string;
   descricao: string;
-  data?: string;
   postImagemId?: number;
+  dataPublicacao: string; // vem do backend como LocalDate -> string
 }
 
 @Injectable({
@@ -20,5 +19,9 @@ export class TransparenciaService {
 
   listar(): Observable<Transparencia[]> {
     return this.http.get<Transparencia[]>(this.apiUrl);
+  }
+
+  getImagem(id: number): string {
+    return `${this.apiUrl}/imagem/${id}`;
   }
 }
