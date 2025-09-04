@@ -848,3 +848,440 @@ html {
   margin: 0 auto;
   padding: 0 20px;
 }
+
+/* SEÇÃO DE EVENTOS */
+.secao {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+}
+
+.secao h2.titulo-centro {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 2.5rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.titulo-centro i {
+  margin-right: 15px;
+  color: #007bff;
+}
+
+/* MENSAGEM SEM EVENTOS */
+.no-eventos {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+/* GRID DE EVENTOS */
+.eventos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.evento-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.evento-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.thumb {
+  margin: 0;
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.evento-card:hover .thumb img {
+  transform: scale(1.05);
+}
+
+.conteudo {
+  padding: 25px;
+}
+
+.conteudo small {
+  color: #007bff;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.conteudo h3 {
+  margin: 10px 0 15px;
+  font-size: 1.4rem;
+  color: #333;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.conteudo p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+/* BOTÕES */
+
+
+.button-amarelo:hover {
+  background: linear-gradient(135deg, #ffed4a, #ffd700);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+.btn-centro {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.button-azul {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  border: none;
+  padding: 15px 35px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1rem;
+}
+
+.button-azul:hover {
+  background: linear-gradient(135deg, #0056b3, #007bff);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+}
+
+/* POPUP MODAL */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.popup-content {
+  background: white;
+  border-radius: 20px;
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideIn 0.3s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.popup-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: #333;
+  font-weight: bold;
+}
+
+.popup-close:hover {
+  background: white;
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.popup-header {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+
+.popup-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.popup-body {
+  padding: 30px;
+}
+
+.popup-date {
+  color: #007bff;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.popup-body h2 {
+  margin: 15px 0 20px;
+  font-size: 2rem;
+  color: #333;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.popup-local {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.popup-local i {
+  margin-right: 8px;
+  color: #007bff;
+}
+
+.popup-description {
+  color: #555;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  white-space: pre-wrap;
+}
+
+/* ANIMAÇÕES */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* CALENDÁRIO */
+.calendario-eventos {
+  background: white;
+  padding: 80px 0;
+}
+
+.eventos-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.card.calendario {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card.calendario h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+}
+
+.card.calendario h3 i {
+  margin-right: 10px;
+  color: #007bff;
+}
+
+.dias-semana {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.dias-semana span {
+  text-align: center;
+  font-weight: 600;
+  color: #666;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+.dias-mes {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.legenda {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .titulo-centro {
+    font-size: 2.2rem;
+  }
+  
+  .p-centro {
+    font-size: 1.1rem;
+  }
+  
+  .box-visao-geral {
+    padding: 60px 0 40px;
+  }
+  
+  .slider-eventos {
+    height: 200px;
+  }
+  
+  .slider-track img {
+    height: 200px;
+  }
+  
+  .secao {
+    padding: 60px 0;
+  }
+  
+  .secao h2.titulo-centro {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+  
+  .eventos-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .thumb {
+    height: 180px;
+  }
+  
+  .conteudo {
+    padding: 20px;
+  }
+  
+  .popup-content {
+    width: 95%;
+    margin: 10px 0;
+  }
+  
+  .popup-header {
+    height: 200px;
+  }
+  
+  .popup-body {
+    padding: 20px;
+  }
+  
+  .popup-body h2 {
+    font-size: 1.5rem;
+  }
+  
+  .popup-close {
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .titulo-centro {
+    font-size: 1.8rem;
+  }
+  
+  .eventos-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .thumb {
+    height: 150px;
+  }
+  
+  .conteudo {
+    padding: 15px;
+  }
+  
+  .conteudo h3 {
+    font-size: 1.2rem;
+  }
+  
+  .button-amarelo {
+    padding: 10px 20px;
+    font-size: 0.8rem;
+  }
+  
+  .button-azul {
+    padding: 12px 25px;
+    font-size: 0.9rem;
+  }
+  
+  .popup-body {
+    padding: 15px;
+  }
+  
+  .popup-body h2 {
+    font-size: 1.3rem;
+  }
+}

@@ -12,6 +12,15 @@
   <button *ngIf="editando" type="button" (click)="cancelarEdicao()">Cancelar</button>
 </form>
 
+<form (ngSubmit)="salvarEventoComImagem()" enctype="multipart/form-data">
+  <input [(ngModel)]="novoEvento.titulo" name="titulo" placeholder="Título" required>
+  <textarea [(ngModel)]="novoEvento.descricao" name="descricao" placeholder="Descrição" required></textarea>
+  <input [(ngModel)]="novoEvento.data" type="date" name="data" required>
+  <input [(ngModel)]="novoEvento.local" name="local" placeholder="Local" required>
+  <input type="file" (change)="onArquivoSelecionado($event)">
+  <button type="submit">{{ editando ? 'Salvar alterações' : 'Cadastrar' }}</button>
+</form>
+
 <hr>
 
 <ul>
