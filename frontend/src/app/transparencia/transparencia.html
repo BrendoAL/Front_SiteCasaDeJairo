@@ -11,12 +11,16 @@
     <div class="transparencia-cards">
       <div class="card" *ngFor="let post of posts">
         <!-- Imagem -->
-        <img *ngIf="post.postImagemId" [src]="getImagem(post.postImagemId)" alt="Imagem do post" class="card-img" />
-
+        <img *ngIf="post.postImagemId" 
+             [src]="getImagem(post.postImagemId)" 
+             alt="Imagem do post" 
+             class="card-img" 
+             (error)="onImageError($event)" />
 
         <div class="card-body">
           <h3>{{ post.titulo }}</h3>
-          <small class="data">{{ post.dataPublicacao | date:'dd/MM/yyyy' }}</small>
+          <!-- Corrigido: use 'data' ao invés de 'dataPublicacao' -->
+          <small class="data">{{ post.data | date:'dd/MM/yyyy' }}</small>
 
           <p>
             {{ post.descricao.length > 200 ? (post.descricao | slice:0:200) + '...' : post.descricao }}

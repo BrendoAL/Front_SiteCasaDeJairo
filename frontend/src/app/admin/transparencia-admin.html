@@ -1,52 +1,177 @@
-<h2>Transparência Admin</h2>
-
-<!-- Formulário de cadastro -->
-<form #formTransparencia="ngForm" (ngSubmit)="salvarRegistro()">
-  <div>
-    <label for="titulo">Título:</label>
-    <input type="text" id="titulo" name="titulo" [(ngModel)]="novoRegistro.titulo" required />
+<div class="transparencia-admin">
+  <div class="admin-header">
+    <h2>Painel de Transparência</h2>
+    <p class="text-muted">Gerencie os posts de transparência da organização</p>
   </div>
 
-  <div>
-    <label for="descricao">Descrição:</label>
-    <textarea id="descricao" name="descricao" [(ngModel)]="novoRegistro.descricao" required></textarea>
+  <!-- Status Messages -->
+  <div *ngIf="carregando" class="alert alert-info d-flex align-items-center">
+    <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+    Processando...
   </div>
 
-  <div>
-    <label for="data">Data:</label>
-    <input type="date" id="data" name="data" [(ngModel)]="novoRegistro.data" required />
+  <div *ngIf="erro" class="alert alert-danger alert-dismissible fade show">
+    <strong>Erro:</strong> {{ erro }}
+    <button type="button" class="btn-close" (click)="erro = ''"></button>
   </div>
 
-  <div>
-    <label for="postImagemId">ID da Imagem (opcional):</label>
-    <input type="number" id="postImagemId" name="postImagemId" [(ngModel)]="novoRegistro.postImagemId" />
+  <!-- Formulário -->
+  <div class="form-container">
+    <div class="form-header">
+      <h4>{{ editando ? 'Editar Registro' : 'Novo Registro' }}</h4>
+      <button *ngIf="editando" 
+              type="button" 
+              class="btn btn-outline-secondary btn-sm" 
+              (click)="cancelarEdicao()">
+        Cancelar
+      </button>
+    </div>
+
+    <form (ngSubmit)="salvarRegistro()" class="admin-form" #formRef="ngForm">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="mb-3">
+            <label class="form-label required">Título</label>
+            <input [(ngModel)]="novoRegistro.titulo" 
+                   name="titulo" 
+                   class="form-control" 
+                   placeholder="Digite o título do post"
+                   required 
+                   maxlength="200" />
+            <div class="form-text">{{ novoRegistro.titulo.length || 0 }}/200 caracteres</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label required">Descrição</label>
+            <textarea [(ngModel)]="novoRegistro.descricao" 
+                      name="descricao" 
+                      class="form-control description-textarea" 
+                      rows="4"
+                      placeholder="Digite a descrição detalhada"
+                      required
+                      maxlength="1000"></textarea>
+            <div class="form-text">{{ novoRegistro.descricao.length || 0 }}/1000 caracteres</div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="mb-3">
+            <label class="form-label">Data</label>
+            <input type="date" 
+                   [(ngModel)]="novoRegistro.data" 
+                   name="data" 
+                   class="form-control" />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Imagem</label>
+            <div class="file-upload-container">
+              <input type="file" 
+                     (change)="onArquivoSelecionado($event)" 
+                     accept="image/*"
+                     class="form-control"
+                     id="fileInput">
+              <div class="form-text">Formatos: JPG, PNG, GIF, WebP (máx. 5MB)</div>
+              
+              <!-- Preview da imagem atual (se editando) -->
+              <div *ngIf="editando && novoRegistro.postImagemId && !novoRegistro.imagem" class="image-preview">
+                <small class="text-muted">Imagem atual:</small>
+                <img [src]="getImagem(novoRegistro.postImagemId)" 
+                     alt="Imagem atual" 
+                     class="current-image">
+              </div>
+
+              <!-- Nome do arquivo selecionado -->
+              <div *ngIf="novoRegistro.imagem" class="selected-file">
+                <i class="fas fa-image"></i>
+                <span>{{ novoRegistro.imagem.name }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" 
+                class="btn btn-primary"
+                [disabled]="carregando || !formRef.valid">
+          <span *ngIf="carregando" class="spinner-border spinner-border-sm me-2"></span>
+          {{ editando ? 'Atualizar' : 'Salvar' }}
+        </button>
+        
+        <button *ngIf="editando" 
+                type="button" 
+                class="btn btn-outline-secondary ms-2" 
+                (click)="cancelarEdicao()">
+          Cancelar
+        </button>
+      </div>
+    </form>
   </div>
 
-  <button type="submit">Cadastrar</button>
-</form>
+  <!-- Listagem -->
+  <div class="table-container">
+    <div class="table-header">
+      <h4>Registros ({{ registros.length }})</h4>
+    </div>
 
-<hr />
+    <div *ngIf="registros.length === 0 && !carregando" class="empty-state">
+      <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+      <h5 class="text-muted">Nenhum registro encontrado</h5>
+      <p class="text-muted">Crie seu primeiro post de transparência usando o formulário acima.</p>
+    </div>
 
-<!-- Tabela de registros -->
-<table>
-  <thead>
-    <tr>
-      <th>Título</th>
-      <th>Descrição</th>
-      <th>Data</th>
-      <th>Imagem ID</th>
-      <th>Ações</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let registro of registros">
-      <td>{{ registro.titulo }}</td>
-      <td>{{ registro.descricao }}</td>
-      <td>{{ registro.data | date:'shortDate' }}</td>
-      <td>{{ registro.postImagemId || '-' }}</td>
-      <td>
-        <button (click)="deletarRegistro(registro.id!)">Deletar</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <div *ngIf="registros.length > 0" class="table-responsive">
+      <table class="table table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th width="25%">Título</th>
+            <th width="40%">Descrição</th>
+            <th width="15%">Data</th>
+            <th width="10%">Imagem</th>
+            <th width="10%">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reg of registros; trackBy: trackByFn">
+            <td>
+              <strong>{{ reg.titulo }}</strong>
+            </td>
+            <td>
+              <span class="description-preview">
+                {{ reg.descricao.length > 100 ? (reg.descricao | slice:0:100) + '...' : reg.descricao }}
+              </span>
+            </td>
+            <td>
+              <span class="badge bg-light text-dark">
+                {{ reg.data | date: 'dd/MM/yyyy' }}
+              </span>
+            </td>
+            <td class="text-center">
+              <span *ngIf="reg.postImagemId" class="badge bg-success">
+                <i class="fas fa-image"></i>
+              </span>
+              <span *ngIf="!reg.postImagemId" class="badge bg-secondary">
+                <i class="fas fa-image-slash"></i>
+              </span>
+            </td>
+            <td>
+              <div class="btn-group btn-group-sm">
+                <button class="btn btn-outline-warning" 
+                        (click)="atualizarRegistro(reg)"
+                        title="Editar">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-outline-danger" 
+                        (click)="deletarRegistro(reg.id!)"
+                        title="Excluir">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

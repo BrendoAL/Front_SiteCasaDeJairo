@@ -10,6 +10,9 @@ import { TransparenciaService, Transparencia } from './transparencia.service';
   styleUrls: ['./transparencia.css']
 })
 export class TransparenciaComponent implements OnInit {
+onImageError($event: ErrorEvent) {
+throw new Error('Method not implemented.');
+}
   posts: Transparencia[] = [];
 
   constructor(private transparenciaService: TransparenciaService) { }
