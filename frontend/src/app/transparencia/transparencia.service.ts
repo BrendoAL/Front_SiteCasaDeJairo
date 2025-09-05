@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Transparencia {
+data: string|number|Date;
   titulo: string;
   descricao: string;
   postImagemId?: number;
