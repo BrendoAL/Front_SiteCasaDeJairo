@@ -7,7 +7,6 @@ export interface Transparencia {
   titulo: string;
   descricao: string;
   data?: string;
-  dataPublicacao?: string; // Adicione este campo se o backend retornar com esse nome
   postImagemId?: number;
   imagem?: File | null;
 }
@@ -26,27 +25,35 @@ export class TransparenciaAdminService {
   }
 
   listar(): Observable<Transparencia[]> {
-    return this.http.get<Transparencia[]>(this.apiUrl, { headers: this.getAuthHeaders() });
+    return this.http.get<Transparencia[]>(this.apiUrl, { 
+      headers: this.getAuthHeaders() 
+    });
   }
 
   criar(dto: Transparencia): Observable<Transparencia> {
-    return this.http.post<Transparencia>(this.apiUrl, dto, { headers: this.getAuthHeaders() });
+    return this.http.post<Transparencia>(this.apiUrl, dto, { 
+      headers: this.getAuthHeaders() 
+    });
   }
 
   atualizar(id: number, dto: Transparencia): Observable<Transparencia> {
-    return this.http.put<Transparencia>(`${this.apiUrl}/${id}`, dto, { headers: this.getAuthHeaders() });
+    return this.http.put<Transparencia>(`${this.apiUrl}/${id}`, dto, { 
+      headers: this.getAuthHeaders() 
+    });
   }
 
   deletar(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`, { headers: this.getAuthHeaders() });
+    return this.http.delete<void>(`${this.apiUrl}/${id}`, { 
+      headers: this.getAuthHeaders() 
+    });
   }
 
-  // Método para obter imagem (similar ao serviço público)
+  // 🔹 CORRIGIDO: URL correta para buscar imagem
   getImagem(postImagemId: number): string {
-    return `${this.apiUrl}/${postImagemId}/imagem`;
+    return `${this.apiUrl}/imagem/${postImagemId}`;
   }
 
-  // envia Transparencia com arquivo para o endpoint multipart
+  // Cria transparência com arquivo para o endpoint multipart
   criarComImagem(dto: Transparencia): Observable<Transparencia> {
     const formData = new FormData();
     formData.append('titulo', dto.titulo);
@@ -57,8 +64,7 @@ export class TransparenciaAdminService {
       formData.append('imagem', dto.imagem);
     }
 
-    // Importante: Para FormData, não incluir Content-Type no header
-    // O navegador define automaticamente o boundary correto
+    // Para FormData, não incluir Content-Type no header
     const headers = new HttpHeaders({ 
       Authorization: `Bearer ${localStorage.getItem('token')}` 
     });
@@ -70,7 +76,7 @@ export class TransparenciaAdminService {
     );
   }
 
-  // Método para atualizar com imagem (caso precise no futuro)
+  // 🔹 CORRIGIDO: Método para atualizar com imagem usando o novo endpoint
   atualizarComImagem(id: number, dto: Transparencia): Observable<Transparencia> {
     const formData = new FormData();
     formData.append('titulo', dto.titulo);

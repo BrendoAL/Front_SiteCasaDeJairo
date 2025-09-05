@@ -14,7 +14,12 @@ export class TransparenciaAdminComponent implements OnInit {
   registros: Transparencia[] = [];
 
   // registro para formulário
-  novoRegistro: Transparencia = { titulo: '', descricao: '', data: '', postImagemId: undefined };
+  novoRegistro: Transparencia = { 
+    titulo: '', 
+    descricao: '', 
+    data: '', 
+    postImagemId: undefined 
+  };
 
   // flag de edição
   editando: boolean = false;
@@ -57,9 +62,9 @@ export class TransparenciaAdminComponent implements OnInit {
     this.erro = '';
 
     if (this.editando && this.novoRegistro.id) {
-      // atualização
+      // ATUALIZAÇÃO
       if (this.novoRegistro.imagem) {
-        // Se tem imagem nova, use o método com imagem (se implementado)
+        // Se tem imagem nova, use o método com imagem
         this.service.atualizarComImagem(this.novoRegistro.id, this.novoRegistro).subscribe({
           next: () => {
             console.log('Registro atualizado com imagem com sucesso');
@@ -88,7 +93,7 @@ export class TransparenciaAdminComponent implements OnInit {
         });
       }
     } else {
-      // criação → verifica se tem imagem
+      // CRIAÇÃO
       if (this.novoRegistro.imagem) {
         console.log('Criando com imagem...');
         this.service.criarComImagem(this.novoRegistro).subscribe({
@@ -135,22 +140,30 @@ export class TransparenciaAdminComponent implements OnInit {
   }
 
   deletarRegistro(id: number): void {
-    if (confirm('Tem certeza que deseja excluir este registro?')) {
-      this.service.deletar(id).subscribe({
-        next: () => {
-          console.log('Registro deletado com sucesso');
-          this.carregarRegistros();
-        },
-        error: (err) => {
-          console.error('Erro ao deletar:', err);
-          this.erro = 'Erro ao deletar registro';
-        }
-      });
-    }
+  if (confirm('Tem certeza que deseja excluir este registro?')) {
+    this.carregando = true;
+    this.service.deletar(id).subscribe({
+      next: () => {
+        console.log('Registro deletado com sucesso');
+        this.carregarRegistros();
+      },
+      error: (err) => {
+        console.error('Erro ao deletar:', err);
+        this.erro = 'Erro ao deletar registro';
+        this.carregando = false;
+      }
+    });
   }
+}
 
   private resetarFormulario(): void {
-    this.novoRegistro = { titulo: '', descricao: '', data: '', postImagemId: undefined };
+    this.novoRegistro = { 
+      titulo: '', 
+      descricao: '', 
+      data: '', 
+      postImagemId: undefined,
+      imagem: null
+    };
     this.editando = false;
     this.carregando = false;
     this.erro = '';
@@ -186,7 +199,7 @@ export class TransparenciaAdminComponent implements OnInit {
     }
   }
 
-  // Método para visualizar imagem (se necessário)
+  // Método para visualizar imagem
   getImagem(postImagemId?: number): string {
     if (!postImagemId) return '';
     return this.service.getImagem(postImagemId);

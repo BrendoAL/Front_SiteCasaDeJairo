@@ -19,14 +19,13 @@
 
         <div class="card-body">
           <h3>{{ post.titulo }}</h3>
-          <!-- Corrigido: use 'data' ao invés de 'dataPublicacao' -->
           <small class="data">{{ post.data | date:'dd/MM/yyyy' }}</small>
 
           <p>
             {{ post.descricao.length > 200 ? (post.descricao | slice:0:200) + '...' : post.descricao }}
           </p>
 
-          <button class="btn-detalhes">Ler mais</button>
+          <button class="btn-detalhes" (click)="abrirModal(post)">Ler mais</button>
         </div>
       </div>
     </div>
@@ -38,3 +37,34 @@
     </p>
   </ng-template>
 </main>
+
+<!-- Modal -->
+<div class="modal-backdrop" 
+     *ngIf="modalAberto" 
+     (click)="fecharModalBackdrop($event)">
+  
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>{{ postSelecionado?.titulo }}</h2>
+      <button class="modal-close" (click)="fecharModal()">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <!-- Imagem no modal -->
+      <img *ngIf="postSelecionado?.postImagemId" 
+           [src]="getImagem(postSelecionado?.postImagemId)" 
+           alt="Imagem do post" 
+           class="modal-img"
+           (error)="onImageError($event)" />
+
+      <div class="modal-info">
+        <small class="data">{{ postSelecionado?.data | date:'dd/MM/yyyy' }}</small>
+        <p class="modal-description">{{ postSelecionado?.descricao }}</p>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-fechar" (click)="fecharModal()">Fechar</button>
+    </div>
+  </div>
+</div>
