@@ -1,12 +1,28 @@
-<main class="container" >
+<main class="container">
   <h1>Seja um Voluntário</h1>
   <p>Faça parte da transformação na vida de crianças e adolescentes da ONG Casa de Jairo. Sua ajuda faz toda a diferença!</p>
+
+  <!-- Mensagens de Feedback -->
+  <div *ngIf="formEnviado" class="feedback-messages">
+    <div *ngIf="sucesso" class="success-message">
+      <h3>✅ Cadastro realizado com sucesso!</h3>
+      <p>Obrigado por se voluntariar! Entraremos em contato em breve.</p>
+      <p *ngIf="voluntarioForm.get('aceitaEmails')?.value" class="newsletter-info">
+        📧 Você receberá notificações sobre nossos eventos e novidades!
+      </p>
+    </div>
+    
+    <div *ngIf="erro" class="error-message">
+      <h3>❌ Erro ao enviar formulário</h3>
+      <p>{{mensagemErro}}</p>
+      <p>Por favor, tente novamente ou entre em contato conosco.</p>
+    </div>
+  </div>
 
   <!-- Como Ajudar -->
   <section id="como-ajudar">
     <h2>Como você pode ajudar?</h2>
     <div class="ajuda-cards">
-
       <div class="card">
         <h3>Eventos e Campanhas</h3>
         <p>Participando de eventos e campanhas.</p>
@@ -29,11 +45,18 @@
       <div class="form-group">
         <label for="nome">Nome Completo:</label>
         <input id="nome" formControlName="nome" type="text" placeholder="Seu nome completo" required />
+        <div *ngIf="voluntarioForm.get('nome')?.invalid && voluntarioForm.get('nome')?.touched" class="field-error">
+          Nome é obrigatório
+        </div>
       </div>
 
       <div class="form-group">
         <label for="email">Email:</label>
         <input id="email" formControlName="email" type="email" placeholder="seu@email.com" required />
+        <div *ngIf="voluntarioForm.get('email')?.invalid && voluntarioForm.get('email')?.touched" class="field-error">
+          <span *ngIf="voluntarioForm.get('email')?.errors?.['required']">Email é obrigatório</span>
+          <span *ngIf="voluntarioForm.get('email')?.errors?.['email']">Email deve ter um formato válido</span>
+        </div>
       </div>
 
       <div class="form-group">
@@ -47,22 +70,41 @@
           <option value="">Selecione</option>
           <option value="manha">Manhã</option>
           <option value="tarde">Tarde</option>
-          <option value="noite">Noite</option>
           <option value="final-de-semana">Final de semana</option>
         </select>
+        <div *ngIf="voluntarioForm.get('disponibilidade')?.invalid && voluntarioForm.get('disponibilidade')?.touched" class="field-error">
+          Disponibilidade é obrigatória
+        </div>
       </div>
 
       <div class="form-group">
         <label for="mensagem">Por que quer ser voluntário?</label>
         <textarea id="mensagem" formControlName="mensagem" rows="4" placeholder="Conte um pouco sobre você..." required></textarea>
+        <div *ngIf="voluntarioForm.get('mensagem')?.invalid && voluntarioForm.get('mensagem')?.touched" class="field-error">
+          Este campo é obrigatório
+        </div>
       </div>
 
-      <button type="submit" class="button-enviar">Enviar</button>
+      <!-- NOVO: Checkbox para aceitar receber emails -->
+      <div class="form-group checkbox-group">
+        <label class="checkbox-label">
+          <input 
+            type="checkbox" 
+            formControlName="aceitaEmails"
+            id="aceitaEmails"
+          />
+          <span class="checkbox-text">
+            Desejo receber notificações por email sobre eventos e novidades da Casa de Jairo
+          </span>
+        </label>
+        <small class="checkbox-info">
+          Ao marcar esta opção, você receberá emails sempre que novos eventos forem cadastrados.
+        </small>
+      </div>
+
+      <button type="submit" class="button-enviar" [disabled]="voluntarioForm.invalid">
+        Enviar
+      </button>
     </form>
-
-
-    <div *ngIf="formEnviado" class="receber-novidades">
-      <button (click)="receberNovidades()" class="button-enviar">Quero receber novidades</button>
-    </div>
   </section>
 </main>

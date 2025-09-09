@@ -1,0 +1,40 @@
+<div class="admin-container">
+  <h2>Gerenciar Voluntários</h2>
+  
+  <div *ngIf="loading" class="loading">
+    Carregando voluntários...
+  </div>
+
+  <div *ngIf="erro" class="erro">
+    Erro ao carregar voluntários. Tente novamente.
+    <button (click)="carregarVoluntarios()" class="btn-reload">Recarregar</button>
+  </div>
+
+  <div *ngIf="!loading && !erro" class="voluntarios-container">
+    <div class="stats">
+      <h3>Total de Voluntários: {{voluntarios.length}}</h3>
+    </div>
+
+    <div *ngIf="voluntarios.length === 0" class="no-data">
+      Nenhum voluntário cadastrado ainda.
+    </div>
+
+    <div *ngIf="voluntarios.length > 0" class="voluntarios-grid">
+      <div *ngFor="let voluntario of voluntarios; trackBy: trackByEmail" class="voluntario-card">
+        <div class="voluntario-header">
+          <h4>{{voluntario.nome}}</h4>
+        </div>
+        <div class="voluntario-details">
+          <p><strong>Email:</strong> {{voluntario.email}}</p>
+          <p><strong>Telefone:</strong> {{voluntario.telefone || 'Não informado'}}</p>
+          <p *ngIf="voluntario.disponibilidade"><strong>Disponibilidade:</strong> {{getDisponibilidadeText(voluntario.disponibilidade)}}</p>
+          <p *ngIf="voluntario.mensagem"><strong>Motivação:</strong> {{voluntario.mensagem}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button (click)="carregarVoluntarios()" class="btn-refresh">Atualizar Lista</button>
+  </div>
+</div>
