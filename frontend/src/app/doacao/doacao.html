@@ -7,7 +7,6 @@
   </p>
   <div class="btn-group">
     <a href="#sobre" class="btn">SAIBA MAIS SOBRE NÓS</a>
-    <a href="#doar" class="btn">FAÇA UMA DOAÇÃO</a>
   </div>
 </section>
 
@@ -31,19 +30,31 @@
     Sua contribuição mantém nossos projetos ativos. Doe via PIX,
     pagamento online ou torne-se um doador recorrente.
   </p>
-  <button>DOAR</button>
+  <!-- usamos (click)="abrirModal()" -->
+  <button (click)="abrirModal()">DOAR</button>
 </section>
 
-<!-- Bloco Doador Fixo - Horizontal -->
-<section class="doador-fixo-horizontal">
-  <h4>📬 Seja um doador fixo</h4>
-  <form>
-    <input type="text" placeholder="Seu nome" />
-    <input type="email" placeholder="Seu e-mail" />
-    <textarea placeholder="Mensagem (opcional)"></textarea>
-    <button>Quero Ajudar 💛</button>
-  </form>
-</section>
+<!-- Modal Pix -->
+<div class="modal" *ngIf="modalAberto" (click)="fecharModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <span class="fechar" (click)="fecharModal()">&times;</span>
+    <h3>Doe via PIX 💛</h3>
+    <img src="/assets/imagens/qrcode-pix-Casa_de_Jairo.png" alt="QR Code PIX">
+    <!-- Bloco CNPJ -->
+    <div class="bloco-doacao">
+      <h4>Chave PIX CNPJ</h4>
+      <p class="cnpj-text">{{ cnpj }}</p>
+      <button class="btn-copiar" (click)="copiarCnpj()">{{ textoBotaoCnpj }}</button>
+    </div>
+
+    <!-- Bloco Chave PIX -->
+    <div class="bloco-doacao">
+      <h4>PIX Copiar e Colar</h4>
+      <p class="chave-pix">{{ chavePix }}</p>
+      <button class="btn-copiar" (click)="copiarChavePix()">{{ textoBotaoPix }}</button>
+    </div>
+  </div>
+</div>
 
 <!-- Como Você Pode Ajudar -->
 <section class="container" id="como-ajudar">
@@ -56,7 +67,7 @@
         Compartilhe seu tempo e talentos! Participe das atividades
         educacionais, recreativas e administrativas.
       </p>
-      <button>CADASTRE-SE</button>
+      <button routerLink="/voluntario">CADASTRE-SE</button>
     </div>
 
     <!-- Bloco Parceiros -->
@@ -66,7 +77,7 @@
         Sua empresa pode fazer a diferença! Torne-se um parceiro
         institucional e ajude a transformar vidas.
       </p>
-      <button>SEJA UM PARCEIRO</button>
+      <button routerLink="/empresaparceira">SEJA UM PARCEIRO</button>
     </div>
   </div>
 </section>
