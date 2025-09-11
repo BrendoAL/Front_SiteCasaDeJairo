@@ -7,12 +7,6 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    overflow-x: hidden;
-}
 
 html {
     scroll-behavior: smooth;
@@ -35,6 +29,7 @@ html {
     font-weight: 700;
     position: relative;
     padding-bottom: 15px;
+    
 }
 
 .titulo-principal::after {
@@ -51,7 +46,7 @@ html {
 
 .subtitulo {
     text-align: center;
-    color: #666;
+    color: #669;
     font-size: 1.1rem;
     margin-bottom: 50px;
     max-width: 600px;
@@ -67,6 +62,7 @@ html {
     position: relative;
     padding-bottom: 15px;
     text-align: center;
+    font-family: 'Montserrat', sans-serif;
     
 }
 
@@ -101,14 +97,15 @@ html {
 }
 
 .button-amarelo {
-    background: linear-gradient(135deg, #ffac28, #E49713);
+    background: linear-gradient(135deg, #ffb43b, #eba328);
     color: #fff;
-    box-shadow: 0 4px 12px rgba(255,172,40,0.3);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.212);
+    font-family: 'Montserrat', sans-serif;
 }
 
 .button-amarelo:hover {
     background: linear-gradient(135deg, #ffac28, #E6A000);
-    box-shadow: 0 6px 16px rgba(255,172,40,0.45);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.212);
     transform: translateY(-2px);
 }
 
@@ -129,7 +126,7 @@ html {
 ========================= */
 .box-visao-geral {
     padding: 80px 20px;
-    background: linear-gradient(135deg, #90b8fd, #6e92cf);
+    background: linear-gradient(135deg, #8dbcfd, #8dbcfd);
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -233,7 +230,7 @@ html {
 ========================= */
 .secao-formulario {
     padding: 80px 20px;
-    background: linear-gradient(135deg,  #90b8fd, #6e92cf);
+    background: linear-gradient(135deg,  #8dbcfd, #8dbcfd);
     position: relative;
     overflow: hidden;
     font-family: 'Montserrat', sans-serif;
@@ -322,6 +319,7 @@ html {
     resize: vertical;
     min-height: 120px;
     font-family: inherit;
+
 }
 
 .formulario .button-amarelo {
