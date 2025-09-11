@@ -1,39 +1,152 @@
-<h2>Gerenciar Transparência</h2>
-
-<!-- Formulário sem imagem -->
-<form (ngSubmit)="salvarRegistro()">
-  <input [(ngModel)]="novoRegistro.titulo" name="titulo" placeholder="Título" required>
-  <textarea [(ngModel)]="novoRegistro.descricao" name="descricao" placeholder="Descrição" required></textarea>
-  <input [(ngModel)]="novoRegistro.data" type="date" name="data">
-
-  <button type="submit">
-    {{ editando ? 'Salvar alterações' : 'Cadastrar' }}
-  </button>
-  <button *ngIf="editando" type="button" (click)="cancelarEdicao()">Cancelar</button>
-</form>
-
-<!-- Formulário com upload de imagem -->
-<form (ngSubmit)="salvarRegistroComImagem()" enctype="multipart/form-data">
-  <input [(ngModel)]="novoRegistro.titulo" name="titulo" placeholder="Título" required>
-  <textarea [(ngModel)]="novoRegistro.descricao" name="descricao" placeholder="Descrição" required></textarea>
-  <input [(ngModel)]="novoRegistro.data" type="date" name="data">
-  <input type="file" (change)="onArquivoSelecionado($event)">
+<div class="admin-container">
+  <h2>Gerenciar Eventos</h2>
   
-  <button type="submit">
-    {{ editando ? 'Salvar alterações' : 'Cadastrar' }}
-  </button>
-</form>
+  <!-- Status Messages -->
+  <div *ngIf="carregando" class="loading">
+    Processando...
+  </div>
 
-<hr>
+  <div *ngIf="erro" class="erro">
+    Erro: {{ erro }}
+    <button (click)="erro = ''" class="btn-close">×</button>
+  </div>
 
-<!-- Lista de registros -->
-<ul>
-  <li *ngFor="let t of registros">
-    <b>{{ t.titulo }}</b> - {{ t.data | date }}
-    <p>{{ t.descricao }}</p>
+  <!-- Formulário -->
+  <form (ngSubmit)="salvarEvento()" class="admin-form" #eventoForm="ngForm">
+    <div class="form-row">
+      <input [(ngModel)]="novoEvento.titulo" 
+             name="titulo" 
+             placeholder="Título do evento" 
+             required 
+             maxlength="200" 
+             class="form-input"
+             #tituloInput="ngModel">
+      
+      <input [(ngModel)]="novoEvento.data" 
+             type="date" 
+             name="data" 
+             required
+             class="form-input date-input"
+             #dataInput="ngModel">
+    </div>
+    
+    <div class="form-row">
+      <input [(ngModel)]="novoEvento.local" 
+             name="local" 
+             placeholder="Local do evento" 
+             class="form-input">
+    </div>
 
-    <button (click)="editarRegistro(t)">Editar</button>
-    <button (click)="deletarRegistro(t.id!)">Excluir</button>
-  </li>
-</ul>
+    <textarea [(ngModel)]="novoEvento.descricao" 
+              name="descricao" 
+              placeholder="Descrição do evento" 
+              required
+              maxlength="1000"
+              rows="4"
+              class="form-textarea"
+              #descricaoInput="ngModel"></textarea>
 
+    <div class="file-upload-section">
+      <input type="file" 
+             (change)="onArquivoSelecionado($event)" 
+             accept="image/*"
+             class="file-input"
+             id="eventoFileInput">
+      <label for="eventoFileInput" class="file-label">
+        <i class="fas fa-image"></i>
+        {{ arquivoSelecionado ? arquivoSelecionado.name : 'Escolher imagem' }}
+      </label>
+      
+      <!-- Preview da imagem -->
+      <div *ngIf="previewUrl" class="image-preview">
+        <img [src]="previewUrl" 
+             alt="Preview da imagem" 
+             class="preview-image">
+        <span class="preview-label">Preview</span>
+      </div>
+      
+      <!-- Imagem atual (quando editando) -->
+      <div *ngIf="editando && novoEvento.eventoImagemId && !previewUrl" class="image-preview">
+        <img [src]="getImagem(novoEvento.eventoImagemId)" 
+             alt="Imagem atual" 
+             class="preview-image"
+             (error)="onImageError($event)">
+        <span class="preview-label">Imagem atual</span>
+      </div>
+    </div>
+
+    <!-- Validação visual -->
+    <div class="form-validation" *ngIf="eventoForm.submitted">
+      <div *ngIf="tituloInput.invalid" class="field-error">
+        Título é obrigatório
+      </div>
+      <div *ngIf="dataInput.invalid" class="field-error">
+        Data é obrigatória
+      </div>
+      <div *ngIf="descricaoInput.invalid" class="field-error">
+        Descrição é obrigatória
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" 
+              class="btn-primary"
+              [disabled]="carregando">
+        {{ editando ? 'Salvar alterações' : 'Cadastrar evento' }}
+      </button>
+      
+      <button *ngIf="editando" 
+              type="button" 
+              class="btn-secondary" 
+              (click)="cancelarEdicao()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+
+  <hr>
+
+  <!-- Lista de eventos -->
+  <div class="eventos-section">
+    <h3>Eventos ({{ eventos.length }})</h3>
+    
+    <div *ngIf="eventos.length === 0 && !carregando" class="empty-state">
+      <p>Nenhum evento encontrado. Cadastre o primeiro evento usando o formulário acima.</p>
+    </div>
+
+    <ul class="eventos-list" *ngIf="eventos.length > 0">
+      <li *ngFor="let e of eventos" class="evento-item">
+        <div class="evento-content">
+          <div class="evento-header">
+            <b class="evento-titulo">{{ e.titulo }}</b>
+            <span class="evento-data">{{ e.data | date:'dd/MM/yyyy' }}</span>
+          </div>
+          
+          <div *ngIf="e.local" class="evento-local">
+            <i class="fas fa-map-marker-alt"></i> {{ e.local }}
+          </div>
+          
+          <p class="evento-descricao">
+            {{ truncateText(e.descricao, 150) }}
+          </p>
+          
+          <div *ngIf="e.eventoImagemId || e.imagemUrl" class="evento-image">
+            <img [src]="getImageUrl(e)" 
+                 [alt]="e.titulo" 
+                 class="thumbnail-image"
+                 (error)="onImageError($event)">
+          </div>
+        </div>
+        
+        <div class="evento-actions">
+          <button (click)="editarEvento(e)" class="btn-edit" title="Editar">
+            ✏️
+          </button>
+          <button (click)="deletarEvento(e.id!)" class="btn-delete" title="Excluir">
+            🗑️
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

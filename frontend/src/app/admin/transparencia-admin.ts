@@ -129,7 +129,7 @@ export class TransparenciaAdminComponent implements OnInit {
   atualizarRegistro(registro: Transparencia): void {
     this.novoRegistro = {
       ...registro,
-      imagem: null // Limpa a imagem para evitar problemas
+      imagem: null 
     };
     this.editando = true;
     console.log('Editando registro:', this.novoRegistro);

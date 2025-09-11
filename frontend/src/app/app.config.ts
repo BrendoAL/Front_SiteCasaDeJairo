@@ -10,11 +10,11 @@ import { Doacao } from './doacao/doacao';
 import { Empresaparceira } from './empresaparceira/empresaparceira';
 import { Novasede } from './novasede/novasede';
 import { TransparenciaComponent } from './transparencia/transparencia';
-import { Voluntario } from './voluntario/voluntario';
-
+import { VoluntarioComponent } from './voluntario/voluntario';
 import { AdminDashboardComponent } from './admin/admin-dashboard';
 import { EventosAdminComponent } from './admin/eventos-admin';
 import { TransparenciaAdminComponent } from './admin/transparencia-admin';
+import { AdminVoluntariosComponent } from './admin/admin-voluntarios';
 import { AdminGuard } from './guards/admin.guard';
 import { LoginComponent } from './login/login';
 
@@ -25,8 +25,9 @@ const routes: Routes = [
   { path: 'empresaparceira', component: Empresaparceira },
   { path: 'novasede', component: Novasede },
   { path: 'transparencia', component: TransparenciaComponent },
-  { path: 'voluntario', component: Voluntario },
+  { path: 'voluntario', component: VoluntarioComponent },
   { path: 'login', component: LoginComponent },
+
 
   {
     path: 'admin',
@@ -34,6 +35,7 @@ const routes: Routes = [
     canActivate: [AdminGuard],
     children: [
       { path: 'eventos', component: EventosAdminComponent },
+      { path: 'voluntarios', component: AdminVoluntariosComponent },
       { path: 'transparencia', component: TransparenciaAdminComponent }
     ]
   }
