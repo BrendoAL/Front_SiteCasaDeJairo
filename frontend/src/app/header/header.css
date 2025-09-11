@@ -62,9 +62,9 @@ header .header-nav .btn-amarelo {
 }
 
 header .header-nav .btn-amarelo:hover {
-    background: #d38e18;
+    background: #df9b25;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 172, 40, 0.3); /* Sombra no hover */
+    box-shadow: 0 4px 12px rgba(255, 173, 40, 0.171); /* Sombra no hover */
 }
 
 /* =========================
