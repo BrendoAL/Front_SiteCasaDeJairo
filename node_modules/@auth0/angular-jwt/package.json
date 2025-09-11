@@ -1,0 +1,48 @@
+{
+  "name": "@auth0/angular-jwt",
+  "version": "5.2.0",
+  "description": "JSON Web Token helper library for Angular",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auth0/angular2-jwt"
+  },
+  "author": "Sam Bellen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/auth0/angular2-jwt/issues"
+  },
+  "keywords": [
+    "angular",
+    "angular 2",
+    "authentication",
+    "jwt"
+  ],
+  "homepage": "https://github.com/auth0/angular2-jwt",
+  "peerDependencies": {
+    "@angular/common": ">=14.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "module": "fesm2015/auth0-angular-jwt.mjs",
+  "es2020": "fesm2020/auth0-angular-jwt.mjs",
+  "esm2020": "esm2020/auth0-angular-jwt.mjs",
+  "fesm2020": "fesm2020/auth0-angular-jwt.mjs",
+  "fesm2015": "fesm2015/auth0-angular-jwt.mjs",
+  "typings": "index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./index.d.ts",
+      "esm2020": "./esm2020/auth0-angular-jwt.mjs",
+      "es2020": "./fesm2020/auth0-angular-jwt.mjs",
+      "es2015": "./fesm2015/auth0-angular-jwt.mjs",
+      "node": "./fesm2015/auth0-angular-jwt.mjs",
+      "default": "./fesm2020/auth0-angular-jwt.mjs"
+    }
+  },
+  "sideEffects": false
+}

@@ -625,10 +625,6 @@
           }
         }
 
-        .container {
-          animation: fadeIn 0.8s ease-out;
-        }
-
         /* modal */
         .modal {
           position: fixed;
@@ -660,6 +656,21 @@
         .modal-content h3 {
           color: #004a75;
           margin-bottom: 20px;
+        }
+
+        #quem-somos .Cent {
+          text-align: center;
+        }
+
+        #quem-somos img {
+          width: 100%;
+          height: auto;
+          border-radius: 12px;
+          max-height: 500px;
+          object-fit: cover;
+
+        .container {
+          animation: fadeIn 0.8s ease-out;
         }
 
         .modal-content img {

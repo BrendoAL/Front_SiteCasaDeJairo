@@ -10,25 +10,23 @@
     <img src="/assets/imagens/4.png" alt="Foto do novo espaço 4" />
   </section>
 
-  <form id="form-doacao-novo-espaco">
-    <label for="nomeDoador">Nome do Doador</label>
-    <input type="text" id="nomeDoador" name="nomeDoador" placeholder="Seu nome" required />
+  <div class="btn-group">
+  <a routerLink="/doacao" class="btn btn-amarelo" id="ButtonCenter">Doe Agora</a>
+</div>
 
-    <label for="valor">Valor da Doação (R$)</label>
-    <input type="number" id="valor" name="valor" placeholder="Ex: 100" min="1" step="0.01" required />
+<section class="impacto">
+  <h2>O impacto da sua doação</h2>
+  <div class="cards">
+    <div class="card">
+      <p>Crianças atendidas todos os meses</p>
+    </div>
+    <div class="card">
+      <p>Aulas de reforço escolar e atividades culturais</p>
+    </div>
+    <div class="card">
+      <p>Refeições diárias garantidas</p>
+    </div>
+  </div>
+</section>
 
-    <label for="metodoPagamento">Método de Pagamento</label>
-    <select id="metodoPagamento" name="metodoPagamento" required>
-      <option value="">Selecione</option>
-      <option value="pix">Pix</option>
-      <option value="cartao">Cartão de Crédito</option>
-      <option value="boleto">Boleto Bancário</option>
-      <option value="dinheiro">Dinheiro</option>
-    </select>
-
-    <label for="mensagem">Mensagem (opcional)</label>
-    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Deixe uma mensagem, se desejar..."></textarea>
-
-    <button type="submit">Doar Agora</button>
-  </form>
 </main>

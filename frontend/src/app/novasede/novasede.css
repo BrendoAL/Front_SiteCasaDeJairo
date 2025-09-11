@@ -1,9 +1,4 @@
 /* =========================
-   CSS PARA PÁGINA DE DOAÇÃO - NOVO ESPAÇO
-   Baseado no estilo da Casa de Jairo
-========================= */
-
-/* =========================
    TIPOGRAFIA E CORES BASE
 ========================= */
 body {
@@ -79,33 +74,6 @@ main {
   border-color: rgba(82, 134, 231, 0.3);
 }
 
-/* =========================
-   FORMULÁRIO DE DOAÇÃO
-========================= */
-#form-doacao-novo-espaco {
-  background: linear-gradient(145deg, #ffffff, #f4f7fb);
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 
-    0 8px 25px rgba(0,0,0,0.12),
-    0 2px 6px rgba(0,0,0,0.08);
-  border: 1px solid rgba(82, 134, 231, 0.1);
-  position: relative;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-#form-doacao-novo-espaco::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #5286e7, #ffac28);
-  border-radius: 12px 12px 0 0;
-}
-
 /* Labels */
 #form-doacao-novo-espaco label {
   display: block;
@@ -164,34 +132,6 @@ main {
   resize: vertical;
   min-height: 100px;
   font-family: inherit;
-}
-
-/* Botão de Doação */
-#form-doacao-novo-espaco button[type="submit"] {
-  width: 100%;
-  padding: 16px 32px;
-  background: linear-gradient(135deg, #5286e7, #4774c7);
-  color: #ffffff;
-  border: none;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 30px;
-  box-shadow: 0 6px 20px rgba(82, 134, 231, 0.3);
-}
-
-#form-doacao-novo-espaco button[type="submit"]:hover {
-  background: linear-gradient(135deg, #4774c7, #3d63a7);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(82, 134, 231, 0.45);
-}
-
-#form-doacao-novo-espaco button[type="submit"]:active {
-  transform: translateY(-1px);
 }
 
 /* =========================
@@ -275,7 +215,6 @@ main {
     font-size: 0.95rem;
   }
 
-  /* Galeria muito pequena */
   .gallery {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 12px;
@@ -288,7 +227,6 @@ main {
     border-radius: 6px;
   }
 
-  /* Formulário muito pequeno */
   #form-doacao-novo-espaco {
     padding: 25px 15px;
     border-radius: 8px;
@@ -313,45 +251,17 @@ main {
   }
 }
 
-/* =========================
-   MELHORIAS GERAIS
-========================= */
-
-/* Garante que imagens sejam responsivas */
 img {
   max-width: 100%;
   height: auto;
 }
 
-/* Previne overflow horizontal */
 * {
   box-sizing: border-box;
 }
 
-/* Scroll suave */
 html {
   scroll-behavior: smooth;
-}
-
-/* Estados de validação do formulário */
-#form-doacao-novo-espaco input:invalid:not(:focus):not(:placeholder-shown),
-#form-doacao-novo-espaco select:invalid:not(:focus) {
-  border-color: #e74c3c;
-  background-color: #fdf2f2;
-}
-
-#form-doacao-novo-espaco input:valid:not(:focus):not(:placeholder-shown),
-#form-doacao-novo-espaco select:valid:not(:focus) {
-  border-color: #27ae60;
-  background-color: #f2fdf7;
-}
-
-/* Animação de carregamento para o botão */
-#form-doacao-novo-espaco button[type="submit"]:disabled {
-  background: linear-gradient(135deg, #a0a8b0, #8d949a);
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
 }
 
 /* Responsividade para tablet */
@@ -374,4 +284,85 @@ html {
   #form-doacao-novo-espaco {
     padding: 35px 30px;
   }
+}
+
+
+
+.btn {
+  padding: 14px 36px;
+  border-radius: 10px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+#ButtonCenter{
+  margin-right: 15px;
+}
+
+.btn-amarelo {
+  background: linear-gradient(135deg, #ffac28, #E49713);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(255,193,7,0.3);
+}
+
+.btn-amarelo:hover {
+  background: linear-gradient(135deg, #ffac28, #E6A000);
+  box-shadow: 0 6px 16px rgba(255,193,7,0.45);
+  transform: translateY(-3px);
+}
+
+.btn-group {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+#ButtonCenter {
+  font-size: 1.2rem;
+  padding: 12px 24px;
+}
+
+.impacto {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.impacto h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.impacto .cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.impacto .card {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  max-width: 220px;
+}
+
+.impacto .card img {
+  width: 60px;
+  margin-bottom: 0.8rem;
+}
+
+.impacto .card p {
+  font-size: 1rem;
+  color: #555;
 }

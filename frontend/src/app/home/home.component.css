@@ -2,7 +2,7 @@
    TIPOGRAFIA E CORES
 ========================= */
 body {
-  background: #f7f9fb;
+  background-color: #90b8fd;
   color: #2c3e50;
   line-height: 1.6;
   margin: 0;
@@ -463,7 +463,6 @@ html {
    MELHORIAS ESPECÍFICAS
 ========================= */
 
-/* Melhoria no contraste dos cards da seção azul */
 .secao-azul .box {
   background: linear-gradient(145deg, #ffffff, #f4f7fb);
   border: 1px solid rgba(82, 134, 231, 0.15);

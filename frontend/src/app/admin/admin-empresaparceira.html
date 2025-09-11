@@ -1,0 +1,101 @@
+<div class="admin-container">
+  <div class="header">
+    <h2>Gerenciar Empresas Parceiras</h2>
+    <div class="stats">
+      <span class="stat-item">
+        Total: {{ empresas.length }} empresa{{ empresas.length !== 1 ? 's' : '' }}
+      </span>
+    </div>
+  </div>
+
+  <!-- Mensagens de feedback -->
+  <div class="messages">
+    <div *ngIf="mensagemSucesso" class="alert alert-success">
+      ✅ {{ mensagemSucesso }}
+    </div>
+    <div *ngIf="mensagemErro" class="alert alert-error">
+      ❌ {{ mensagemErro }}
+    </div>
+  </div>
+
+  <!-- Lista de Empresas -->
+  <div class="table-section">
+    <h3>Empresas Cadastradas</h3>
+    
+    <div *ngIf="loading" class="loading">
+      Carregando empresas...
+    </div>
+
+    <div *ngIf="!loading && empresas.length === 0" class="empty-state">
+      <p>Nenhuma empresa parceira cadastrada ainda.</p>
+    </div>
+
+    <div *ngIf="!loading && empresas.length > 0" class="table-container">
+      <table class="empresas-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>Mensagem</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let empresa of empresas; let i = index">
+            <td>
+              <strong>{{ empresa.nome }}</strong>
+            </td>
+            <td>
+              <a [href]="'mailto:' + empresa.email" class="email-link">
+                {{ empresa.email }}
+              </a>
+            </td>
+            <td>
+              <span *ngIf="empresa.telefone; else semTelefone">
+                <a [href]="'tel:' + empresa.telefone" class="phone-link">
+                  {{ empresa.telefone }}
+                </a>
+              </span>
+              <ng-template #semTelefone>
+                <span class="text-muted">Não informado</span>
+              </ng-template>
+            </td>
+            <td class="mensagem-cell">
+              <div class="mensagem-container">
+                <p [class.expanded]="isMensagemExpanded(empresa.id || i)">
+                  {{ isMensagemExpanded(empresa.id || i) ? empresa.mensagem : truncateText(empresa.mensagem, 80) }}
+                </p>
+                <button 
+                  *ngIf="empresa.mensagem.length > 80"
+                  class="btn-toggle"
+                  (click)="toggleMensagem(empresa.id || i)"
+                >
+                  {{ isMensagemExpanded(empresa.id || i) ? 'Ver menos' : 'Ver mais' }}
+                </button>
+              </div>
+            </td>
+            <td>
+              <div class="action-buttons">
+                <button 
+                  class="btn-edit"
+                  (click)="editarEmpresa(empresa)"
+                  title="Editar empresa"
+                >
+                  ✏️
+                </button>
+                <button 
+                  class="btn-delete"
+                  (click)="excluirEmpresa(empresa.id!)"
+                  title="Excluir empresa"
+                >
+                  🗑️
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
