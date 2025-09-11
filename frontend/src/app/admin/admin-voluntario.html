@@ -23,18 +23,36 @@
       <div *ngFor="let voluntario of voluntarios; trackBy: trackByEmail" class="voluntario-card">
         <div class="voluntario-header">
           <h4>{{voluntario.nome}}</h4>
+          <div class="voluntario-actions">
+            <button 
+              (click)="deletarVoluntario(voluntario)" 
+              class="btn-delete"
+              [disabled]="deletando"
+              title="Excluir voluntário">
+              🗑️
+            </button>
+          </div>
         </div>
         <div class="voluntario-details">
+          <p><strong>ID:</strong> {{voluntario.id}}</p>
           <p><strong>Email:</strong> {{voluntario.email}}</p>
           <p><strong>Telefone:</strong> {{voluntario.telefone || 'Não informado'}}</p>
           <p *ngIf="voluntario.disponibilidade"><strong>Disponibilidade:</strong> {{getDisponibilidadeText(voluntario.disponibilidade)}}</p>
           <p *ngIf="voluntario.mensagem"><strong>Motivação:</strong> {{voluntario.mensagem}}</p>
+          <p><strong>Newsletter:</strong> 
+            <span [class]="voluntario.aceitaEmails ? 'aceita-emails' : 'nao-aceita-emails'">
+              {{voluntario.aceitaEmails ? 'Sim' : 'Não'}}
+            </span>
+          </p>
         </div>
       </div>
     </div>
   </div>
 
   <div class="actions">
-    <button (click)="carregarVoluntarios()" class="btn-refresh">Atualizar Lista</button>
+    <button (click)="carregarVoluntarios()" class="btn-refresh" [disabled]="loading">
+      {{loading ? 'Carregando...' : 'Atualizar Lista'}}
+    </button>
   </div>
 </div>
+

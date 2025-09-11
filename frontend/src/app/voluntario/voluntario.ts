@@ -14,6 +14,7 @@ export class VoluntarioComponent {
   formEnviado = false;
   sucesso = false;
   erro = false;
+  mensagemErro = '';
 
   voluntarioForm: FormGroup;
 
@@ -23,7 +24,8 @@ export class VoluntarioComponent {
       email: new FormControl('', [Validators.required, Validators.email]),
       telefone: new FormControl(''),
       disponibilidade: new FormControl('', Validators.required),
-      mensagem: new FormControl('', Validators.required)
+      mensagem: new FormControl('', Validators.required),
+      aceitaEmails: new FormControl(false) // CAMPO ADICIONADO
     });
   }
 
@@ -34,7 +36,8 @@ export class VoluntarioComponent {
         email: this.voluntarioForm.value.email,
         telefone: this.voluntarioForm.value.telefone,
         disponibilidade: this.voluntarioForm.value.disponibilidade,
-        mensagem: this.voluntarioForm.value.mensagem
+        mensagem: this.voluntarioForm.value.mensagem,
+        aceitaEmails: this.voluntarioForm.value.aceitaEmails // CAMPO ADICIONADO
       };
 
       this.voluntarioService.criarVoluntario(voluntarioData)
@@ -44,7 +47,11 @@ export class VoluntarioComponent {
             this.formEnviado = true;
             this.sucesso = true;
             this.erro = false;
+            this.mensagemErro = '';
             this.voluntarioForm.reset();
+            
+            // Resetar o checkbox para false após o reset
+            this.voluntarioForm.get('aceitaEmails')?.setValue(false);
             
             // Scroll para a mensagem de sucesso
             setTimeout(() => {
@@ -59,6 +66,17 @@ export class VoluntarioComponent {
             this.formEnviado = true;
             this.sucesso = false;
             this.erro = true;
+            
+            // Definir mensagem de erro mais específica
+            if (err.status === 0) {
+              this.mensagemErro = 'Erro de conexão. Verifique se o servidor está rodando na porta 8085.';
+            } else if (err.status === 400) {
+              this.mensagemErro = err.error?.message || 'Dados inválidos. Verifique os campos preenchidos.';
+            } else if (err.status === 500) {
+              this.mensagemErro = 'Erro interno do servidor. Tente novamente mais tarde.';
+            } else {
+              this.mensagemErro = err.error?.message || 'Não foi possível enviar o formulário. Por favor, tente novamente mais tarde.';
+            }
             
             // Scroll para a mensagem de erro
             setTimeout(() => {
@@ -80,6 +98,4 @@ export class VoluntarioComponent {
   receberNovidades() {
     alert('Em breve teremos um formulário para você se cadastrar!');
   }
-
-  mensagemErro: string = 'Não foi possível enviar o formulário. Por favor, tente novamente mais tarde.';
 }

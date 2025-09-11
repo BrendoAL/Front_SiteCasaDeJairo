@@ -13,6 +13,7 @@ export class AdminVoluntariosComponent implements OnInit {
   voluntarios: VoluntarioDTO[] = [];
   loading = false;
   erro = false;
+  deletando = false;
 
   constructor(private voluntarioService: VoluntarioService) {}
 
@@ -34,6 +35,32 @@ export class AdminVoluntariosComponent implements OnInit {
           console.error('Erro ao carregar voluntários:', err);
           this.erro = true;
           this.loading = false;
+        }
+      });
+  }
+
+  deletarVoluntario(voluntario: VoluntarioDTO) {
+    if (!voluntario.id) {
+      alert('ID do voluntário não encontrado!');
+      return;
+    }
+
+    const confirmacao = confirm(`Tem certeza que deseja excluir o voluntário ${voluntario.nome}?`);
+    if (!confirmacao) return;
+
+    this.deletando = true;
+
+    this.voluntarioService.deletarVoluntario(voluntario.id)
+      .subscribe({
+        next: () => {
+          alert('Voluntário excluído com sucesso!');
+          this.carregarVoluntarios(); // Recarregar a lista
+          this.deletando = false;
+        },
+        error: (err) => {
+          console.error('Erro ao deletar voluntário:', err);
+          alert('Erro ao excluir voluntário. Tente novamente.');
+          this.deletando = false;
         }
       });
   }
