@@ -77,22 +77,20 @@ export class Eventos implements OnInit {
     console.log(`Debugging evento: ${evento.titulo}`);
     console.log(`imagemUrl recebida:`, evento.imagemUrl);
     
-    // Verifica se existe imagemUrl e se não está vazia
     if (evento.imagemUrl && evento.imagemUrl.trim() !== '') {
       let imageUrl = '';
       
-      // Se é uma URL completa (http/https)
       if (evento.imagemUrl.startsWith('http')) {
         imageUrl = evento.imagemUrl;
       } 
-      // Se começa com /uploads ou similar (caminho do servidor)
+   
       else if (evento.imagemUrl.startsWith('/')) {
-        // Remove a barra inicial se existir
+    
         imageUrl = evento.imagemUrl;
       }
-      // Se é apenas o nome do arquivo
+    
       else {
-        // Constrói o caminho completo
+ 
         imageUrl = `/uploads/${evento.imagemUrl}`;
       }
       
@@ -120,14 +118,12 @@ export class Eventos implements OnInit {
   abrirPopup(evento: Evento): void {
     console.log('Abrindo popup para evento:', evento);
     this.eventoSelecionado = evento;
-    // Previne scroll do body quando popup está aberto
     document.body.style.overflow = 'hidden';
   }
 
   fecharPopup(): void {
     console.log('Fechando popup');
     this.eventoSelecionado = null;
-    // Restaura scroll do body
     document.body.style.overflow = 'auto';
   }
 }

@@ -17,6 +17,7 @@ import { TransparenciaAdminComponent } from './admin/transparencia-admin';
 import { AdminVoluntariosComponent } from './admin/admin-voluntarios';
 import { AdminGuard } from './guards/admin.guard';
 import { LoginComponent } from './login/login';
+import { AdminEmpresaParceiraComponent } from './admin/admin-empresaparceira.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,7 +37,8 @@ const routes: Routes = [
     children: [
       { path: 'eventos', component: EventosAdminComponent },
       { path: 'voluntarios', component: AdminVoluntariosComponent },
-      { path: 'transparencia', component: TransparenciaAdminComponent }
+      { path: 'transparencia', component: TransparenciaAdminComponent },
+      { path: 'empresas-parceiras', component: AdminEmpresaParceiraComponent }
     ]
   }
 ];

@@ -2,10 +2,8 @@
   <section class="box-visao-geral">
     <div class="box-visao-geral-titulo container">
       <h1>Empresas que Transformam Comunidades</h1>
-      <p>Junte-se à Casa de Jairo como parceiro institucional e apoie dezenas de crianças em situação de vulnerabilidade
-        social.</p>
+      <p>Junte-se à Casa de Jairo como parceiro institucional e apoie dezenas de crianças em situação de vulnerabilidade social.</p>
       <div class="botoes-hero">
-        <a href="#formulario" class="button-azul">Quero Ser Parceiro</a>
         <a href="#info" class="button-amarelo">Saiba Mais</a>
       </div>
     </div>
@@ -15,22 +13,16 @@
     <div class="container">
       <h2 class="titulo-secao">Como sua empresa pode ajudar?</h2>
       <ul class="lista-ajudar">
-        <li>🤝 <strong>Patrocínio de projetos sociais e educacionais</strong><br>Apoie programas que transformam vidas
-          através da educação e desenvolvimento pessoal</li>
-        <li>📦 <strong>Doações de produtos, alimentos ou materiais</strong><br>Contribua com recursos essenciais para o
-          funcionamento das atividades diárias</li>
-        <li>👩‍💼 <strong>Voluntariado corporativo e ações internas</strong><br>Engaje sua equipe em atividades
-          voluntárias que fortalecem valores corporativos</li>
+        <li>🤝 <strong>Patrocínio de projetos sociais e educacionais</strong><br>Apoie programas que transformam vidas através da educação e desenvolvimento pessoal</li>
+        <li>📦 <strong>Doações de produtos, alimentos ou materiais</strong><br>Contribua com recursos essenciais para o funcionamento das atividades diárias</li>
+        <li>👩‍💼 <strong>Voluntariado corporativo e ações internas</strong><br>Engaje sua equipe em atividades voluntárias que fortalecem valores corporativos</li>
       </ul>
 
       <h2 class="titulo-secao">Benefícios para empresas parceiras</h2>
       <ul class="lista-ajudar">
-        <li>🏆 <strong>Certificação de Responsabilidade Social</strong><br>Receba reconhecimento oficial pelo seu
-          compromisso social</li>
-        <li>📣 <strong>Divulgação nas redes sociais e eventos</strong><br>Tenha sua marca associada a causas nobres e
-          ganhe visibilidade positiva</li>
-        <li>💡 <strong>Conexão com a comunidade local</strong><br>Fortaleça seus laços comunitários e construa
-          relacionamentos duradouros</li>
+        <li>🏆 <strong>Certificação de Responsabilidade Social</strong><br>Receba reconhecimento oficial pelo seu compromisso social</li>
+        <li>📣 <strong>Divulgação nas redes sociais e eventos</strong><br>Tenha sua marca associada a causas nobres e ganhe visibilidade positiva</li>
+        <li>💡 <strong>Conexão com a comunidade local</strong><br>Fortaleça seus laços comunitários e construa relacionamentos duradouros</li>
       </ul>
     </div>
   </section>
@@ -39,20 +31,84 @@
     <div class="container">
       <h2>Cadastre sua Empresa</h2>
       <div class="form-container">
-        <form class="formulario" method="POST" action="/enviar-formulario">
+        <!-- Mensagem de sucesso -->
+        <div *ngIf="formEnviado && sucesso" class="alert alert-success">
+          ✅ Cadastro realizado com sucesso! Entraremos em contato em breve.
+        </div>
+
+        <!-- Mensagem de erro -->
+        <div *ngIf="formEnviado && !sucesso" class="alert alert-error">
+          ❌ {{ errorMessage || 'Erro ao enviar formulário. Tente novamente.' }}
+        </div>
+
+        <form class="formulario" [formGroup]="empresaForm" (ngSubmit)="onSubmit()" *ngIf="!formEnviado || !sucesso">
           <div class="form-row">
-            <input type="text" name="nome" placeholder="Nome da Empresa *" required>
-            <input type="email" name="email" placeholder="E-mail de Contato *" required>
+            <div class="input-group">
+              <input 
+                type="text" 
+                formControlName="nome" 
+                placeholder="Nome da Empresa *"
+                [class.error]="isFieldInvalid('nome')"
+              >
+              <small *ngIf="isFieldInvalid('nome')" class="error-message">
+                {{ getFieldError('nome') }}
+              </small>
+            </div>
+            
+            <div class="input-group">
+              <input 
+                type="email" 
+                formControlName="email" 
+                placeholder="E-mail de Contato *"
+                [class.error]="isFieldInvalid('email')"
+              >
+              <small *ngIf="isFieldInvalid('email')" class="error-message">
+                {{ getFieldError('email') }}
+              </small>
+            </div>
           </div>
+
           <div class="form-row">
-            <input type="tel" name="telefone" placeholder="Telefone">
+            <div class="input-group">
+              <input 
+                type="tel" 
+                formControlName="telefone" 
+                placeholder="Telefone"
+              >
+            </div>
           </div>
-          <textarea name="mensagem" placeholder="Como deseja ajudar? Conte-nos sobre suas ideias e disponibilidade *"
-            required></textarea>
-          <button class="button-amarelo" type="submit">QUERO SER PARCEIRO</button>
+
+          <div class="input-group">
+            <textarea 
+              formControlName="mensagem" 
+              placeholder="Como deseja ajudar? Conte-nos sobre suas ideias e disponibilidade *"
+              rows="4"
+              [class.error]="isFieldInvalid('mensagem')"
+            ></textarea>
+            <small *ngIf="isFieldInvalid('mensagem')" class="error-message">
+              {{ getFieldError('mensagem') }}
+            </small>
+          </div>
+
+          <button 
+            class="button-amarelo" 
+            type="submit" 
+            [disabled]="loading"
+          >
+            <span *ngIf="loading">Enviando...</span>
+            <span *ngIf="!loading">QUERO SER PARCEIRO</span>
+          </button>
         </form>
+
+        <!-- Botão para cadastrar nova empresa após sucesso -->
+        <button 
+          *ngIf="formEnviado && sucesso" 
+          class="button-amarelo" 
+          (click)="resetForm()"
+        >
+          CADASTRAR NOVA EMPRESA
+        </button>
       </div>
     </div>
   </section>
-
 </main>
