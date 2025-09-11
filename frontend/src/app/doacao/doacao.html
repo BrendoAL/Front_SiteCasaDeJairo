@@ -7,7 +7,6 @@
   </p>
   <div class="btn-group">
     <a href="#sobre" class="btn">SAIBA MAIS SOBRE NÓS</a>
-    <a href="#doar" class="btn">FAÇA UMA DOAÇÃO</a>
   </div>
 </section>
 
@@ -31,8 +30,26 @@
     Sua contribuição mantém nossos projetos ativos. Doe via PIX,
     pagamento online ou torne-se um doador recorrente.
   </p>
-  <button>DOAR</button>
+  <!-- usamos (click)="abrirModal()" -->
+  <button (click)="abrirModal()">DOAR</button>
 </section>
+
+<!-- Modal Pix -->
+<div class="modal" *ngIf="modalAberto" (click)="fecharModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <span class="fechar" (click)="fecharModal()">&times;</span>
+    <h3>Doe via PIX 💛</h3>
+    <img src="/assets/imagens/qrcode-pix-Casa_de_Jairo.png" alt="QR Code PIX">
+    
+    <p class="chave-pix">{{ chavePix }}</p>
+
+    <button class="btn-copiar" (click)="copiarChavePix()">{{ textoBotao }}</button>
+  </div>
+</div>
+
+
+
+
 
 <!-- Bloco Doador Fixo - Horizontal -->
 <section class="doador-fixo-horizontal">

@@ -10,7 +10,10 @@
         }
 
         /* Melhorias tipográficas */
-        h1, h2, h3, h4 {
+        h1,
+        h2,
+        h3,
+        h4 {
           font-family: 'Montserrat', sans-serif;
           margin-bottom: 15px;
         }
@@ -20,7 +23,9 @@
           font-weight: 700;
         }
 
-        h2, h3, h4 {
+        h2,
+        h3,
+        h4 {
           color: #004a75;
           font-weight: 600;
         }
@@ -35,7 +40,7 @@
            BANNER MELHORADO
         ========================= */
         .banner {
-          background: 
+          background:
             linear-gradient(rgba(0, 74, 117, 0.1), rgba(0, 74, 117, 0.1)),
             url('/assets/images/Banner.jpg') center/cover no-repeat;
           text-align: center;
@@ -43,7 +48,7 @@
           color: #2c3e50;
           border-radius: 0 0 15px 15px;
           position: relative;
-        } 
+        }
 
         .banner::before {
           content: '';
@@ -56,7 +61,7 @@
           border-radius: 0 0 15px 15px;
         }
 
-        .banner > * {
+        .banner>* {
           position: relative;
           z-index: 1;
         }
@@ -99,7 +104,7 @@
         }
 
         .banner .btn:hover {
-          background: linear-gradient(135deg,#4a7ad4, #4774c7);
+          background: linear-gradient(135deg, #4a7ad4, #4774c7);
           box-shadow: 0 6px 16px rgba(34, 165, 219, 0.45);
           transform: translateY(-3px);
         }
@@ -113,9 +118,9 @@
           padding: 30px;
           max-width: 1000px;
           border-radius: 15px;
-          box-shadow: 
-            0 8px 25px rgba(0,0,0,0.12),
-            0 2px 6px rgba(0,0,0,0.08);
+          box-shadow:
+            0 8px 25px rgba(0, 0, 0, 0.12),
+            0 2px 6px rgba(0, 0, 0, 0.08);
           border: 1px solid rgba(34, 165, 219, 0.1);
           position: relative;
         }
@@ -127,7 +132,7 @@
           left: 0;
           right: 0;
           height: 4px;
-          background: linear-gradient(90deg,#5286e7, #ffac28);
+          background: linear-gradient(90deg, #5286e7, #ffac28);
           border-radius: 15px 15px 0 0;
         }
 
@@ -148,9 +153,9 @@
           padding: 30px;
           max-width: 600px;
           border-radius: 15px;
-          box-shadow: 
-            0 8px 25px rgba(0,0,0,0.12),
-            0 2px 6px rgba(0,0,0,0.08);
+          box-shadow:
+            0 8px 25px rgba(0, 0, 0, 0.12),
+            0 2px 6px rgba(0, 0, 0, 0.08);
           border: 1px solid rgba(34, 165, 219, 0.1);
           position: relative;
           text-align: center;
@@ -163,7 +168,7 @@
           left: 0;
           right: 0;
           height: 4px;
-          background: linear-gradient(90deg,#5286e7, #ffac28);
+          background: linear-gradient(90deg, #5286e7, #ffac28);
           border-radius: 15px 15px 0 0;
         }
 
@@ -219,9 +224,9 @@
           padding: 25px;
           border-radius: 7px;
           text-align: center;
-          box-shadow: 
+          box-shadow:
             0 8px 20px rgba(34, 165, 219, 0.15),
-            0 2px 6px rgba(0,0,0,0.08);
+            0 2px 6px rgba(0, 0, 0, 0.08);
           transition: all 0.3s ease;
           border: 1px solid rgba(34, 165, 219, 0.2);
           position: relative;
@@ -240,9 +245,9 @@
 
         .doacao-bloco:hover {
           transform: translateY(-8px) scale(1.02);
-          box-shadow: 
+          box-shadow:
             0 12px 30px rgba(34, 165, 219, 0.2),
-            0 4px 12px rgba(0,0,0,0.12);
+            0 4px 12px rgba(0, 0, 0, 0.12);
           background: linear-gradient(145deg, #f0f7fe, #e8f3fc);
         }
 
@@ -311,9 +316,9 @@
           padding: 30px;
           max-width: 1000px;
           border-radius: 15px;
-          box-shadow: 
-            0 8px 25px rgba(0,0,0,0.12),
-            0 2px 6px rgba(0,0,0,0.08);
+          box-shadow:
+            0 8px 25px rgba(0, 0, 0, 0.12),
+            0 2px 6px rgba(0, 0, 0, 0.08);
           border: 1px solid rgba(34, 165, 219, 0.1);
           position: relative;
         }
@@ -325,7 +330,7 @@
           left: 0;
           right: 0;
           height: 4px;
-          background: linear-gradient(90deg,#5286e7, #ffac28);
+          background: linear-gradient(90deg, #5286e7, #ffac28);
           border-radius: 15px 15px 0 0;
         }
 
@@ -454,11 +459,11 @@
           box-shadow: 0 4px 12px rgba(34, 165, 219, 0.3);
         }
 
-        #border-img{
+        #border-img {
           border-radius: 10px;
         }
 
-        .Cent{
+        .Cent {
           display: flex;
           justify-content: center;
         }
@@ -477,17 +482,17 @@
           body {
             font-size: 16px;
           }
-          
+
           header {
             padding: 15px 20px;
           }
-          
+
           nav {
             flex-wrap: wrap;
             justify-content: center;
             gap: 15px;
           }
-          
+
           nav a {
             padding: 6px 10px;
             font-size: 14px;
@@ -496,7 +501,7 @@
           .banner h2 {
             font-size: 28px;
           }
-          
+
           .banner p {
             font-size: 16px;
             padding: 0 15px;
@@ -506,22 +511,22 @@
             margin: 20px 15px;
             padding: 25px 20px;
           }
-          
+
           .doacoes {
             gap: 20px;
           }
-          
+
           .doacao-bloco {
             flex: 1 1 100%;
             padding: 20px;
           }
-          
+
           .banner .btn-group {
             flex-direction: column;
             align-items: center;
             gap: 12px;
           }
-          
+
           .banner .btn {
             width: 100%;
             max-width: 250px;
@@ -547,38 +552,38 @@
           header {
             padding: 12px 15px;
           }
-          
+
           .header-content {
             gap: 10px;
           }
-          
+
           .logo {
             width: 60px;
             height: 60px;
           }
-          
+
           header h1 {
             font-size: 20px;
           }
-          
+
           .banner {
             padding: 50px 15px;
             border-radius: 0;
           }
-          
+
           .banner h2 {
             font-size: 24px;
           }
-          
+
           .container {
             margin: 15px 10px;
             padding: 20px 15px;
           }
-          
+
           .doacao-bloco {
             padding: 18px 15px;
           }
-          
+
           .banner .btn {
             max-width: 200px;
             padding: 12px 16px;
@@ -613,6 +618,7 @@
             opacity: 0;
             transform: translateY(20px);
           }
+
           to {
             opacity: 1;
             transform: translateY(0);
@@ -621,4 +627,63 @@
 
         .container {
           animation: fadeIn 0.8s ease-out;
+        }
+
+        .modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 9999;
+        }
+
+        .modal-content {
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 10px;
+          width: 90%;
+          max-width: 400px;
+          text-align: center;
+          position: relative;
+        }
+
+        .fechar {
+          position: absolute;
+          top: 10px;
+          right: 15px;
+          font-size: 28px;
+          font-weight: bold;
+          cursor: pointer;
+        }
+
+        .fechar:hover {
+          color: red;
+        }
+
+        .chave-pix {
+          word-wrap: break-word;
+          margin: 15px 0;
+          font-weight: bold;
+          color: #333;
+          text-align: center;
+        }
+
+        .btn-copiar {
+          background-color: #ffc107;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          font-weight: bold;
+          display: block;
+          margin: 10px auto 0 auto;
+        }
+
+        .btn-copiar:hover {
+          background-color: #e0a800;
         }
