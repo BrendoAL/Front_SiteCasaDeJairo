@@ -8,7 +8,7 @@ interface Evento {
   descricao: string;
   data: string;
   local: string;
-  imagemUrl?: string; // URL da imagem
+  imagemUrl?: string; 
 }
 
 @Component({

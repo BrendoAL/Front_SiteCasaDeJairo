@@ -22,6 +22,8 @@ interface Evento {
   styleUrls: ['./eventos-admin.css']
 })
 export class EventosAdminComponent implements OnInit {
+  private readonly API_URL = 'http://localhost:8088/api/eventos';
+  
   eventos: Evento[] = [];
   novoEvento: Evento = { 
     titulo: '', 
@@ -46,7 +48,7 @@ export class EventosAdminComponent implements OnInit {
     this.carregando = true;
     this.erro = '';
     
-    this.http.get<Evento[]>('/api/eventos').subscribe({
+    this.http.get<Evento[]>(this.API_URL).subscribe({
       next: (data) => {
         this.eventos = data;
         this.carregando = false;
@@ -54,28 +56,12 @@ export class EventosAdminComponent implements OnInit {
       },
       error: (err) => {
         console.error('Erro ao carregar eventos:', err);
-        this.erro = 'Erro ao carregar eventos';
+        this.erro = this.getErrorMessage(err);
         this.carregando = false;
       }
     });
   }
 
-  onArquivoSelecionado(event: any): void {
-    const file = event.target.files[0];
-    if (file) {
-      this.arquivoSelecionado = file;
-      this.novoEvento.imagem = file; 
-      
-      // Criar preview da imagem
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.previewUrl = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-
-  // Método chamado pelo template
   salvarEvento(): void {
     if (!this.isFormValid()) return;
 
@@ -96,7 +82,7 @@ export class EventosAdminComponent implements OnInit {
 
     if (this.editando && this.novoEvento.id) {
       // PUT para atualizar
-      this.http.put(`/api/eventos/${this.novoEvento.id}`, formData).subscribe({
+      this.http.put(`${this.API_URL}/${this.novoEvento.id}`, formData).subscribe({
         next: (response) => {
           console.log('Evento atualizado:', response);
           this.resetarForm();
@@ -104,13 +90,13 @@ export class EventosAdminComponent implements OnInit {
         },
         error: (err) => {
           console.error('Erro ao atualizar evento:', err);
-          this.erro = 'Erro ao atualizar evento';
+          this.erro = this.getErrorMessage(err);
           this.carregando = false;
         }
       });
     } else {
-      // POST para criar
-      this.http.post('/api/eventos', formData).subscribe({
+      // POST para criar - URL CORRIGIDA
+      this.http.post(this.API_URL, formData).subscribe({
         next: (response) => {
           console.log('Evento criado:', response);
           this.resetarForm();
@@ -118,28 +104,11 @@ export class EventosAdminComponent implements OnInit {
         },
         error: (err) => {
           console.error('Erro ao criar evento:', err);
-          this.erro = 'Erro ao criar evento';
+          this.erro = this.getErrorMessage(err);
           this.carregando = false;
         }
       });
     }
-  }
-
-  editarEvento(evento: Evento): void {
-    this.novoEvento = { ...evento };
-    this.editando = true;
-    this.previewUrl = evento.imagemUrl || null;
-    
-    // Scroll para o formulário
-    setTimeout(() => {
-      document.querySelector('.admin-form')?.scrollIntoView({ 
-        behavior: 'smooth' 
-      });
-    }, 100);
-  }
-
-  cancelarEdicao(): void {
-    this.resetarForm();
   }
 
   deletarEvento(id: number): void {
@@ -152,22 +121,70 @@ export class EventosAdminComponent implements OnInit {
     this.carregando = true;
     this.erro = '';
 
-    this.http.delete(`/api/eventos/${id}`).subscribe({
+    // URL CORRIGIDA
+    this.http.delete(`${this.API_URL}/${id}`).subscribe({
       next: () => {
         this.carregarEventos();
         console.log('Evento excluído');
       },
       error: (err) => {
         console.error('Erro ao excluir evento:', err);
-        this.erro = 'Erro ao excluir evento';
+        this.erro = this.getErrorMessage(err);
         this.carregando = false;
       }
     });
   }
 
-  // Método para compatibilidade com o template
+  // Método para extrair mensagens de erro mais claras
+  private getErrorMessage(err: any): string {
+    if (err.status === 0) {
+      return 'Erro de conexão. Verifique se o servidor está rodando na porta 8088.';
+    }
+    if (err.error?.mensagem) {
+      return err.error.mensagem;
+    }
+    if (err.error?.message) {
+      return err.error.message;
+    }
+    if (err.message) {
+      return err.message;
+    }
+    return 'Erro desconhecido. Tente novamente.';
+  }
+
+  // Restante dos métodos mantidos igual...
+  onArquivoSelecionado(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.arquivoSelecionado = file;
+      this.novoEvento.imagem = file; 
+      
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.previewUrl = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  editarEvento(evento: Evento): void {
+    this.novoEvento = { ...evento };
+    this.editando = true;
+    this.previewUrl = evento.imagemUrl || null;
+    
+    setTimeout(() => {
+      document.querySelector('.admin-form')?.scrollIntoView({ 
+        behavior: 'smooth' 
+      });
+    }, 100);
+  }
+
+  cancelarEdicao(): void {
+    this.resetarForm();
+  }
+
   getImagem(imagemId: number): string {
-    return `/api/imagens/${imagemId}`;
+    return `http://localhost:8085/api/eventos/imagem/${imagemId}`;
   }
 
   private resetarForm(): void {
@@ -183,7 +200,6 @@ export class EventosAdminComponent implements OnInit {
     this.carregando = false;
     this.erro = '';
     
-    // Limpar input de arquivo
     const fileInput = document.getElementById('eventoFileInput') as HTMLInputElement;
     if (fileInput) {
       fileInput.value = '';
@@ -198,7 +214,6 @@ export class EventosAdminComponent implements OnInit {
     );
   }
 
-  // Métodos utilitários para o template
   getImageUrl(evento: Evento): string {
     if (evento.eventoImagemId) {
       return this.getImagem(evento.eventoImagemId);
