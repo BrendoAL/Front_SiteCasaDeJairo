@@ -28,7 +28,7 @@ export class AdminEmpresaParceiraComponent implements OnInit {
   mensagemErro = '';
   expandedRows: Set<number> = new Set();
 
-  private readonly API_URL = 'http://localhost:8088/api/empresa-parceira';
+  private readonly API_URL = 'https://back-sitecasadejairo.onrender.com/api/empresa-parceira';
 
   constructor(private http: HttpClient) {
     this.empresaForm = new FormGroup({

@@ -15,7 +15,7 @@ export interface Transparencia {
   providedIn: 'root'
 })
 export class TransparenciaAdminService {
-  private apiUrl = 'http://localhost:8088/api/transparencia';
+  private apiUrl = 'https://back-sitecasadejairo.onrender.com/api/transparencia';
 
   constructor(private http: HttpClient) { }
 

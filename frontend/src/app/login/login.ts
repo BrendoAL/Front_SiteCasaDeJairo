@@ -22,7 +22,7 @@ export class LoginComponent {
     this.erro = '';
     console.log(' Fazendo login...', { username: this.username });
 
-    this.http.post<{ token: string }>('http://localhost:8088/api/auth/login', {
+    this.http.post<{ token: string }>('https://back-sitecasadejairo.onrender.com/api/auth/login', {
       username: this.username,
       password: this.password
     }).subscribe({

@@ -22,7 +22,7 @@ interface Evento {
   styleUrls: ['./eventos-admin.css']
 })
 export class EventosAdminComponent implements OnInit {
-  private readonly API_URL = 'http://localhost:8088/api/eventos';
+  private readonly API_URL = 'https://back-sitecasadejairo.onrender.com/api/eventos';
   
   eventos: Evento[] = [];
   novoEvento: Evento = { 
@@ -184,7 +184,7 @@ export class EventosAdminComponent implements OnInit {
   }
 
   getImagem(imagemId: number): string {
-    return `http://localhost:8085/api/eventos/imagem/${imagemId}`;
+    return `https://back-sitecasadejairo.onrender.com/api/eventos/imagem/${imagemId}`;
   }
 
   private resetarForm(): void {
