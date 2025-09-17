@@ -22,10 +22,13 @@ export class LoginComponent {
     this.erro = '';
     console.log(' Fazendo login...', { username: this.username });
 
-    this.http.post<{ token: string }>('https://back-sitecasadejairo.onrender.com/api/auth/login', {
-      username: this.username,
-      password: this.password
-    }).subscribe({
+    this.http.post<{ token: string }>(
+      'https://back-sitecasadejairo.onrender.com/api/auth/login',
+      {
+        username: this.username.trim(), 
+        password: this.password.trim()
+      }
+    ).subscribe({
       next: res => {
         console.log('✅ Login bem-sucedido:', res);
         localStorage.setItem('token', res.token);
