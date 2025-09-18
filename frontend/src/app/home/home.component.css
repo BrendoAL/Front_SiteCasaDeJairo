@@ -1,13 +1,6 @@
 /* =========================
    TIPOGRAFIA E CORES
 ========================= */
-body {
-  background-color: #90b8fd;
-  color: #2c3e50;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-}
 
 h1, h2, h3, h4 {
   font-family: 'Montserrat', sans-serif;
@@ -19,12 +12,12 @@ h1 {
 }
 
 h2, h3, h4 {
-  color: #000000;
+  color: #13294b;
 }
 
 p {
   font-family: sans-serif;
-  color: #333;
+  color: #000000;
 }
 
 #pBranco {

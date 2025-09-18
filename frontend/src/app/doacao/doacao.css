@@ -1,14 +1,3 @@
-/* =========================
-           FONTE E ESTILO GLOBAL
-        ========================= */
-        body {
-          font-family: 'Roboto', sans-serif;
-          margin: 0;
-          background: linear-gradient(135deg, #f7f9fb, #f2f7fc);
-          color: #2c3e50;
-          line-height: 1.6;
-        }
-
         /* Melhorias tipográficas */
         h1,
         h2,
@@ -32,7 +21,7 @@
 
         p {
           font-family: 'Roboto', sans-serif;
-          color: #333;
+          color: #1b1b1b;
         }
 
 
@@ -101,12 +90,15 @@
           text-transform: uppercase;
           letter-spacing: 1px;
           box-shadow: 0 4px 12px rgba(34, 165, 219, 0.3);
+          font-size: 15px;
+          font-family: 'Montserrat', sans-serif;
         }
 
         .banner .btn:hover {
           background: linear-gradient(135deg, #4a7ad4, #4774c7);
           box-shadow: 0 6px 16px rgba(34, 165, 219, 0.45);
           transform: translateY(-3px);
+          
         }
 
         /* =========================
@@ -159,6 +151,7 @@
           border: 1px solid rgba(34, 165, 219, 0.1);
           position: relative;
           text-align: center;
+          
         }
 
         .doar-destaque::before {
@@ -182,11 +175,11 @@
         .doar-destaque p {
           margin-bottom: 25px;
           font-size: 16px;
-          color: #555;
+          color: #1b1b1b;
         }
 
         .doar-destaque button {
-          background: linear-gradient(135deg, #fdd56a, #ffac28);
+          background: linear-gradient(135deg, #ffd561, #ffbb4f);
           border: none;
           padding: 16px 32px;
           font-weight: bold;
@@ -202,8 +195,8 @@
         }
 
         .doar-destaque button:hover {
-          background: linear-gradient(135deg, #ffb43b, #f3a622);
-          box-shadow: 0 6px 16px rgba(253, 213, 106, 0.45);
+          background: linear-gradient(135deg, #f5b145, #f1b752);
+          box-shadow: 0 6px 16px rgba(255, 255, 255, 0.212);
           transform: translateY(-3px);
         }
 
@@ -289,7 +282,7 @@
         }
 
         .doacao-bloco button {
-          background: linear-gradient(135deg, #fdd56a, #ffac28);
+          background: linear-gradient(135deg, #ffd561, #ffbb4f);
           border: none;
           padding: 14px 20px;
           font-weight: bold;
@@ -304,7 +297,7 @@
         }
 
         .doacao-bloco button:hover {
-          background: linear-gradient(135deg, #ffb43b, #f3a622);
+          background: linear-gradient(135deg, #f5b145, #f1b752);
           box-shadow: 0 6px 16px rgba(253, 213, 106, 0.45);
           transform: translateY(-3px);
         }

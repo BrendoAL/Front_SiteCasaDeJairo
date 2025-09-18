@@ -25,7 +25,7 @@ h1 {
 
 p {
   font-family: sans-serif;
-  color: #555;
+  color: #1b1b1b;
   text-align: center;
   font-size: 1.1rem;
   max-width: 800px;
@@ -310,6 +310,7 @@ html {
   background: linear-gradient(135deg, #ffac28, #E49713);
   color: #fff;
   box-shadow: 0 4px 12px rgba(255,193,7,0.3);
+ font-family: 'Montserrat', sans-serif;
 }
 
 .btn-amarelo:hover {
@@ -364,5 +365,5 @@ html {
 
 .impacto .card p {
   font-size: 1rem;
-  color: #555;
+  color: #1b1b1b;
 }
