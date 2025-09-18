@@ -22,6 +22,9 @@ interface Evento {
 export class Eventos implements OnInit {
   eventos: Evento[] = [];
   eventoSelecionado: Evento | null = null;
+  
+  // URL da API
+  private apiUrl = 'https://back-sitecasadejairo.onrender.com/api';
 
   constructor(private http: HttpClient) {}
 
@@ -30,7 +33,8 @@ export class Eventos implements OnInit {
   }
 
   carregarEventos(): void {
-    this.http.get<Evento[]>('/api/eventos').subscribe({
+    // AQUI ESTÁ A CORREÇÃO: usando URL absoluta
+    this.http.get<Evento[]>(`${this.apiUrl}/eventos`).subscribe({
       next: (data) => {
         this.eventos = data;
         console.log('Eventos carregados:', data);
@@ -83,15 +87,12 @@ export class Eventos implements OnInit {
       if (evento.imagemUrl.startsWith('http')) {
         imageUrl = evento.imagemUrl;
       } 
-   
       else if (evento.imagemUrl.startsWith('/')) {
-    
         imageUrl = evento.imagemUrl;
       }
-    
       else {
- 
-        imageUrl = `/uploads/${evento.imagemUrl}`;
+        // Para imagens da API
+        imageUrl = `${this.apiUrl}/eventos/imagem/${evento.imagemUrl}`;
       }
       
       console.log(`URL final da imagem: ${imageUrl}`);
