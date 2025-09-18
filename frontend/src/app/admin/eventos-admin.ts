@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -9,8 +9,8 @@ interface Evento {
   descricao: string;
   data: string;
   local?: string;
-  eventoImagemId?: number; 
-  imagem?: File; 
+  eventoImagemId?: number;
+  imagem?: File;
   imagemUrl?: string;
 }
 
@@ -21,17 +21,18 @@ interface Evento {
   templateUrl: './eventos-admin.html',
   styleUrls: ['./eventos-admin.css']
 })
+
 export class EventosAdminComponent implements OnInit {
   private readonly API_URL = 'https://back-sitecasadejairo.onrender.com/api/eventos';
-  
+
   eventos: Evento[] = [];
-  novoEvento: Evento = { 
-    titulo: '', 
-    descricao: '', 
-    data: '', 
-    local: '' 
+  novoEvento: Evento = {
+    titulo: '',
+    descricao: '',
+    data: '',
+    local: ''
   };
-  
+
   editando = false;
   carregando = false;
   erro = '';
@@ -44,15 +45,30 @@ export class EventosAdminComponent implements OnInit {
     this.carregarEventos();
   }
 
+  private getAuthHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    if (token) {
+      return new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+    }
+    return new HttpHeaders();
+  }
+
   carregarEventos(): void {
     this.carregando = true;
     this.erro = '';
-    
-    this.http.get<Evento[]>(this.API_URL).subscribe({
+
+    this.http.get<Evento[]>(this.API_URL, {
+      headers: this.getAuthHeaders()
+    }).subscribe({
       next: (data) => {
-        this.eventos = data;
+        this.eventos = data.map(evento => ({
+          ...evento,
+          imagemUrl: evento.id ? `${this.API_URL}/imagem/${evento.id}` : undefined
+        }));
         this.carregando = false;
-        console.log('Eventos carregados:', data);
+        console.log('Eventos carregados:', this.eventos);
       },
       error: (err) => {
         console.error('Erro ao carregar eventos:', err);
@@ -63,27 +79,36 @@ export class EventosAdminComponent implements OnInit {
   }
 
   salvarEvento(): void {
-    if (!this.isFormValid()) return;
+    if (!this.isFormValid()) {
+      this.erro = 'Preencha todos os campos obrigatórios';
+      return;
+    }
 
     this.carregando = true;
     this.erro = '';
 
+    console.log('=== DEBUG SALVAR EVENTO ===');
+    console.log('Editando:', this.editando);
+    console.log('Dados do evento:', this.novoEvento);
+    console.log('Arquivo selecionado:', this.arquivoSelecionado?.name);
+
     const formData = new FormData();
-    formData.append('titulo', this.novoEvento.titulo);
-    formData.append('descricao', this.novoEvento.descricao);
+    formData.append('titulo', this.novoEvento.titulo.trim());
+    formData.append('descricao', this.novoEvento.descricao.trim());
     formData.append('data', this.novoEvento.data);
-    if (this.novoEvento.local) {
-      formData.append('local', this.novoEvento.local);
-    }
+    formData.append('local', this.novoEvento.local || '');
 
     if (this.arquivoSelecionado) {
-      formData.append('imagem', this.arquivoSelecionado);
+      formData.append('imagem', this.arquivoSelecionado, this.arquivoSelecionado.name);
+      console.log('Imagem anexada:', this.arquivoSelecionado.name, this.arquivoSelecionado.size);
     }
+
+    const headers = this.getAuthHeaders();
 
     if (this.editando && this.novoEvento.id) {
       // PUT para atualizar
-      this.http.put(`${this.API_URL}/${this.novoEvento.id}`, formData).subscribe({
-        next: (response) => {
+      this.http.put(`${this.API_URL}/${this.novoEvento.id}`, formData, { headers }).subscribe({
+        next: (response: any) => {
           console.log('Evento atualizado:', response);
           this.resetarForm();
           this.carregarEventos();
@@ -95,9 +120,9 @@ export class EventosAdminComponent implements OnInit {
         }
       });
     } else {
-      // POST para criar - URL CORRIGIDA
-      this.http.post(this.API_URL, formData).subscribe({
-        next: (response) => {
+      // POST para criar
+      this.http.post(this.API_URL, formData, { headers }).subscribe({
+        next: (response: any) => {
           console.log('Evento criado:', response);
           this.resetarForm();
           this.carregarEventos();
@@ -121,8 +146,9 @@ export class EventosAdminComponent implements OnInit {
     this.carregando = true;
     this.erro = '';
 
-    // URL CORRIGIDA
-    this.http.delete(`${this.API_URL}/${id}`).subscribe({
+    this.http.delete(`${this.API_URL}/${id}`, {
+      headers: this.getAuthHeaders()
+    }).subscribe({
       next: () => {
         this.carregarEventos();
         console.log('Evento excluído');
@@ -135,46 +161,82 @@ export class EventosAdminComponent implements OnInit {
     });
   }
 
-  // Método para extrair mensagens de erro mais claras
-  private getErrorMessage(err: any): string {
+  private getErrorMessage(err: HttpErrorResponse): string {
+    console.error('Erro completo:', err);
+
     if (err.status === 0) {
-      return 'Erro de conexão. Verifique se o servidor está rodando na porta 8088.';
+      return 'Erro de conexão. Verifique sua internet e se o servidor está funcionando.';
     }
-    if (err.error?.mensagem) {
-      return err.error.mensagem;
+
+    if (err.status === 401) {
+      localStorage.removeItem('token'); // Limpar token inválido
+      return 'Sessão expirada. Faça login novamente.';
     }
-    if (err.error?.message) {
-      return err.error.message;
+
+    if (err.status === 403) {
+      return 'Acesso negado. Verifique suas permissões.';
     }
-    if (err.message) {
-      return err.message;
+
+    if (err.status === 400) {
+      if (err.error?.mensagem) {
+        return err.error.mensagem;
+      }
+      if (typeof err.error === 'string') {
+        return err.error;
+      }
+      return 'Dados inválidos. Verifique os campos preenchidos.';
     }
-    return 'Erro desconhecido. Tente novamente.';
+
+    if (err.status >= 500) {
+      return 'Erro interno do servidor. Tente novamente em alguns instantes.';
+    }
+
+    return `Erro ${err.status}: ${err.statusText || 'Erro desconhecido'}`;
   }
 
-  // Restante dos métodos mantidos igual...
+  //tamanho maximo 20mb
   onArquivoSelecionado(event: any): void {
     const file = event.target.files[0];
     if (file) {
+      const maxSize = 20 * 1024 * 1024; // 20MB
+      const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
+
+      if (file.size > maxSize) {
+        alert('Arquivo muito grande! Máximo 20MB.');
+        event.target.value = '';
+        return;
+      }
+
+      if (!allowedTypes.includes(file.type.toLowerCase())) {
+        alert('Tipo de arquivo não permitido! Use apenas imagens (JPEG, PNG, GIF, WebP).');
+        event.target.value = '';
+        return;
+      }
+
       this.arquivoSelecionado = file;
-      this.novoEvento.imagem = file; 
-      
+      this.novoEvento.imagem = file;
+
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.previewUrl = e.target.result;
       };
       reader.readAsDataURL(file);
+
+      console.log('Arquivo selecionado:', file.name, file.type, file.size);
     }
   }
 
   editarEvento(evento: Evento): void {
     this.novoEvento = { ...evento };
     this.editando = true;
-    this.previewUrl = evento.imagemUrl || null;
-    
+
+    if (evento.id) {
+      this.previewUrl = `${this.API_URL}/imagem/${evento.id}`;
+    }
+
     setTimeout(() => {
-      document.querySelector('.admin-form')?.scrollIntoView({ 
-        behavior: 'smooth' 
+      document.querySelector('.admin-form')?.scrollIntoView({
+        behavior: 'smooth'
       });
     }, 100);
   }
@@ -184,22 +246,22 @@ export class EventosAdminComponent implements OnInit {
   }
 
   getImagem(imagemId: number): string {
-    return `https://back-sitecasadejairo.onrender.com/api/eventos/imagem/${imagemId}`;
+    return `${this.API_URL}/imagem/${imagemId}`;
   }
 
   private resetarForm(): void {
-    this.novoEvento = { 
-      titulo: '', 
-      descricao: '', 
-      data: '', 
-      local: '' 
+    this.novoEvento = {
+      titulo: '',
+      descricao: '',
+      data: '',
+      local: ''
     };
     this.editando = false;
     this.arquivoSelecionado = null;
     this.previewUrl = null;
     this.carregando = false;
     this.erro = '';
-    
+
     const fileInput = document.getElementById('eventoFileInput') as HTMLInputElement;
     if (fileInput) {
       fileInput.value = '';
@@ -215,16 +277,14 @@ export class EventosAdminComponent implements OnInit {
   }
 
   getImageUrl(evento: Evento): string {
-    if (evento.eventoImagemId) {
-      return this.getImagem(evento.eventoImagemId);
-    }
-    if (evento.imagemUrl) {
-      return evento.imagemUrl;
+    if (evento.id) {
+      return `${this.API_URL}/imagem/${evento.id}`;
     }
     return 'assets/imagens/placeholder.jpg';
   }
 
   onImageError(event: any): void {
+    console.log('Erro ao carregar imagem, usando placeholder');
     event.target.src = 'assets/imagens/placeholder.jpg';
   }
 
