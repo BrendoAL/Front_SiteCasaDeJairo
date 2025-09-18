@@ -39,22 +39,24 @@
   <div class="modal-content" (click)="$event.stopPropagation()">
     <span class="fechar" (click)="fecharModal()">&times;</span>
     <h3>Doe via PIX 💛</h3>
-    <img src="/assets/imagens/qrcode-pix-Casa_de_Jairo.png" alt="QR Code PIX">
+    <img src="\assets\imagens\qrcode-pix-Casa_de_Jairo.png" alt="QR Code PIX">
+
     <!-- Bloco CNPJ -->
     <div class="bloco-doacao">
-      <h4>Chave PIX CNPJ</h4>
+      <h4>CHAVE PIX CNPJ</h4>
       <p class="cnpj-text">{{ cnpj }}</p>
       <button class="btn-copiar" (click)="copiarCnpj()">{{ textoBotaoCnpj }}</button>
     </div>
-
     <!-- Bloco Chave PIX -->
     <div class="bloco-doacao">
       <h4>PIX Copiar e Colar</h4>
       <p class="chave-pix">{{ chavePix }}</p>
       <button class="btn-copiar" (click)="copiarChavePix()">{{ textoBotaoPix }}</button>
     </div>
+
   </div>
 </div>
+
 
 <!-- Como Você Pode Ajudar -->
 <section class="container" id="como-ajudar">

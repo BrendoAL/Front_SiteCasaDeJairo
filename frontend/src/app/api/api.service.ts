@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 export class ApiService {
 
   // URL base da sua API Spring Boot
-  private baseUrl = 'http://localhost:8085/api';
+  private baseUrl = 'https://back-sitecasadejairo.onrender.com/api';
 
   constructor(private http: HttpClient) {}
 

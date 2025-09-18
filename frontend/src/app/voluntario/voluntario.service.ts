@@ -16,7 +16,8 @@ export interface VoluntarioDTO {
   providedIn: 'root'
 })
 export class VoluntarioService {
-  private apiUrl = 'http://localhost:8088/api/voluntarios';
+  // CORREÇÃO: URL absoluta da API
+  private apiUrl = 'https://back-sitecasadejairo.onrender.com/api/voluntarios';
 
   constructor(private http: HttpClient) { }
 
@@ -28,13 +29,15 @@ export class VoluntarioService {
     return this.http.get<VoluntarioDTO[]>(this.apiUrl);
   }
 
-  // MÉTODO PARA DELETAR VOLUNTÁRIO
-  deletarVoluntario(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  buscarPorId(id: number): Observable<VoluntarioDTO> {
+    return this.http.get<VoluntarioDTO>(`${this.apiUrl}/${id}`);
   }
 
-  // MÉTODO PARA BUSCAR POR EMAIL
-  buscarPorEmail(email: string): Observable<VoluntarioDTO> {
-    return this.http.get<VoluntarioDTO>(`${this.apiUrl}/email/${email}`);
+  atualizar(id: number, voluntario: VoluntarioDTO): Observable<VoluntarioDTO> {
+    return this.http.put<VoluntarioDTO>(`${this.apiUrl}/${id}`, voluntario);
+  }
+
+  deletarVoluntario(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

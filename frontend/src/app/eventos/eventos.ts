@@ -22,6 +22,8 @@ interface Evento {
 export class Eventos implements OnInit {
   eventos: Evento[] = [];
   eventoSelecionado: Evento | null = null;
+  
+  private apiUrl = 'https://back-sitecasadejairo.onrender.com/api';
 
   constructor(private http: HttpClient) {}
 
@@ -30,37 +32,30 @@ export class Eventos implements OnInit {
   }
 
   carregarEventos(): void {
-    this.http.get<Evento[]>('/api/eventos').subscribe({
+    this.http.get<Evento[]>(`${this.apiUrl}/eventos`).subscribe({
       next: (data) => {
-        this.eventos = data;
-        console.log('Eventos carregados:', data);
-        // Debug: verificar URLs das imagens
-        data.forEach(evento => {
-          console.log(`Evento: ${evento.titulo}, ImagemUrl: ${evento.imagemUrl}`);
-        });
+        // Adiciona imagemUrl para cada evento
+        this.eventos = data.map(evento => ({
+          ...evento,
+          imagemUrl: evento.id ? `${this.apiUrl}/eventos/imagem/${evento.id}` : 'assets/imagens/placeholder.jpg'
+        }));
+
+        console.log('Eventos carregados:', this.eventos);
       },
       error: (err) => {
         console.error('Erro ao carregar eventos:', err);
-        // Dados de exemplo para teste caso a API não esteja disponível
+        // Dados de exemplo caso a API falhe
         this.eventos = [
           {
             id: 1,
-            titulo: 'Evento de Teste 1',
-            descricao: 'Este é um evento de teste para demonstrar o funcionamento do componente. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            data: '2024-12-15',
-            local: 'Centro de Eventos',
-            imagemUrl: 'assets/imagens/arte.jpg'
-          },
-          {
-            id: 2,
             titulo: 'Campanha de Alimentos',
-            descricao: 'Campanha solidária para arrecadação de alimentos não perecíveis para famílias carentes.',
+            descricao: 'Campanha solidária para arrecadação de alimentos não perecíveis.',
             data: '2024-12-20',
             local: 'Casa de Jairo',
             imagemUrl: 'assets/imagens/alimentos.jpg'
           },
           {
-            id: 3,
+            id: 2,
             titulo: 'Oficina de Informática',
             descricao: 'Curso básico de informática para crianças e adolescentes.',
             data: '2024-12-25',
@@ -68,45 +63,17 @@ export class Eventos implements OnInit {
             imagemUrl: 'assets/imagens/informatica.jpg'
           }
         ];
-        console.log('Usando dados de exemplo:', this.eventos);
       }
     });
   }
 
   getImageUrl(evento: Evento): string {
-    console.log(`Debugging evento: ${evento.titulo}`);
-    console.log(`imagemUrl recebida:`, evento.imagemUrl);
-    
-    if (evento.imagemUrl && evento.imagemUrl.trim() !== '') {
-      let imageUrl = '';
-      
-      if (evento.imagemUrl.startsWith('http')) {
-        imageUrl = evento.imagemUrl;
-      } 
-   
-      else if (evento.imagemUrl.startsWith('/')) {
-    
-        imageUrl = evento.imagemUrl;
-      }
-    
-      else {
- 
-        imageUrl = `/uploads/${evento.imagemUrl}`;
-      }
-      
-      console.log(`URL final da imagem: ${imageUrl}`);
-      return imageUrl;
-    } 
-    
-    // Imagem padrão
-    console.log(`Usando placeholder para: ${evento.titulo}`);
-    return 'assets/imagens/placeholder.jpg';
+    return evento.imagemUrl || 'assets/imagens/placeholder.jpg';
   }
 
   onImageError(event: any): void {
     console.warn('Erro ao carregar imagem:', event.target.src);
     event.target.src = 'assets/imagens/placeholder.jpg';
-    console.log('Substituída por placeholder');
   }
 
   truncateDescription(text: string, maxLength: number): string {

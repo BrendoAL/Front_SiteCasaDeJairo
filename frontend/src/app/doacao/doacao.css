@@ -1,5 +1,3 @@
-
-
         /* Melhorias tipográficas */
         h1,
         h2,
@@ -620,6 +618,47 @@
           }
         }
 
+
+        /* Responsividade */
+        @media(max-width: 480px) {
+          .modal-content img {
+            width: 140px;
+            height: 140px;
+          }
+
+          .btn-copiar {
+            padding: 8px 20px;
+            font-size: 13px;
+          }
+
+          .bloco-doacao {
+            padding: 12px 15px;
+          }
+        }
+
+        .banner-doacao {
+          background: url('/assets/imagens/brinquedos.jpg') center/cover no-repeat;
+          color: white;
+          text-align: center;
+          padding: 4rem 0;
+        }
+
+        .banner-doacao .btn {
+          margin-top: 1rem;
+        }
+
+        #quem-somos .Cent {
+          text-align: center;
+        }
+
+        #quem-somos img {
+          width: 100%;
+          height: auto;
+          border-radius: 12px;
+          max-height: 500px;
+          object-fit: cover;
+        }
+
         /* modal */
         .modal {
           position: fixed;
@@ -653,16 +692,6 @@
           margin-bottom: 20px;
         }
 
-        #quem-somos .Cent {
-          text-align: center;
-        }
-
-        #quem-somos img {
-          width: 100%;
-          height: auto;
-          border-radius: 12px;
-          max-height: 500px;
-          object-fit: cover;
 
         .container {
           animation: fadeIn 0.8s ease-out;
@@ -721,28 +750,9 @@
           cursor: pointer;
           font-weight: bold;
           font-size: 14px;
-          transition: background 0.3s, transform 0.2s;
         }
 
         .btn-copiar:hover {
           background-color: #e0a800;
           transform: translateY(-2px);
         }
-
-        /* Responsividade */
-        @media(max-width: 480px) {
-          .modal-content img {
-            width: 140px;
-            height: 140px;
-          }
-
-          .btn-copiar {
-            padding: 8px 20px;
-            font-size: 13px;
-          }
-
-          .bloco-doacao {
-            padding: 12px 15px;
-          }
-        }
-      }
