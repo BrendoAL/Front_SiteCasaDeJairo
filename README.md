@@ -26,19 +26,22 @@ Este é o frontend do projeto da ONG *Casa de Jairo*, uma organização sem fins
 
 ## 📸 Capturas de Tela
 
-<!-- Adicione aqui as imagens do site -->
-
 ### Página Inicial
-<!-- ![Página Inicial](./docs/images/home.png) -->
+
+<img width="1878" height="911" alt="Captura de tela 2025-09-18 214755" src="https://github.com/user-attachments/assets/3b149b5e-495f-4061-a7f2-39933f147c65" />
+
 
 ### Sobre Nós
-<!-- ![Sobre Nós](./docs/images/about.png) -->
 
-### Projetos
-<!-- ![Projetos](./docs/images/projects.png) -->
+<img width="1889" height="750" alt="Captura de tela 2025-09-18 214814" src="https://github.com/user-attachments/assets/bee92ac1-88f5-409a-80a3-26700c79f433" />
 
-### Contato
-<!-- ![Contato](./docs/images/contact.png) -->
+### Nossa Missão
+
+<img width="1877" height="915" alt="Captura de tela 2025-09-18 214938" src="https://github.com/user-attachments/assets/717d7965-f164-44d7-ae4d-5a15729b404d" />
+
+### Nova Sede
+
+<img width="1876" height="905" alt="Captura de tela 2025-09-18 215003" src="https://github.com/user-attachments/assets/cfa95856-6ea2-4b82-bf26-80171a865d5a" />
 
 ## 🛠️ Tecnologias Utilizadas
 
