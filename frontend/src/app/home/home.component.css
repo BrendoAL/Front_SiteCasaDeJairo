@@ -500,3 +500,82 @@ html {
     padding: 28px 25px;
   }
 }
+
+/* =========================
+   CORREÇÕES ESPECÍFICAS PARA SEÇÃO "COMO AJUDAR"
+========================= */
+
+@media(max-width: 768px) {
+  
+  /* Seção azul - Como Ajudar - CORREÇÕES ESPECÍFICAS */
+  .secao-azul .container {
+    padding: 0; /* Remove padding extra do container */
+  }
+  
+  /* CORREÇÃO: Grid para mobile na seção azul */
+  .secao-azul .grid-3 {
+    grid-template-columns: 1fr; /* Uma coluna no mobile */
+    gap: 25px; /* Espaçamento entre cards */
+    width: 100%;
+  }
+  
+  /* CORREÇÃO: Cards da seção azul - texto não vaza mais */
+  .secao-azul .box {
+    padding: 25px 15px; /* Padding interno ajustado */
+    margin: 0; /* Remove margens */
+    width: 100%;
+    box-sizing: border-box; /* Garante que padding não extrapole */
+    word-wrap: break-word; /* Quebra palavras longas */
+    overflow-wrap: break-word; /* Suporte adicional para quebra */
+  }
+  
+  /* Texto dos cards - CORREÇÃO PRINCIPAL */
+  .secao-azul .box p {
+    padding: 0; /* Remove padding extra */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto; /* Hifenização automática quando necessário */
+    font-size: 0.95rem;
+  }
+  
+  /* CORREÇÃO: Botões alinhados e responsivos */
+  .secao-azul .box .btn {
+    display: inline-block;
+    width: auto;
+    max-width: 200px;
+    min-width: 140px;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile muito pequeno - ajustes adicionais */
+@media(max-width: 480px) {
+  .secao-azul .box {
+    padding: 20px 12px;
+  }
+  
+  .secao-azul .box .btn {
+    max-width: 180px;
+    min-width: 120px;
+    padding: 11px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+/* IMPORTANTE: Regras de override para garantir que funcione */
+@media(max-width: 768px) {
+  /* Override para garantir que o texto não vaze */
+  .secao-azul * {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  
+  /* Garante que nenhum elemento filho extrapole o container */
+  .secao-azul .box * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}

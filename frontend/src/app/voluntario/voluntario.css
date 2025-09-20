@@ -199,3 +199,343 @@ textarea {
   font-weight: 500;
   margin-top: 10px;
 }
+
+
+/* =========================
+   FORMULÁRIO VOLUNTÁRIOS - MOBILE
+========================= */
+
+/* Estilos base já existentes mantidos, adicionando melhorias mobile */
+
+/* Mobile responsivo para voluntários */
+@media(max-width: 768px) {
+  main.container {
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 20px 15px;
+    background: #e8f2fc;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  }
+
+  main h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  main p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    padding: 0 5px;
+  }
+
+  /* Como Ajudar - Cards responsivos */
+  #como-ajudar {
+    margin-bottom: 40px;
+  }
+
+  #como-ajudar h2 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+
+  .ajuda-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .card {
+    background: #ffffff;
+    padding: 20px 15px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px; 
+    width: 100%;
+    background: linear-gradient(90deg, #5286e7, #ffac28); 
+    border-radius: 12px 12px 0 0; 
+  }
+
+  .card h3 {
+    color: #004a75;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+  }
+
+  .card p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+
+  /* Formulário responsivo */
+  #formulario-voluntario h2 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  label {
+    font-weight: 600;
+    color: #333;
+    font-size: 1rem;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 14px 12px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 16px; /* Previne zoom no iOS */
+    transition: border 0.3s, box-shadow 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    border-color: #22A5DB;
+    box-shadow: 0 0 8px rgba(34, 165, 219, 0.3);
+    outline: none;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  /* Grupo checkbox melhorado */
+  .checkbox-group {
+    margin-bottom: 20px;
+  }
+
+  .checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+  }
+
+  .checkbox-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .checkbox-text {
+    flex: 1;
+    color: #333;
+    font-size: 15px;
+  }
+
+  .checkbox-info {
+    display: block;
+    color: #666;
+    font-size: 13px;
+    margin-top: 8px;
+    margin-left: 32px;
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  /* Botão enviar melhorado */
+  .button-enviar {
+    background: #5286e7;
+    color: #fff;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+    min-height: 50px;
+  }
+
+  .button-enviar:hover:not(:disabled) {
+    background: #4673c7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(70, 115, 199, 0.3);
+  }
+
+  .button-enviar:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* Mensagens de feedback */
+  .feedback-messages {
+    margin-bottom: 30px;
+  }
+
+  .success-message,
+  .error-message {
+    padding: 20px 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .success-message {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+  }
+
+  .error-message {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+  }
+
+  .success-message h3,
+  .error-message h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+  }
+
+  .success-message p,
+  .error-message p {
+    margin-bottom: 8px;
+    text-align: left;
+  }
+
+  .newsletter-info {
+    color: #28a745 !important;
+    font-weight: 500;
+    margin-top: 10px;
+  }
+
+  /* Erros de campo */
+  .field-error {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+    padding: 5px 8px;
+    background: rgba(220, 53, 69, 0.1);
+    border-radius: 5px;
+    border-left: 3px solid #dc3545;
+  }
+}
+
+/* Mobile muito pequeno - ajustes finais */
+@media(max-width: 480px) {
+  main.container {
+    margin: 10px;
+    padding: 15px 10px;
+    border-radius: 12px;
+  }
+
+  main h1 {
+    font-size: 1.6rem;
+  }
+
+  #como-ajudar h2,
+  #formulario-voluntario h2 {
+    font-size: 1.4rem;
+  }
+
+  .card {
+    padding: 15px 12px;
+  }
+
+  .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 12px 10px;
+    font-size: 16px;
+  }
+
+  .button-enviar {
+    padding: 14px 18px;
+    font-size: 1rem;
+    min-height: 48px;
+  }
+
+  .checkbox-label {
+    padding: 8px;
+    font-size: 15px;
+  }
+
+  .checkbox-text {
+    font-size: 14px;
+  }
+
+  .checkbox-info {
+    font-size: 12px;
+    margin-left: 28px;
+  }
+}
+
+/* Melhorias gerais para UX */
+input[type="tel"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+/* Remove spinners dos inputs number em alguns browsers */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Melhora a acessibilidade do foco */
+*:focus {
+  outline: 2px solid #22A5DB;
+  outline-offset: 2px;
+}
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #22A5DB;
+  outline-offset: 2px;
+}

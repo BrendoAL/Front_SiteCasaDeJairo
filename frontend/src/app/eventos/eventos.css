@@ -61,56 +61,7 @@
   border-radius: 2px;
 }
 
-/* =========================
-   SLIDER PEQUENO
-========================= */
-.slider-eventos {
-  width: 90%;
-  max-width: 900px;
-  margin: 40px auto;
-  overflow: hidden;
-  border-radius: 15px;
-  box-shadow: 
-    0 12px 30px rgba(0,0,0,0.15),
-    0 4px 12px rgba(0,0,0,0.1);
-  position: relative;
-}
 
-.slider-eventos::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #5286e7, #ffac28);
-  z-index: 2;
-}
-
-.slider-eventos .slider-track {
-  display: flex;
-  width: calc(100% * 4);
-  animation: slide 20s infinite linear;
-}
-
-.slider-eventos img {
-  width: 25%;
-  height: 250px;
-  object-fit: cover;
-  transition: transform 0.3s;
-}
-
-.slider-eventos img:hover {
-  transform: scale(1.05);
-}
-
-@keyframes slide {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-25%); }
-  50% { transform: translateX(-50%); }
-  75% { transform: translateX(-75%); }
-  100% { transform: translateX(0); }
-}
 
 /* =========================
    NOTÍCIAS GRID
@@ -255,301 +206,6 @@
   display: flex;
   justify-content: center;
   margin-top: 40px;
-}
-
-/* =========================
-   CALENDÁRIO E EVENTOS
-========================= */
-.calendario-eventos {
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #e8f3ff, #e6f0ff);
-}
-
-.eventos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.card {
-  background: linear-gradient(145deg, #ffffff, #f8f9fa);
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 
-    0 12px 30px rgba(0,0,0,0.12),
-    0 4px 15px rgba(0,0,0,0.08);
-  border: 1px solid rgba(0,123,255,0.1);
-  position: relative;
-  overflow: hidden;
-}
-
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #5286e7, #ffac28);
-}
-
-.card h3 {
-  color: #2c3e50;
-  margin-bottom: 25px;
-  text-align: center;
-  font-size: 1.4rem;
-  font-weight: 600;
-}
-
-.card h3 i {
-  color: #007BFF;
-  margin-right: 10px;
-}
-
-/* Cabeçalho dias da semana */
-.dias-semana {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 15px;
-  color: #2c3e50;
-  gap: 4px;
-}
-
-.dias-semana span {
-  padding: 8px 4px;
-  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-  border-radius: 8px;
-  font-size: 0.85rem;
-}
-
-/* Grid dos dias */
-.dias-mes {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-  margin-bottom: 20px;
-}
-
-.dia {
-  background: linear-gradient(145deg, #f8f9fa, #e9ecef);
-  border-radius: 12px;
-  min-height: 75px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 8px 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.dia:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-}
-
-.dia.vazio {
-  background: transparent;
-  box-shadow: none;
-  cursor: default;
-}
-
-.dia.vazio:hover {
-  transform: none;
-}
-
-/* Número do dia */
-.dia .numero {
-  font-weight: bold;
-  font-size: 1rem;
-  margin-bottom: 4px;
-  color: #2c3e50;
-}
-
-/* Texto do evento no calendário */
-.dia .evento {
-  font-size: 0.7rem;
-  text-align: center;
-  margin-top: auto;
-  color: #fff;
-  padding: 2px 4px;
-  border-radius: 4px;
-  line-height: 1.2;
-}
-
-/* Cores dos eventos no calendário */
-.dia.azul {
-  background: linear-gradient(145deg, #5286e7, #4774c7);
-  color: #fff;
-}
-
-.dia.verde {
-  background: linear-gradient(145deg, #28a745, #218838);
-  color: #fff;
-}
-
-.dia.amarelo {
-  background: linear-gradient(145deg, #ffac28, #E49713);
-  color: #fff;
-}
-
-.dia.vermelho {
-  background: linear-gradient(145deg, #dc3545, #c82333);
-  color: #fff;
-}
-
-.dia.aniversario {
-  background: linear-gradient(145deg, #ff6b6b, #ee5a52);
-  color: #fff;
-}
-
-.legenda {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 0.9rem;
-  color: #666;
-  padding: 15px;
-  background: rgba(0,123,255,0.05);
-  border-radius: 10px;
-  line-height: 1.5;
-}
-
-/* =========================
-   ANIVERSARIANTES CARROSSEL
-========================= */
-.aniversariantes .carousel {
-  position: relative;
-  margin: 0 auto 20px;
-  overflow: hidden;
-  border-radius: 15px;
-}
-
-.aniversariantes .track {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(200px, 1fr);
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 15px;
-  scrollbar-width: thin;
-  scrollbar-color: #5286e7 #f1f3f4;
-}
-
-.aniversariantes .track::-webkit-scrollbar {
-  height: 8px;
-}
-
-.aniversariantes .track::-webkit-scrollbar-track {
-  background: #f1f3f4;
-  border-radius: 10px;
-}
-
-.aniversariantes .track::-webkit-scrollbar-thumb {
-  background: linear-gradient(90deg, #5286e7, #4774c7);
-  border-radius: 10px;
-}
-
-.aniversariantes .item {
-  scroll-snap-align: start;
-  background: linear-gradient(145deg, #fff6d6, #ffeaa7);
-  border-radius: 16px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 6px 15px rgba(255,172,40,0.2);
-  transition: all 0.3s ease;
-  border: 2px solid rgba(255,172,40,0.3);
-}
-
-.aniversariantes .item:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(255,172,40,0.3);
-}
-
-.aniversariantes .item img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 3px solid #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-}
-
-.aniversariantes .item h4 {
-  margin: 15px 0 8px;
-  color: #2c3e50;
-  font-weight: 600;
-}
-
-.aniversariantes .item small {
-  color: #E49713;
-  font-weight: 500;
-}
-
-.aniversariantes .nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: linear-gradient(135deg, #5286e7, #4774c7);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(82,134,231,0.3);
-  transition: all 0.3s ease;
-  z-index: 3;
-}
-
-.aniversariantes .nav:hover {
-  background: linear-gradient(135deg, #4774c7, #5286e7);
-  box-shadow: 0 6px 16px rgba(82,134,231,0.45);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.aniversariantes .prev {
-  left: 15px;
-}
-
-.aniversariantes .next {
-  right: 15px;
-}
-
-.lista-aniversarios {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.lista-aniversarios li {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: linear-gradient(145deg, #fff6d6, #ffeaa7);
-  padding: 12px 15px;
-  border-radius: 12px;
-  margin-bottom: 10px;
-  border: 1px solid rgba(255,172,40,0.3);
-  transition: all 0.3s ease;
-}
-
-.lista-aniversarios li:hover {
-  background: linear-gradient(145deg, #ffeaa7, #fdcb6e);
-  transform: translateX(5px);
-}
-
-.lista-aniversarios .icone {
-  color: #E53935;
-  font-size: 1.2rem;
 }
 
 /* =========================
@@ -1283,5 +939,137 @@ html {
   
   .popup-body h2 {
     font-size: 1.3rem;
+  }
+}
+
+.carrossel-eventos {
+  padding: 40px 0;
+  background: #f8f9fa;
+}
+
+.carrossel-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.carrossel-slides {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  color: white;
+  padding: 40px 20px 20px;
+}
+
+.slide-title h3 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.9);
+  border: none;
+  padding: 15px 20px;
+  font-size: 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+  z-index: 10;
+}
+
+.nav-btn:hover {
+  background: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+  left: 20px;
+}
+
+.next-btn {
+  right: 20px;
+}
+
+.indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.indicator.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+/* Mobile */
+@media(max-width: 768px) {
+  .carrossel-slides {
+    height: 300px;
+  }
+  
+  .nav-btn {
+    padding: 12px 15px;
+    font-size: 16px;
+  }
+  
+  .prev-btn {
+    left: 10px;
+  }
+  
+  .next-btn {
+    right: 10px;
+  }
+  
+  .slide-title h3 {
+    font-size: 1.2rem;
   }
 }

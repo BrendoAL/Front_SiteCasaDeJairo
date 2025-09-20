@@ -93,4 +93,26 @@ export class Eventos implements OnInit {
     this.eventoSelecionado = null;
     document.body.style.overflow = 'auto';
   }
+
+  currentSlideIndex = 0;
+  imagens = [
+    { src: 'assets/imagens/arte.jpg', alt: 'Oficina de Artes', title: 'Oficina de Artes' },
+    { src: 'assets/imagens/alimentos.jpg', alt: 'Campanha de Alimentos', title: 'Campanha de Alimentos' },
+    { src: 'assets/imagens/informatica.jpg', alt: 'Curso de Informática', title: 'Curso de Informática' },
+    { src: 'assets/imagens/criancasjiu.jpg', alt: 'Atividades Recreativas', title: 'Atividades Recreativas' },
+    { src: 'assets/imagens/cozinha.jpg', alt: 'Cozinha Comunitária', title: 'Cozinha Comunitária' }
+  ];
+
+  nextSlide() {
+    this.currentSlideIndex = (this.currentSlideIndex + 1) % this.imagens.length;
+  }
+
+  prevSlide() {
+    this.currentSlideIndex = (this.currentSlideIndex - 1 + this.imagens.length) % this.imagens.length;
+  }
+
+  goToSlide(index: number) {
+    this.currentSlideIndex = index;
+  }
 }
+
