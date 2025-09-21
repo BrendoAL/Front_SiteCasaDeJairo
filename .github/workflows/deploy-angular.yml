@@ -1,7 +1,9 @@
 name: Build and Deploy Angular to HostGator
 
 on:
-  workflow_dispatch:   
+  push:
+    branches:
+      - master  
 
 jobs:
   build-and-deploy:
@@ -28,5 +30,7 @@ jobs:
         server: ${{ secrets.FTP_HOST }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: dist/browser 
-        server-dir: public_html/               
+        local-dir: dist/frontend
+        server-dir: public_html/      
+        passive: true
+        force-publish: true         
