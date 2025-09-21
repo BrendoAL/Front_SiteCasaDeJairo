@@ -17,7 +17,7 @@ export interface VoluntarioDTO {
 })
 export class VoluntarioService {
   // CORREÇÃO: URL absoluta da API
-  private apiUrl = 'https://back-sitecasadejairo.onrender.com/api/voluntarios';
+  private apiUrl = 'https://back-sitecasadejairo.fly.dev/api/voluntarios';
 
   constructor(private http: HttpClient) { }
 

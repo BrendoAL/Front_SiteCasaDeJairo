@@ -8,22 +8,35 @@
         </div>
     </section>
 
-    <!-- SLIDER IMAGENS -->
-    <section class="slider-eventos">
-        <div class="slider-track">
-            <img src="assets/imagens/arte.jpg" alt="Oficina de Artes">
-            <img src="assets/imagens/alimentos.jpg" alt="Campanha de Alimentos">
-            <img src="assets/imagens/informatica.jpg" alt="Curso de Informática">
-            <img src="assets/imagens/criancasjiu.jpg" alt="Criancasjiu">
-            <img src="assets/imagens/cozinha.jpg" alt="Cozinha">
-            <!-- repete as imagens para o loop contínuo -->
-            <img src="assets/imagens/arte.jpg" alt="Oficina de Artes">
-            <img src="assets/imagens/alimentos.jpg" alt="Campanha de Alimentos">
-            <img src="assets/imagens/informatica.jpg" alt="Curso de Informática">
-            <img src="assets/imagens/criancasjiu.jpg" alt="Criancasjiu">
-            <img src="assets/imagens/cozinha.jpg" alt="Cozinha">
+    <!-- CARROSSEL CONTROLÁVEL -->
+<section class="carrossel-eventos">
+  <div class="carrossel-container">
+    <div class="carrossel-slides">
+      <div *ngFor="let imagem of imagens; let i = index" 
+           class="slide" 
+           [class.active]="i === currentSlideIndex">
+        <img [src]="imagem.src" [alt]="imagem.alt">
+        <div class="slide-title">
+          <h3>{{imagem.title}}</h3>
         </div>
-    </section>
+      </div>
+    </div>
+    
+    <!-- Botões de navegação -->
+    <button class="nav-btn prev-btn" (click)="prevSlide()" aria-label="Anterior">❮</button>
+    <button class="nav-btn next-btn" (click)="nextSlide()" aria-label="Próximo">❯</button>
+    
+    <!-- Indicadores -->
+    <div class="indicators">
+      <button *ngFor="let imagem of imagens; let i = index"
+              class="indicator"
+              [class.active]="i === currentSlideIndex"
+              (click)="goToSlide(i)"
+              [attr.aria-label]="'Ir para slide ' + (i + 1)">
+      </button>
+    </div>
+  </div>
+</section>
 
     <!-- NOTÍCIAS (GRID) -->
     <section class="secao">
