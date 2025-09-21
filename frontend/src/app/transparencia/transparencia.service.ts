@@ -14,7 +14,7 @@ data: string|number|Date;
   providedIn: 'root'
 })
 export class TransparenciaService {
-  private apiUrl = 'https://back-sitecasadejairo.onrender.com/api/transparencia';
+  private apiUrl = 'https://back-sitecasadejairo.fly.dev/api/transparencia';
 
   constructor(private http: HttpClient) {}
 

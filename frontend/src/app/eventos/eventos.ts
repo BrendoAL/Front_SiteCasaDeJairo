@@ -23,7 +23,7 @@ export class Eventos implements OnInit {
   eventos: Evento[] = [];
   eventoSelecionado: Evento | null = null;
   
-  private apiUrl = 'https://back-sitecasadejairo.onrender.com/api';
+  private apiUrl = 'https://back-sitecasadejairo.fly.dev/api';
 
   constructor(private http: HttpClient) {}
 
