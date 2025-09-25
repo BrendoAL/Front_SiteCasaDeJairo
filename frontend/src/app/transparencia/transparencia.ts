@@ -39,8 +39,6 @@ export class TransparenciaComponent implements OnInit {
     const img = event.target as HTMLImageElement;
     if (img) {
       img.style.display = 'none';
-      // Ou substitua por uma imagem padrão:
-      // img.src = 'assets/images/no-image.png';
     }
   }
 
@@ -48,16 +46,15 @@ export class TransparenciaComponent implements OnInit {
   abrirModal(post: Transparencia): void {
     this.postSelecionado = post;
     this.modalAberto = true;
-    document.body.style.overflow = 'hidden'; // Impede scroll da página
+    document.body.style.overflow = 'hidden'; 
   }
 
   fecharModal(): void {
     this.modalAberto = false;
     this.postSelecionado = null;
-    document.body.style.overflow = 'auto'; // Restaura scroll da página
+    document.body.style.overflow = 'auto'; 
   }
 
-  // Fecha modal ao clicar no backdrop
   fecharModalBackdrop(event: Event): void {
     if (event.target === event.currentTarget) {
       this.fecharModal();

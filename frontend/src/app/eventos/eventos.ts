@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule, DatePipe } from '@angular/common';
+import { ImageService } from './image.service';
 
 interface Evento {
   id?: number;
@@ -8,7 +9,7 @@ interface Evento {
   descricao: string;
   data: string;
   local: string;
-  imagemUrl?: string; 
+  imagemUrl?: string;
 }
 
 @Component({
@@ -17,34 +18,51 @@ interface Evento {
   imports: [CommonModule],
   templateUrl: './eventos.html',
   styleUrls: ['./eventos.css'],
-  providers: [DatePipe]
+  providers: [DatePipe, ImageService]
 })
+
 export class Eventos implements OnInit {
   eventos: Evento[] = [];
   eventoSelecionado: Evento | null = null;
-  
+
   private apiUrl = 'https://back-sitecasadejairo.fly.dev/api';
+  imgUrl: string = 'assets/imagens/placeholder.jpg';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private imageService: ImageService,
+    private cd: ChangeDetectorRef,
+    private http: HttpClient
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    const url = 'https://back-sitecasadejairo.fly.dev/api/eventos/imagem/1';
+    this.imageService.loadImage(url).subscribe(finalUrl => {
+      this.imgUrl = finalUrl;
+      this.cd.detectChanges();
+    });
+
     this.carregarEventos();
   }
 
   carregarEventos(): void {
     this.http.get<Evento[]>(`${this.apiUrl}/eventos`).subscribe({
       next: (data) => {
-        // Adiciona imagemUrl para cada evento
-        this.eventos = data.map(evento => ({
-          ...evento,
-          imagemUrl: evento.id ? `${this.apiUrl}/eventos/imagem/${evento.id}` : 'assets/imagens/placeholder.jpg'
-        }));
+        this.eventos = data.map(evento => {
+          let imagemUrl = evento.id
+            ? `${this.apiUrl}/eventos/imagem/${evento.id}`
+            : 'assets/imagens/placeholder.jpg';
+          if (imagemUrl.includes(this.apiUrl)) {
+            const separator = imagemUrl.includes('?') ? '&' : '?';
+            imagemUrl = `${imagemUrl}${separator}t=${Date.now()}`;
+          }
+
+          return { ...evento, imagemUrl };
+        });
 
         console.log('Eventos carregados:', this.eventos);
       },
       error: (err) => {
         console.error('Erro ao carregar eventos:', err);
-        // Dados de exemplo caso a API falhe
         this.eventos = [
           {
             id: 1,
@@ -72,8 +90,36 @@ export class Eventos implements OnInit {
   }
 
   onImageError(event: any): void {
-    console.warn('Erro ao carregar imagem:', event.target.src);
-    event.target.src = 'assets/imagens/placeholder.jpg';
+    const img = event.target;
+    const originalSrc = img.src;
+
+    console.warn('Erro ao carregar imagem:', originalSrc);
+
+    if (!img.src.includes('placeholder.jpg')) {
+      img.src = 'assets/imagens/placeholder.jpg';
+
+      setTimeout(() => {
+        if (originalSrc && !originalSrc.includes('placeholder.jpg')) {
+          const newImg = new Image();
+          newImg.onload = () => {
+            img.src = originalSrc;
+          };
+          newImg.onerror = () => {
+            console.warn('Falha na segunda tentativa de carregar:', originalSrc);
+          };
+          newImg.src = originalSrc.includes('?') ?
+            `${originalSrc}&retry=${Date.now()}` :
+            `${originalSrc}?retry=${Date.now()}`;
+        }
+      }, 2000);
+    }
+  }
+
+  preloadImage(evento: Evento): void {
+    if (evento.imagemUrl && evento.imagemUrl.includes(this.apiUrl)) {
+      const img = new Image();
+      img.src = this.getImageUrl(evento);
+    }
   }
 
   truncateDescription(text: string, maxLength: number): string {
@@ -86,6 +132,8 @@ export class Eventos implements OnInit {
     console.log('Abrindo popup para evento:', evento);
     this.eventoSelecionado = evento;
     document.body.style.overflow = 'hidden';
+
+    this.preloadImage(evento);
   }
 
   fecharPopup(): void {
@@ -114,5 +162,16 @@ export class Eventos implements OnInit {
   goToSlide(index: number) {
     this.currentSlideIndex = index;
   }
-}
 
+  isMobile(): boolean {
+    return window.innerWidth <= 768;
+  }
+
+  onImageLoad(event: any): void {
+    console.log('Imagem carregada com sucesso:', event.target.src);
+  }
+
+  trackByEventoId(index: number, evento: Evento): any {
+    return evento.id || index;
+  }
+}
