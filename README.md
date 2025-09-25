@@ -65,37 +65,6 @@ Este é o frontend do projeto da ONG *Casa de Jairo*, uma organização sem fins
 - **HostGator** - Servidor de hospedagem
 - **Git** - Controle de versão
 
-## 📂 Estrutura do Projeto
-
-```
-src/
-├── app/
-│   ├── components/          # Componentes reutilizáveis
-│   │   ├── header/
-│   │   ├── footer/
-│   │   ├── hero/
-│   │   └── card/
-│   ├── pages/              # Páginas da aplicação
-│   │   ├── home/
-│   │   ├── about/
-│   │   ├── projects/
-│   │   ├── volunteer/
-│   │   ├── donate/
-│   │   └── contact/
-│   ├── services/           # Serviços Angular
-│   │   ├── api.service.ts
-│   │   ├── donation.service.ts
-│   │   └── contact.service.ts
-│   ├── models/             # Interfaces TypeScript
-│   ├── shared/             # Módulos compartilhados
-│   └── assets/             # Recursos estáticos
-│       ├── images/
-│       ├── icons/
-│       └── styles/
-├── environments/           # Configurações de ambiente
-└── styles.scss            # Estilos globais
-```
-
 ## 🚀 Funcionalidades
 
 ### 📋 Páginas Principais
@@ -117,7 +86,7 @@ src/
 ### 📱 Compatibilidade
 - Dispositivos móveis (iOS/Android)
 - Tablets
-- Desktops (todos os navegadores modernos)
+- Desktops 
 
 ## 📋 Pré-requisitos
 
@@ -186,19 +155,6 @@ $text-dark: #212121;
 $text-light: #757575;
 $background: #FAFAFA;
 $white: #FFFFFF;
-```
-
-### Typography
-```scss
-// Fontes
-$font-primary: 'Roboto', sans-serif;
-$font-headings: 'Montserrat', sans-serif;
-
-// Tamanhos
-$font-size-small: 14px;
-$font-size-base: 16px;
-$font-size-large: 18px;
-$font-size-xl: 24px;
 ```
 
 ## 📚 Scripts Disponíveis
