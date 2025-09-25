@@ -4,11 +4,15 @@
 .titulo-principal {
   text-align: center;
   margin: 40px 0 20px;
-  color: #2c3e50;
+  color: #175caa;
   font-size: 2.5rem;
   font-weight: 700;
   position: relative;
   padding-bottom: 15px;
+}
+
+h1.titulo-centro{
+  color: #175caa;
 }
 
 .p-centro{
@@ -33,7 +37,7 @@
 
 .subtitulo {
   text-align: center;
-  color: #666;
+  color: #175caa;
   font-size: 1.1rem;
   margin-bottom: 50px;
   max-width: 600px;
@@ -42,7 +46,7 @@
 }
 
 .titulo-secao {
-  color: #2c3e50;
+  color: #175caa;
   font-size: 1.8rem;
   font-weight: 600;
   margin: 40px 0 20px;

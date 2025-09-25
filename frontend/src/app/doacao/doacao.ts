@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './doacao.html',
   styleUrls: ['./doacao.css']
 })
+
 export class Doacao {
   modalAberto = false;
   chavePix = '00020126360014BR.GOV.BCB.PIX0114458787680001095204000053039865802BR5901N6001C62150511CasadeJairo6304C17B';

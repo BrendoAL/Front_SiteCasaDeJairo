@@ -7,7 +7,7 @@ data: string|number|Date;
   titulo: string;
   descricao: string;
   postImagemId?: number;
-  dataPublicacao: string; // vem do backend como LocalDate -> string
+  dataPublicacao: string; 
 }
 
 @Injectable({
